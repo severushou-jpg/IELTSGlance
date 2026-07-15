@@ -1,0 +1,4383 @@
+[
+  {
+    "id": "gre-abate",
+    "word": "abate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "减弱；缓和",
+    "synonyms": [
+      "subside",
+      "diminish",
+      "ease"
+    ],
+    "exampleSentence": "The wind began to abate before the ferry left the harbor.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-aberrant",
+    "word": "aberrant",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "异常的；偏离常规的",
+    "synonyms": [
+      "abnormal",
+      "atypical",
+      "deviant"
+    ],
+    "exampleSentence": "Researchers treated the aberrant result as a reason to repeat the trial.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-abeyance",
+    "word": "abeyance",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "暂缓；搁置",
+    "synonyms": [
+      "suspension",
+      "dormancy",
+      "delay"
+    ],
+    "exampleSentence": "The expansion plan remains in abeyance until funding is secured.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-abhor",
+    "word": "abhor",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "憎恶",
+    "synonyms": [
+      "detest",
+      "loathe",
+      "despise"
+    ],
+    "exampleSentence": "She abhors cruelty even when it is disguised as discipline.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-abjure",
+    "word": "abjure",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "正式放弃；发誓弃绝",
+    "synonyms": [
+      "renounce",
+      "repudiate",
+      "forgo"
+    ],
+    "exampleSentence": "The former leader publicly abjured violence and urged negotiation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-abrogate",
+    "word": "abrogate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "废除；取消",
+    "synonyms": [
+      "repeal",
+      "rescind",
+      "revoke"
+    ],
+    "exampleSentence": "The court declined to abrogate the rule without legislative review.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-abstemious",
+    "word": "abstemious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "有节制的",
+    "synonyms": [
+      "temperate",
+      "moderate",
+      "restrained"
+    ],
+    "exampleSentence": "His abstemious habits surprised guests at the elaborate banquet.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-abstruse",
+    "word": "abstruse",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "深奥难懂的",
+    "synonyms": [
+      "obscure",
+      "esoteric",
+      "arcane"
+    ],
+    "exampleSentence": "A clear diagram made the abstruse argument easier to follow.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-accede",
+    "word": "accede",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "同意；就任",
+    "synonyms": [
+      "assent",
+      "consent",
+      "agree"
+    ],
+    "exampleSentence": "After weeks of debate, the committee acceded to the revised terms.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-acerbic",
+    "word": "acerbic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "尖刻的",
+    "synonyms": [
+      "caustic",
+      "biting",
+      "sarcastic"
+    ],
+    "exampleSentence": "The critic's acerbic review overshadowed several thoughtful observations.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-acquiesce",
+    "word": "acquiesce",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "默许；勉强同意",
+    "synonyms": [
+      "comply",
+      "submit",
+      "consent"
+    ],
+    "exampleSentence": "Rather than acquiesce, the residents requested a public hearing.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-acumen",
+    "word": "acumen",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "敏锐；洞察力",
+    "synonyms": [
+      "insight",
+      "shrewdness",
+      "sagacity"
+    ],
+    "exampleSentence": "Her financial acumen helped the small museum survive the downturn.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-adamant",
+    "word": "adamant",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "坚定不移的",
+    "synonyms": [
+      "unyielding",
+      "insistent",
+      "resolute"
+    ],
+    "exampleSentence": "He remained adamant that the raw data should be published.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-admonish",
+    "word": "admonish",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "告诫；责备",
+    "synonyms": [
+      "reprimand",
+      "warn",
+      "rebuke"
+    ],
+    "exampleSentence": "The editor admonished the writer to verify every quotation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-adroit",
+    "word": "adroit",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "熟练巧妙的",
+    "synonyms": [
+      "skillful",
+      "deft",
+      "dexterous"
+    ],
+    "exampleSentence": "An adroit mediator kept the tense discussion productive.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-advocate",
+    "word": "advocate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "主张；拥护",
+    "synonyms": [
+      "support",
+      "champion",
+      "promote"
+    ],
+    "exampleSentence": "Several researchers advocate a cautious interpretation of the findings.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-aesthetic",
+    "word": "aesthetic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "审美的",
+    "synonyms": [
+      "artistic",
+      "visual",
+      "tasteful"
+    ],
+    "exampleSentence": "The renovation improved the building's aesthetic appeal without erasing its history.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-affable",
+    "word": "affable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "和蔼可亲的",
+    "synonyms": [
+      "amiable",
+      "genial",
+      "cordial"
+    ],
+    "exampleSentence": "The affable host made even first-time visitors feel welcome.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-aggrandize",
+    "word": "aggrandize",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "扩大权势；夸大",
+    "synonyms": [
+      "exalt",
+      "magnify",
+      "inflate"
+    ],
+    "exampleSentence": "The biography does not aggrandize its subject or conceal his failures.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-aggregate",
+    "word": "aggregate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "汇集；合计",
+    "synonyms": [
+      "combine",
+      "collect",
+      "amass"
+    ],
+    "exampleSentence": "The study aggregates results from twelve independent laboratories.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-alacrity",
+    "word": "alacrity",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "欣然；敏捷",
+    "synonyms": [
+      "eagerness",
+      "promptness",
+      "readiness"
+    ],
+    "exampleSentence": "She accepted the difficult assignment with unexpected alacrity.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-alleviate",
+    "word": "alleviate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "缓解",
+    "synonyms": [
+      "relieve",
+      "mitigate",
+      "ease"
+    ],
+    "exampleSentence": "Targeted grants could alleviate the shortage of rural clinics.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-altruistic",
+    "word": "altruistic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "利他的",
+    "synonyms": [
+      "selfless",
+      "benevolent",
+      "charitable"
+    ],
+    "exampleSentence": "His altruistic decision brought him no personal advantage.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-amalgamate",
+    "word": "amalgamate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "合并",
+    "synonyms": [
+      "merge",
+      "combine",
+      "unite"
+    ],
+    "exampleSentence": "The two archives will amalgamate their digital collections next year.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ambiguous",
+    "word": "ambiguous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "含糊的；多义的",
+    "synonyms": [
+      "unclear",
+      "equivocal",
+      "vague"
+    ],
+    "exampleSentence": "The contract's ambiguous wording invited conflicting interpretations.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ambivalent",
+    "word": "ambivalent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "矛盾的；犹豫不决的",
+    "synonyms": [
+      "uncertain",
+      "conflicted",
+      "hesitant"
+    ],
+    "exampleSentence": "Voters were ambivalent about a proposal that promised growth but raised costs.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ameliorate",
+    "word": "ameliorate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "改善；减轻",
+    "synonyms": [
+      "improve",
+      "mitigate",
+      "relieve"
+    ],
+    "exampleSentence": "New insulation should ameliorate the building's severe heat loss.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-amenable",
+    "word": "amenable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "愿意接受的；可处理的",
+    "synonyms": [
+      "receptive",
+      "compliant",
+      "tractable"
+    ],
+    "exampleSentence": "The director was amenable to changes supported by strong evidence.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-anachronistic",
+    "word": "anachronistic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "时代错置的；过时的",
+    "synonyms": [
+      "outdated",
+      "antiquated",
+      "obsolete"
+    ],
+    "exampleSentence": "The policy now seems anachronistic in a largely digital economy.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-analogous",
+    "word": "analogous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "类似的",
+    "synonyms": [
+      "comparable",
+      "similar",
+      "parallel"
+    ],
+    "exampleSentence": "The two cases are analogous but not identical in every detail.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-anodyne",
+    "word": "anodyne",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "温和无害的；乏味的",
+    "synonyms": [
+      "inoffensive",
+      "bland",
+      "soothing"
+    ],
+    "exampleSentence": "The candidate offered an anodyne statement that pleased no one and offended no one.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-anomaly",
+    "word": "anomaly",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "异常现象",
+    "synonyms": [
+      "irregularity",
+      "aberration",
+      "exception"
+    ],
+    "exampleSentence": "One anomaly in the survey prompted a careful review of the sample.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-antipathy",
+    "word": "antipathy",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "强烈反感",
+    "synonyms": [
+      "aversion",
+      "hostility",
+      "distaste"
+    ],
+    "exampleSentence": "His antipathy toward bureaucracy shaped every reform he proposed.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-apathy",
+    "word": "apathy",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "冷漠；缺乏兴趣",
+    "synonyms": [
+      "indifference",
+      "listlessness",
+      "detachment"
+    ],
+    "exampleSentence": "Public apathy allowed the neglected park to deteriorate further.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-apocryphal",
+    "word": "apocryphal",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "真实性可疑的",
+    "synonyms": [
+      "dubious",
+      "unverified",
+      "legendary"
+    ],
+    "exampleSentence": "The apocryphal tale persists because it captures the inventor's character.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-appease",
+    "word": "appease",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "安抚；平息",
+    "synonyms": [
+      "pacify",
+      "placate",
+      "mollify"
+    ],
+    "exampleSentence": "A symbolic concession did little to appease the frustrated workers.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-approbation",
+    "word": "approbation",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "赞许；认可",
+    "synonyms": [
+      "approval",
+      "praise",
+      "commendation"
+    ],
+    "exampleSentence": "The proposal earned the approbation of several independent reviewers.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-arbitrary",
+    "word": "arbitrary",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "武断的；任意的",
+    "synonyms": [
+      "capricious",
+      "random",
+      "unreasoned"
+    ],
+    "exampleSentence": "The deadline felt arbitrary because no practical constraint justified it.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-arcane",
+    "word": "arcane",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "晦涩神秘的",
+    "synonyms": [
+      "obscure",
+      "esoteric",
+      "abstruse"
+    ],
+    "exampleSentence": "Only specialists understood the arcane notation in the manuscript.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-archaic",
+    "word": "archaic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "古老过时的",
+    "synonyms": [
+      "antiquated",
+      "obsolete",
+      "outmoded"
+    ],
+    "exampleSentence": "The archive preserves several archaic spellings in their original form.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ardent",
+    "word": "ardent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "热情的",
+    "synonyms": [
+      "passionate",
+      "fervent",
+      "zealous"
+    ],
+    "exampleSentence": "An ardent defender of public libraries spoke at the hearing.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-arduous",
+    "word": "arduous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "艰巨费力的",
+    "synonyms": [
+      "difficult",
+      "grueling",
+      "laborious"
+    ],
+    "exampleSentence": "Restoring the damaged fresco was an arduous three-year project.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-articulate",
+    "word": "articulate",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "表达清晰的",
+    "synonyms": [
+      "eloquent",
+      "coherent",
+      "expressive"
+    ],
+    "exampleSentence": "Her articulate explanation turned a technical dispute into a useful conversation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-artless",
+    "word": "artless",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "朴实自然的；不做作的",
+    "synonyms": [
+      "guileless",
+      "naive",
+      "unaffected"
+    ],
+    "exampleSentence": "His artless account was more convincing than the polished advertisement.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ascetic",
+    "word": "ascetic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "苦行的；极简的",
+    "synonyms": [
+      "austere",
+      "abstemious",
+      "spartan"
+    ],
+    "exampleSentence": "The cabin's ascetic interior contained only a desk and a narrow bed.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-assiduous",
+    "word": "assiduous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "勤勉细致的",
+    "synonyms": [
+      "diligent",
+      "industrious",
+      "meticulous"
+    ],
+    "exampleSentence": "Assiduous fieldwork revealed patterns missed by the earlier survey.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-assuage",
+    "word": "assuage",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "缓和；减轻",
+    "synonyms": [
+      "ease",
+      "alleviate",
+      "soothe"
+    ],
+    "exampleSentence": "Transparent reporting helped assuage concerns about the experiment.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-audacious",
+    "word": "audacious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "大胆无畏的",
+    "synonyms": [
+      "bold",
+      "daring",
+      "intrepid"
+    ],
+    "exampleSentence": "The architect proposed an audacious bridge with no central supports.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-auspicious",
+    "word": "auspicious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "吉利的；有希望的",
+    "synonyms": [
+      "promising",
+      "favorable",
+      "propitious"
+    ],
+    "exampleSentence": "A strong opening weekend was an auspicious start for the festival.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-austere",
+    "word": "austere",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "朴素严厉的",
+    "synonyms": [
+      "severe",
+      "spartan",
+      "stern"
+    ],
+    "exampleSentence": "The judge's austere manner concealed a dry sense of humor.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-autonomous",
+    "word": "autonomous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "自治的；自主的",
+    "synonyms": [
+      "independent",
+      "self-governing",
+      "self-directed"
+    ],
+    "exampleSentence": "Each research unit remains autonomous while sharing equipment and data.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-avarice",
+    "word": "avarice",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "贪婪",
+    "synonyms": [
+      "greed",
+      "cupidity",
+      "rapacity"
+    ],
+    "exampleSentence": "The novel portrays avarice as a force that isolates its victims.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-aver",
+    "word": "aver",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "断言",
+    "synonyms": [
+      "assert",
+      "declare",
+      "affirm"
+    ],
+    "exampleSentence": "The witness averred that the document had been altered after signing.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-aversion",
+    "word": "aversion",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "厌恶；反感",
+    "synonyms": [
+      "antipathy",
+      "distaste",
+      "dislike"
+    ],
+    "exampleSentence": "Her aversion to needless ceremony made the meeting unusually brief.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-banal",
+    "word": "banal",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "陈腐平庸的",
+    "synonyms": [
+      "trite",
+      "commonplace",
+      "hackneyed"
+    ],
+    "exampleSentence": "The essay begins with a banal observation but develops a subtle argument.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-belie",
+    "word": "belie",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "掩饰；与表象矛盾",
+    "synonyms": [
+      "contradict",
+      "disguise",
+      "misrepresent"
+    ],
+    "exampleSentence": "Her calm voice belied the urgency of the situation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-belligerent",
+    "word": "belligerent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "好斗的；敌对的",
+    "synonyms": [
+      "hostile",
+      "combative",
+      "aggressive"
+    ],
+    "exampleSentence": "A belligerent response made compromise less likely.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-benign",
+    "word": "benign",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "良性的；温和无害的",
+    "synonyms": [
+      "harmless",
+      "gentle",
+      "favorable"
+    ],
+    "exampleSentence": "What appeared to be a serious defect proved entirely benign.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-bolster",
+    "word": "bolster",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "支持；增强",
+    "synonyms": [
+      "support",
+      "strengthen",
+      "reinforce"
+    ],
+    "exampleSentence": "Independent measurements bolster the report's central conclusion.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-bombastic",
+    "word": "bombastic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "夸夸其谈的",
+    "synonyms": [
+      "pompous",
+      "grandiloquent",
+      "inflated"
+    ],
+    "exampleSentence": "The speech was bombastic, but its policy proposals were surprisingly modest.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-boon",
+    "word": "boon",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "益处；恩惠",
+    "synonyms": [
+      "benefit",
+      "blessing",
+      "advantage"
+    ],
+    "exampleSentence": "Reliable transit would be a boon to workers in outlying districts.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-brazen",
+    "word": "brazen",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "厚颜无耻的；明目张胆的",
+    "synonyms": [
+      "shameless",
+      "flagrant",
+      "audacious"
+    ],
+    "exampleSentence": "The brazen attempt to suppress the report only drew more attention to it.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-brevity",
+    "word": "brevity",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "简洁",
+    "synonyms": [
+      "conciseness",
+      "succinctness",
+      "terseness"
+    ],
+    "exampleSentence": "The memo's brevity made its recommendation unusually clear.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-burgeon",
+    "word": "burgeon",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "迅速增长",
+    "synonyms": [
+      "expand",
+      "flourish",
+      "proliferate"
+    ],
+    "exampleSentence": "Small workshops began to burgeon along the restored canal.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-cacophony",
+    "word": "cacophony",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "刺耳嘈杂声",
+    "synonyms": [
+      "discord",
+      "din",
+      "clamor"
+    ],
+    "exampleSentence": "A cacophony of horns filled the street after the match.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-candid",
+    "word": "candid",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "坦率的",
+    "synonyms": [
+      "frank",
+      "forthright",
+      "honest"
+    ],
+    "exampleSentence": "Her candid assessment helped the team correct its mistakes early.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-candor",
+    "word": "candor",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "坦率",
+    "synonyms": [
+      "frankness",
+      "honesty",
+      "openness"
+    ],
+    "exampleSentence": "The board appreciated his candor about the project's risks.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-capricious",
+    "word": "capricious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "反复无常的",
+    "synonyms": [
+      "fickle",
+      "unpredictable",
+      "arbitrary"
+    ],
+    "exampleSentence": "Capricious weather repeatedly delayed the mountain survey.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-castigate",
+    "word": "castigate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "严厉批评",
+    "synonyms": [
+      "rebuke",
+      "censure",
+      "berate"
+    ],
+    "exampleSentence": "The report castigated officials for ignoring repeated safety warnings.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-catalyst",
+    "word": "catalyst",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "催化因素",
+    "synonyms": [
+      "stimulus",
+      "impetus",
+      "trigger"
+    ],
+    "exampleSentence": "The unexpected discovery became a catalyst for wider collaboration.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-caustic",
+    "word": "caustic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "尖酸刻薄的",
+    "synonyms": [
+      "acerbic",
+      "scathing",
+      "biting"
+    ],
+    "exampleSentence": "His caustic remark ended what had been a constructive exchange.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-censure",
+    "word": "censure",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "严厉谴责",
+    "synonyms": [
+      "condemn",
+      "reprimand",
+      "rebuke"
+    ],
+    "exampleSentence": "The ethics panel voted to censure the member for concealing evidence.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-chauvinism",
+    "word": "chauvinism",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "盲目优越感；沙文主义",
+    "synonyms": [
+      "jingoism",
+      "bias",
+      "prejudice"
+    ],
+    "exampleSentence": "The essay challenges the cultural chauvinism common in earlier histories.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-chicanery",
+    "word": "chicanery",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "欺诈伎俩",
+    "synonyms": [
+      "deception",
+      "trickery",
+      "duplicity"
+    ],
+    "exampleSentence": "Auditors found no evidence of financial chicanery in the bidding process.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-circumspect",
+    "word": "circumspect",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "谨慎周到的",
+    "synonyms": [
+      "cautious",
+      "prudent",
+      "wary"
+    ],
+    "exampleSentence": "Investors remained circumspect despite the optimistic forecast.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-clandestine",
+    "word": "clandestine",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "秘密的",
+    "synonyms": [
+      "covert",
+      "secret",
+      "surreptitious"
+    ],
+    "exampleSentence": "The journalists uncovered a clandestine effort to influence the vote.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-coalesce",
+    "word": "coalesce",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "合并；联合",
+    "synonyms": [
+      "merge",
+      "unite",
+      "converge"
+    ],
+    "exampleSentence": "Several neighborhood groups coalesced around a single proposal.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-cogent",
+    "word": "cogent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "有说服力的",
+    "synonyms": [
+      "convincing",
+      "compelling",
+      "persuasive"
+    ],
+    "exampleSentence": "The researcher offered a cogent explanation for the apparent discrepancy.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-commensurate",
+    "word": "commensurate",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "相称的",
+    "synonyms": [
+      "proportionate",
+      "corresponding",
+      "equivalent"
+    ],
+    "exampleSentence": "Compensation should be commensurate with the role's responsibilities.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-compendium",
+    "word": "compendium",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "概要；汇编",
+    "synonyms": [
+      "collection",
+      "digest",
+      "anthology"
+    ],
+    "exampleSentence": "The handbook is a useful compendium of local environmental data.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-complacent",
+    "word": "complacent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "自满的",
+    "synonyms": [
+      "smug",
+      "self-satisfied",
+      "unconcerned"
+    ],
+    "exampleSentence": "Early success made the team complacent about emerging competitors.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-concede",
+    "word": "concede",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "承认；让步",
+    "synonyms": [
+      "admit",
+      "yield",
+      "acknowledge"
+    ],
+    "exampleSentence": "Even critics concede that the revised model predicts demand more accurately.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-conciliatory",
+    "word": "conciliatory",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "安抚调和的",
+    "synonyms": [
+      "pacifying",
+      "appeasing",
+      "diplomatic"
+    ],
+    "exampleSentence": "A conciliatory message reopened negotiations after months of silence.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-condescending",
+    "word": "condescending",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "居高临下的",
+    "synonyms": [
+      "patronizing",
+      "supercilious",
+      "haughty"
+    ],
+    "exampleSentence": "Her condescending tone weakened an otherwise sensible argument.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-conjecture",
+    "word": "conjecture",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "推测",
+    "synonyms": [
+      "speculation",
+      "surmise",
+      "hypothesis"
+    ],
+    "exampleSentence": "Without the missing records, any account of the event remains conjecture.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-connoisseur",
+    "word": "connoisseur",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "鉴赏家",
+    "synonyms": [
+      "expert",
+      "aficionado",
+      "authority"
+    ],
+    "exampleSentence": "A seasoned connoisseur noticed the subtle difference in the two prints.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-consensus",
+    "word": "consensus",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "共识",
+    "synonyms": [
+      "agreement",
+      "accord",
+      "unanimity"
+    ],
+    "exampleSentence": "The panel reached a broad consensus without resolving every detail.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-constrain",
+    "word": "constrain",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "限制；约束",
+    "synonyms": [
+      "restrict",
+      "limit",
+      "curb"
+    ],
+    "exampleSentence": "Limited storage will constrain how much material the archive can accept.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-contentious",
+    "word": "contentious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "有争议的；好争辩的",
+    "synonyms": [
+      "controversial",
+      "combative",
+      "disputatious"
+    ],
+    "exampleSentence": "The council postponed a vote on the contentious zoning proposal.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-contrite",
+    "word": "contrite",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "悔恨的",
+    "synonyms": [
+      "remorseful",
+      "penitent",
+      "repentant"
+    ],
+    "exampleSentence": "He sounded genuinely contrite when he apologized for the false accusation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-convoluted",
+    "word": "convoluted",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "错综复杂的",
+    "synonyms": [
+      "tangled",
+      "intricate",
+      "labyrinthine"
+    ],
+    "exampleSentence": "A convoluted approval process delayed even routine repairs.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-copious",
+    "word": "copious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "大量的",
+    "synonyms": [
+      "abundant",
+      "ample",
+      "plentiful"
+    ],
+    "exampleSentence": "The historian supported her claim with copious primary evidence.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-corroborate",
+    "word": "corroborate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "证实；佐证",
+    "synonyms": [
+      "confirm",
+      "substantiate",
+      "verify"
+    ],
+    "exampleSentence": "Satellite images corroborate the measurements collected on the ground.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-credulous",
+    "word": "credulous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "轻信的",
+    "synonyms": [
+      "gullible",
+      "trusting",
+      "naive"
+    ],
+    "exampleSentence": "Credulous readers shared the fabricated story without checking its source.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-cryptic",
+    "word": "cryptic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "晦涩难解的",
+    "synonyms": [
+      "enigmatic",
+      "obscure",
+      "mysterious"
+    ],
+    "exampleSentence": "A cryptic note in the margin offered the only clue to the author's intent.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-cursory",
+    "word": "cursory",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "草率匆忙的",
+    "synonyms": [
+      "hasty",
+      "superficial",
+      "perfunctory"
+    ],
+    "exampleSentence": "A cursory inspection failed to reveal the crack beneath the paint.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-daunt",
+    "word": "daunt",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "使畏惧",
+    "synonyms": [
+      "intimidate",
+      "discourage",
+      "dismay"
+    ],
+    "exampleSentence": "The scale of the archive did not daunt the patient researchers.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-dearth",
+    "word": "dearth",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "缺乏",
+    "synonyms": [
+      "scarcity",
+      "shortage",
+      "paucity"
+    ],
+    "exampleSentence": "A dearth of reliable witnesses complicated the investigation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-debacle",
+    "word": "debacle",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "惨败；崩溃",
+    "synonyms": [
+      "fiasco",
+      "disaster",
+      "failure"
+    ],
+    "exampleSentence": "The rushed product launch became a costly public debacle.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-debunk",
+    "word": "debunk",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "揭穿",
+    "synonyms": [
+      "disprove",
+      "expose",
+      "refute"
+    ],
+    "exampleSentence": "The article debunks several myths about the city's early history.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-decorous",
+    "word": "decorous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "得体端庄的",
+    "synonyms": [
+      "proper",
+      "dignified",
+      "seemly"
+    ],
+    "exampleSentence": "The debate remained decorous despite sharp disagreements.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-decorum",
+    "word": "decorum",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "礼仪；得体",
+    "synonyms": [
+      "propriety",
+      "etiquette",
+      "dignity"
+    ],
+    "exampleSentence": "The chair restored decorum after the audience interrupted the speaker.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-deference",
+    "word": "deference",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "尊重；顺从",
+    "synonyms": [
+      "respect",
+      "submission",
+      "regard"
+    ],
+    "exampleSentence": "Out of deference to local custom, visitors removed their shoes.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-deferential",
+    "word": "deferential",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "恭敬顺从的",
+    "synonyms": [
+      "respectful",
+      "submissive",
+      "obsequious"
+    ],
+    "exampleSentence": "The junior analyst was polite but not excessively deferential.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-delineate",
+    "word": "delineate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "清楚描述；勾勒",
+    "synonyms": [
+      "outline",
+      "depict",
+      "define"
+    ],
+    "exampleSentence": "The report carefully delineates the responsibilities of each agency.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-demur",
+    "word": "demur",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "表示异议；犹豫",
+    "synonyms": [
+      "object",
+      "protest",
+      "hesitate"
+    ],
+    "exampleSentence": "No member demurred when the chair proposed an independent audit.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-denigrate",
+    "word": "denigrate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "贬低；诋毁",
+    "synonyms": [
+      "disparage",
+      "belittle",
+      "defame"
+    ],
+    "exampleSentence": "The essay critiques the theory without denigrating its early supporters.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-deride",
+    "word": "deride",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "嘲笑",
+    "synonyms": [
+      "mock",
+      "ridicule",
+      "scorn"
+    ],
+    "exampleSentence": "Critics initially derided the compact design as impractical.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-derivative",
+    "word": "derivative",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "缺乏原创性的",
+    "synonyms": [
+      "imitative",
+      "unoriginal",
+      "secondhand"
+    ],
+    "exampleSentence": "The novel's premise is derivative, though its characters feel vivid.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-desiccate",
+    "word": "desiccate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "使干燥",
+    "synonyms": [
+      "dehydrate",
+      "dry",
+      "parch"
+    ],
+    "exampleSentence": "Prolonged heat can desiccate the soil and damage young roots.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-despondent",
+    "word": "despondent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "沮丧失望的",
+    "synonyms": [
+      "dejected",
+      "disheartened",
+      "gloomy"
+    ],
+    "exampleSentence": "The team was despondent after months of work produced inconclusive results.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-desultory",
+    "word": "desultory",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "散漫不连贯的",
+    "synonyms": [
+      "aimless",
+      "disconnected",
+      "random"
+    ],
+    "exampleSentence": "Their desultory conversation moved from politics to weather to music.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-dexterous",
+    "word": "dexterous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "灵巧熟练的",
+    "synonyms": [
+      "deft",
+      "adroit",
+      "skillful"
+    ],
+    "exampleSentence": "The conservator made a dexterous repair to the fragile binding.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-diatribe",
+    "word": "diatribe",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "长篇抨击",
+    "synonyms": [
+      "tirade",
+      "harangue",
+      "denunciation"
+    ],
+    "exampleSentence": "The editorial reads more like a diatribe than a balanced analysis.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-didactic",
+    "word": "didactic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "说教的；教学的",
+    "synonyms": [
+      "instructive",
+      "pedantic",
+      "moralizing"
+    ],
+    "exampleSentence": "The film is informative without becoming overtly didactic.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-diffident",
+    "word": "diffident",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "缺乏自信的；羞怯的",
+    "synonyms": [
+      "shy",
+      "hesitant",
+      "retiring"
+    ],
+    "exampleSentence": "A diffident speaker at first, she grew more assured during questions.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-digression",
+    "word": "digression",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "离题；偏离",
+    "synonyms": [
+      "aside",
+      "detour",
+      "tangent"
+    ],
+    "exampleSentence": "A brief digression about maps enlivened the otherwise technical lecture.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-dilettante",
+    "word": "dilettante",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "浅尝辄止的爱好者",
+    "synonyms": [
+      "amateur",
+      "dabbler",
+      "nonexpert"
+    ],
+    "exampleSentence": "He was no dilettante; decades of practice informed every judgment.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-disabuse",
+    "word": "disabuse",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "纠正错误观念",
+    "synonyms": [
+      "correct",
+      "enlighten",
+      "undeceive"
+    ],
+    "exampleSentence": "The guide quickly disabused us of the notion that the climb would be easy.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-discern",
+    "word": "discern",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "辨别；看出",
+    "synonyms": [
+      "detect",
+      "perceive",
+      "distinguish"
+    ],
+    "exampleSentence": "Careful readers can discern a pattern beneath the apparent disorder.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-discerning",
+    "word": "discerning",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "有辨别力的",
+    "synonyms": [
+      "perceptive",
+      "judicious",
+      "astute"
+    ],
+    "exampleSentence": "Discerning customers valued durability more than elaborate packaging.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-discredit",
+    "word": "discredit",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "使失去信誉；证伪",
+    "synonyms": [
+      "disprove",
+      "undermine",
+      "debunk"
+    ],
+    "exampleSentence": "One flawed experiment does not discredit the entire field.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-discrepancy",
+    "word": "discrepancy",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "差异；不一致",
+    "synonyms": [
+      "inconsistency",
+      "divergence",
+      "mismatch"
+    ],
+    "exampleSentence": "A discrepancy between the two ledgers triggered a wider audit.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-disingenuous",
+    "word": "disingenuous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "不真诚的",
+    "synonyms": [
+      "insincere",
+      "deceptive",
+      "evasive"
+    ],
+    "exampleSentence": "It was disingenuous to present a forced choice as a voluntary one.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-disparate",
+    "word": "disparate",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "截然不同的",
+    "synonyms": [
+      "dissimilar",
+      "divergent",
+      "distinct"
+    ],
+    "exampleSentence": "The curator connected disparate objects through a common theme.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-disseminate",
+    "word": "disseminate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "传播；散布",
+    "synonyms": [
+      "circulate",
+      "distribute",
+      "spread"
+    ],
+    "exampleSentence": "The agency will disseminate the findings in several accessible formats.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-dogmatic",
+    "word": "dogmatic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "武断教条的",
+    "synonyms": [
+      "doctrinaire",
+      "rigid",
+      "opinionated"
+    ],
+    "exampleSentence": "A dogmatic attachment to one method can obscure better alternatives.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-dubious",
+    "word": "dubious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "可疑的；不确定的",
+    "synonyms": [
+      "doubtful",
+      "questionable",
+      "suspect"
+    ],
+    "exampleSentence": "The committee rejected a claim based on dubious statistics.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-eclectic",
+    "word": "eclectic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "兼收并蓄的；多样的",
+    "synonyms": [
+      "diverse",
+      "varied",
+      "broad-ranging"
+    ],
+    "exampleSentence": "Her eclectic reading list includes poetry, physics, and urban history.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-efface",
+    "word": "efface",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "抹去；使不显眼",
+    "synonyms": [
+      "erase",
+      "obliterate",
+      "expunge"
+    ],
+    "exampleSentence": "Time had effaced most of the inscription above the doorway.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-efficacy",
+    "word": "efficacy",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "功效",
+    "synonyms": [
+      "effectiveness",
+      "potency",
+      "success"
+    ],
+    "exampleSentence": "A larger trial is needed to establish the treatment's efficacy.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-effrontery",
+    "word": "effrontery",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "厚颜无耻",
+    "synonyms": [
+      "audacity",
+      "impudence",
+      "insolence"
+    ],
+    "exampleSentence": "He had the effrontery to demand praise for work he had obstructed.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-egalitarian",
+    "word": "egalitarian",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "平等主义的",
+    "synonyms": [
+      "equalitarian",
+      "democratic",
+      "leveling"
+    ],
+    "exampleSentence": "The cooperative adopted an egalitarian pay structure.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-egregious",
+    "word": "egregious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "极坏的；令人震惊的",
+    "synonyms": [
+      "flagrant",
+      "outrageous",
+      "grievous"
+    ],
+    "exampleSentence": "The audit uncovered an egregious failure to protect confidential data.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-elicit",
+    "word": "elicit",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "引出；诱发",
+    "synonyms": [
+      "evoke",
+      "draw out",
+      "extract"
+    ],
+    "exampleSentence": "Open questions often elicit more informative answers.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-eloquent",
+    "word": "eloquent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "雄辩有感染力的",
+    "synonyms": [
+      "expressive",
+      "persuasive",
+      "articulate"
+    ],
+    "exampleSentence": "Her eloquent defense of the library changed several votes.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-elusive",
+    "word": "elusive",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "难以捉摸的",
+    "synonyms": [
+      "evasive",
+      "slippery",
+      "hard-to-find"
+    ],
+    "exampleSentence": "A simple explanation for the anomaly remained elusive.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-embolden",
+    "word": "embolden",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "使有勇气",
+    "synonyms": [
+      "encourage",
+      "fortify",
+      "inspire"
+    ],
+    "exampleSentence": "Early support emboldened the group to propose a broader reform.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-empirical",
+    "word": "empirical",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "以观察实验为依据的",
+    "synonyms": [
+      "observational",
+      "evidence-based",
+      "experimental"
+    ],
+    "exampleSentence": "The theory gained credibility after receiving strong empirical support.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-emulate",
+    "word": "emulate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "效仿；努力赶上",
+    "synonyms": [
+      "imitate",
+      "match",
+      "rival"
+    ],
+    "exampleSentence": "Several cities hope to emulate the program's early success.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-enervate",
+    "word": "enervate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "使衰弱",
+    "synonyms": [
+      "weaken",
+      "debilitate",
+      "exhaust"
+    ],
+    "exampleSentence": "Weeks of uncertainty began to enervate even the most patient negotiators.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-engender",
+    "word": "engender",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "产生；引起",
+    "synonyms": [
+      "cause",
+      "generate",
+      "provoke"
+    ],
+    "exampleSentence": "Opaque rules tend to engender suspicion rather than trust.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-enigmatic",
+    "word": "enigmatic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "神秘难懂的",
+    "synonyms": [
+      "mysterious",
+      "cryptic",
+      "inscrutable"
+    ],
+    "exampleSentence": "The painting's enigmatic expression invites conflicting interpretations.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-entrench",
+    "word": "entrench",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "使根深蒂固",
+    "synonyms": [
+      "establish",
+      "embed",
+      "fortify"
+    ],
+    "exampleSentence": "Poor incentives can entrench habits that everyone claims to oppose.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-enumerate",
+    "word": "enumerate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "列举",
+    "synonyms": [
+      "list",
+      "itemize",
+      "recount"
+    ],
+    "exampleSentence": "The appendix enumerates every assumption used in the model.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ephemeral",
+    "word": "ephemeral",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "短暂的",
+    "synonyms": [
+      "transient",
+      "fleeting",
+      "momentary"
+    ],
+    "exampleSentence": "Online attention can be intense but ephemeral.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-equanimity",
+    "word": "equanimity",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "沉着镇定",
+    "synonyms": [
+      "composure",
+      "poise",
+      "serenity"
+    ],
+    "exampleSentence": "She received both praise and criticism with equanimity.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-equivocal",
+    "word": "equivocal",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "模棱两可的",
+    "synonyms": [
+      "ambiguous",
+      "evasive",
+      "uncertain"
+    ],
+    "exampleSentence": "His equivocal answer left both sides claiming victory.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-erudite",
+    "word": "erudite",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "博学的",
+    "synonyms": [
+      "learned",
+      "scholarly",
+      "knowledgeable"
+    ],
+    "exampleSentence": "The erudite essay remains accessible to readers outside the field.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-esoteric",
+    "word": "esoteric",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "只有少数人懂的",
+    "synonyms": [
+      "arcane",
+      "abstruse",
+      "obscure"
+    ],
+    "exampleSentence": "The course makes an esoteric subject approachable through concrete examples.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-eulogy",
+    "word": "eulogy",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "颂词；悼词",
+    "synonyms": [
+      "tribute",
+      "panegyric",
+      "commendation"
+    ],
+    "exampleSentence": "Her eulogy celebrated ordinary acts of kindness rather than public honors.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-evade",
+    "word": "evade",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "逃避；回避",
+    "synonyms": [
+      "avoid",
+      "elude",
+      "dodge"
+    ],
+    "exampleSentence": "The spokesperson tried to evade the central question.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-evocative",
+    "word": "evocative",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "引起联想的",
+    "synonyms": [
+      "suggestive",
+      "expressive",
+      "poignant"
+    ],
+    "exampleSentence": "The novel's evocative opening captures the smell of rain on dry soil.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-exacerbate",
+    "word": "exacerbate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "使恶化",
+    "synonyms": [
+      "worsen",
+      "aggravate",
+      "intensify"
+    ],
+    "exampleSentence": "Delaying repairs will only exacerbate the damage.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-exacting",
+    "word": "exacting",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "要求严格的",
+    "synonyms": [
+      "demanding",
+      "rigorous",
+      "stringent"
+    ],
+    "exampleSentence": "The laboratory follows an exacting procedure for every measurement.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-exasperate",
+    "word": "exasperate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "激怒；使恼火",
+    "synonyms": [
+      "irritate",
+      "infuriate",
+      "frustrate"
+    ],
+    "exampleSentence": "Repeated delays began to exasperate commuters.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-exculpate",
+    "word": "exculpate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "证明无罪",
+    "synonyms": [
+      "absolve",
+      "clear",
+      "acquit"
+    ],
+    "exampleSentence": "The newly discovered records may exculpate the accused official.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-exemplary",
+    "word": "exemplary",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "典范的",
+    "synonyms": [
+      "model",
+      "commendable",
+      "outstanding"
+    ],
+    "exampleSentence": "Her exemplary notes allowed another team to reproduce the experiment.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-exhaustive",
+    "word": "exhaustive",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "详尽无遗的",
+    "synonyms": [
+      "comprehensive",
+      "thorough",
+      "complete"
+    ],
+    "exampleSentence": "The review is extensive but does not claim to be exhaustive.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-exonerate",
+    "word": "exonerate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "免除罪责",
+    "synonyms": [
+      "acquit",
+      "absolve",
+      "vindicate"
+    ],
+    "exampleSentence": "Security footage helped exonerate the employee.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-expedient",
+    "word": "expedient",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "权宜的；便利的",
+    "synonyms": [
+      "convenient",
+      "pragmatic",
+      "advantageous"
+    ],
+    "exampleSentence": "The expedient solution reduced costs but created a larger problem later.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-extemporaneous",
+    "word": "extemporaneous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "即席的",
+    "synonyms": [
+      "impromptu",
+      "unscripted",
+      "spontaneous"
+    ],
+    "exampleSentence": "Her extemporaneous remarks were warmer than the prepared speech.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-extol",
+    "word": "extol",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "赞颂",
+    "synonyms": [
+      "praise",
+      "laud",
+      "celebrate"
+    ],
+    "exampleSentence": "The article extols the design's simplicity without ignoring its limits.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-extraneous",
+    "word": "extraneous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无关的；多余的",
+    "synonyms": [
+      "irrelevant",
+      "superfluous",
+      "incidental"
+    ],
+    "exampleSentence": "Removing extraneous details made the argument easier to assess.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-facetious",
+    "word": "facetious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "轻佻开玩笑的",
+    "synonyms": [
+      "flippant",
+      "frivolous",
+      "waggish"
+    ],
+    "exampleSentence": "His facetious reply was poorly suited to a serious safety review.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-fallacious",
+    "word": "fallacious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "谬误的",
+    "synonyms": [
+      "false",
+      "unsound",
+      "misleading"
+    ],
+    "exampleSentence": "The conclusion rests on a fallacious comparison between unlike cases.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-fastidious",
+    "word": "fastidious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "一丝不苟的；挑剔的",
+    "synonyms": [
+      "meticulous",
+      "exacting",
+      "scrupulous"
+    ],
+    "exampleSentence": "A fastidious editor checked every date against the original records.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-fawn",
+    "word": "fawn",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "谄媚讨好",
+    "synonyms": [
+      "flatter",
+      "grovel",
+      "toady"
+    ],
+    "exampleSentence": "The adviser refused to fawn over powerful donors.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-feasible",
+    "word": "feasible",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "可行的",
+    "synonyms": [
+      "practical",
+      "workable",
+      "viable"
+    ],
+    "exampleSentence": "Engineers confirmed that the repair was feasible within the existing budget.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-feckless",
+    "word": "feckless",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无能且不负责任的",
+    "synonyms": [
+      "ineffectual",
+      "irresponsible",
+      "incompetent"
+    ],
+    "exampleSentence": "Feckless management turned a minor delay into a prolonged crisis.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-felicitous",
+    "word": "felicitous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "恰当巧妙的",
+    "synonyms": [
+      "apt",
+      "well-chosen",
+      "appropriate"
+    ],
+    "exampleSentence": "A felicitous phrase captured the complicated idea in a few words.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-fervent",
+    "word": "fervent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "热烈的",
+    "synonyms": [
+      "passionate",
+      "ardent",
+      "zealous"
+    ],
+    "exampleSentence": "She remained a fervent advocate for open access to research.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-fickle",
+    "word": "fickle",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "反复无常的",
+    "synonyms": [
+      "capricious",
+      "changeable",
+      "inconstant"
+    ],
+    "exampleSentence": "The fashion industry is notoriously fickle.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-flagrant",
+    "word": "flagrant",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "明目张胆的；恶劣的",
+    "synonyms": [
+      "glaring",
+      "egregious",
+      "blatant"
+    ],
+    "exampleSentence": "The inquiry documented a flagrant breach of safety rules.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-florid",
+    "word": "florid",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "过分华丽的",
+    "synonyms": [
+      "ornate",
+      "flowery",
+      "embellished"
+    ],
+    "exampleSentence": "The florid introduction obscured an otherwise practical proposal.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-fluctuate",
+    "word": "fluctuate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "波动",
+    "synonyms": [
+      "vary",
+      "oscillate",
+      "shift"
+    ],
+    "exampleSentence": "Demand tends to fluctuate with the season.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-foment",
+    "word": "foment",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "煽动；助长",
+    "synonyms": [
+      "incite",
+      "instigate",
+      "stir"
+    ],
+    "exampleSentence": "False rumors helped foment distrust between the two communities.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-fortuitous",
+    "word": "fortuitous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "偶然幸运的",
+    "synonyms": [
+      "accidental",
+      "serendipitous",
+      "chance"
+    ],
+    "exampleSentence": "A fortuitous meeting led to a productive research partnership.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-frugal",
+    "word": "frugal",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "节俭的",
+    "synonyms": [
+      "thrifty",
+      "economical",
+      "sparing"
+    ],
+    "exampleSentence": "Their frugal design used standard parts that were easy to replace.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-gainsay",
+    "word": "gainsay",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "否认；反驳",
+    "synonyms": [
+      "deny",
+      "contradict",
+      "dispute"
+    ],
+    "exampleSentence": "No one could gainsay the need for safer equipment.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-galvanize",
+    "word": "galvanize",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "激励；促使行动",
+    "synonyms": [
+      "motivate",
+      "rouse",
+      "energize"
+    ],
+    "exampleSentence": "The accident galvanized officials into revising the outdated code.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-garrulous",
+    "word": "garrulous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "喋喋不休的",
+    "synonyms": [
+      "talkative",
+      "loquacious",
+      "verbose"
+    ],
+    "exampleSentence": "The garrulous guide filled the long journey with local stories.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-germane",
+    "word": "germane",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "密切相关的",
+    "synonyms": [
+      "relevant",
+      "pertinent",
+      "applicable"
+    ],
+    "exampleSentence": "The judge excluded details that were not germane to the case.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-glib",
+    "word": "glib",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "油滑肤浅的",
+    "synonyms": [
+      "slick",
+      "facile",
+      "superficial"
+    ],
+    "exampleSentence": "A glib slogan cannot resolve a complex housing shortage.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-gratuitous",
+    "word": "gratuitous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无缘无故的；多余的",
+    "synonyms": [
+      "unwarranted",
+      "needless",
+      "unprovoked"
+    ],
+    "exampleSentence": "The adaptation avoids the gratuitous violence of many similar films.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-gregarious",
+    "word": "gregarious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "合群的",
+    "synonyms": [
+      "sociable",
+      "outgoing",
+      "companionable"
+    ],
+    "exampleSentence": "A gregarious colleague introduced the new researcher to everyone.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-guile",
+    "word": "guile",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "狡诈",
+    "synonyms": [
+      "cunning",
+      "deceit",
+      "duplicity"
+    ],
+    "exampleSentence": "She negotiated firmly but without guile.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-hackneyed",
+    "word": "hackneyed",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "陈词滥调的",
+    "synonyms": [
+      "trite",
+      "banal",
+      "overused"
+    ],
+    "exampleSentence": "The campaign relied on hackneyed images of progress.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-haughty",
+    "word": "haughty",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "傲慢的",
+    "synonyms": [
+      "arrogant",
+      "supercilious",
+      "proud"
+    ],
+    "exampleSentence": "His haughty dismissal of the complaint angered residents.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-hegemony",
+    "word": "hegemony",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "霸权；主导地位",
+    "synonyms": [
+      "dominance",
+      "ascendancy",
+      "supremacy"
+    ],
+    "exampleSentence": "The essay examines how one firm gained hegemony over the market.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-homogeneous",
+    "word": "homogeneous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "同质的",
+    "synonyms": [
+      "uniform",
+      "consistent",
+      "undifferentiated"
+    ],
+    "exampleSentence": "The sample was too homogeneous to support broad conclusions.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-hyperbole",
+    "word": "hyperbole",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "夸张说法",
+    "synonyms": [
+      "exaggeration",
+      "overstatement",
+      "embellishment"
+    ],
+    "exampleSentence": "Claims that the device would transform every industry were pure hyperbole.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-iconoclast",
+    "word": "iconoclast",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "反传统者",
+    "synonyms": [
+      "nonconformist",
+      "dissenter",
+      "rebel"
+    ],
+    "exampleSentence": "The celebrated iconoclast questioned assumptions others treated as settled.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-idiosyncratic",
+    "word": "idiosyncratic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "独特古怪的",
+    "synonyms": [
+      "peculiar",
+      "distinctive",
+      "eccentric"
+    ],
+    "exampleSentence": "Her idiosyncratic filing system was efficient only for her.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-immutable",
+    "word": "immutable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "不可改变的",
+    "synonyms": [
+      "unchangeable",
+      "fixed",
+      "permanent"
+    ],
+    "exampleSentence": "The rules are not immutable and should evolve with new evidence.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-impartial",
+    "word": "impartial",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "公正的",
+    "synonyms": [
+      "unbiased",
+      "neutral",
+      "evenhanded"
+    ],
+    "exampleSentence": "An impartial panel reviewed the competing claims.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-impassive",
+    "word": "impassive",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "不露情感的",
+    "synonyms": [
+      "stoic",
+      "expressionless",
+      "unmoved"
+    ],
+    "exampleSentence": "The witness remained impassive throughout the hostile questioning.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-impeccable",
+    "word": "impeccable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无可挑剔的",
+    "synonyms": [
+      "flawless",
+      "exemplary",
+      "immaculate"
+    ],
+    "exampleSentence": "The argument was supported by impeccable documentation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-impertinent",
+    "word": "impertinent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无礼的；不相关的",
+    "synonyms": [
+      "insolent",
+      "irrelevant",
+      "impudent"
+    ],
+    "exampleSentence": "The chair dismissed the personal question as impertinent.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-impetuous",
+    "word": "impetuous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "冲动的",
+    "synonyms": [
+      "rash",
+      "hasty",
+      "impulsive"
+    ],
+    "exampleSentence": "An impetuous decision left the team without a backup plan.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-implacable",
+    "word": "implacable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无法平息的",
+    "synonyms": [
+      "unyielding",
+      "inexorable",
+      "relentless"
+    ],
+    "exampleSentence": "The two leaders remained implacable opponents of the compromise.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-implicit",
+    "word": "implicit",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "含蓄的；隐含的",
+    "synonyms": [
+      "implied",
+      "unspoken",
+      "inherent"
+    ],
+    "exampleSentence": "The agreement contained an implicit promise of continued support.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-impugn",
+    "word": "impugn",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "质疑；抨击",
+    "synonyms": [
+      "challenge",
+      "dispute",
+      "question"
+    ],
+    "exampleSentence": "Disagreement alone does not impugn a researcher's integrity.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-inadvertent",
+    "word": "inadvertent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无意的",
+    "synonyms": [
+      "accidental",
+      "unintentional",
+      "unwitting"
+    ],
+    "exampleSentence": "An inadvertent omission changed the meaning of the final paragraph.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-inchoate",
+    "word": "inchoate",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "初步未成形的",
+    "synonyms": [
+      "nascent",
+      "undeveloped",
+      "embryonic"
+    ],
+    "exampleSentence": "The movement began as an inchoate collection of local concerns.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-incisive",
+    "word": "incisive",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "深刻敏锐的",
+    "synonyms": [
+      "penetrating",
+      "acute",
+      "sharp"
+    ],
+    "exampleSentence": "Her incisive questions exposed a weakness in the proposal.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-incongruous",
+    "word": "incongruous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "不协调的",
+    "synonyms": [
+      "incompatible",
+      "inconsistent",
+      "jarring"
+    ],
+    "exampleSentence": "The modern sign looked incongruous beside the ancient gate.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-incumbent",
+    "word": "incumbent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "职责所在的；现任的",
+    "synonyms": [
+      "obligatory",
+      "binding",
+      "current"
+    ],
+    "exampleSentence": "It is incumbent on researchers to disclose relevant conflicts.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-indifference",
+    "word": "indifference",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "冷漠",
+    "synonyms": [
+      "apathy",
+      "detachment",
+      "unconcern"
+    ],
+    "exampleSentence": "Official indifference allowed the problem to persist for years.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-indolent",
+    "word": "indolent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "懒惰的",
+    "synonyms": [
+      "lazy",
+      "idle",
+      "slothful"
+    ],
+    "exampleSentence": "The novel's indolent hero avoids every demand on his time.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ineffable",
+    "word": "ineffable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "难以言表的",
+    "synonyms": [
+      "indescribable",
+      "inexpressible",
+      "unspeakable"
+    ],
+    "exampleSentence": "The music conveyed an ineffable sense of loss.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ingenuous",
+    "word": "ingenuous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "坦率天真的",
+    "synonyms": [
+      "guileless",
+      "innocent",
+      "candid"
+    ],
+    "exampleSentence": "Her ingenuous question revealed an assumption the experts had missed.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-inimical",
+    "word": "inimical",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "有害的；敌对的",
+    "synonyms": [
+      "hostile",
+      "harmful",
+      "adverse"
+    ],
+    "exampleSentence": "Chronic uncertainty is inimical to long-term investment.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-innocuous",
+    "word": "innocuous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无害的",
+    "synonyms": [
+      "harmless",
+      "benign",
+      "inoffensive"
+    ],
+    "exampleSentence": "The innocuous-looking attachment contained malicious code.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-inscrutable",
+    "word": "inscrutable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "难以理解的",
+    "synonyms": [
+      "enigmatic",
+      "mysterious",
+      "unfathomable"
+    ],
+    "exampleSentence": "The committee's selection criteria remained inscrutable.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-insipid",
+    "word": "insipid",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "乏味的；无味的",
+    "synonyms": [
+      "bland",
+      "dull",
+      "vapid"
+    ],
+    "exampleSentence": "The adaptation turned a lively satire into an insipid romance.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-intransigent",
+    "word": "intransigent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "不妥协的",
+    "synonyms": [
+      "unyielding",
+      "obstinate",
+      "implacable"
+    ],
+    "exampleSentence": "Both sides adopted intransigent positions before negotiations began.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-intrepid",
+    "word": "intrepid",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无畏的",
+    "synonyms": [
+      "fearless",
+      "bold",
+      "dauntless"
+    ],
+    "exampleSentence": "Intrepid volunteers carried supplies across the flooded valley.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-inundate",
+    "word": "inundate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "淹没；使应接不暇",
+    "synonyms": [
+      "flood",
+      "overwhelm",
+      "deluge"
+    ],
+    "exampleSentence": "The office was inundated with requests after the announcement.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-irascible",
+    "word": "irascible",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "易怒的",
+    "synonyms": [
+      "irritable",
+      "hot-tempered",
+      "choleric"
+    ],
+    "exampleSentence": "The irascible director was known for shouting over minor errors.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-judicious",
+    "word": "judicious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "明智审慎的",
+    "synonyms": [
+      "wise",
+      "prudent",
+      "discerning"
+    ],
+    "exampleSentence": "Judicious editing preserved the report's detail while improving its pace.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-laconic",
+    "word": "laconic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "言简意赅的",
+    "synonyms": [
+      "terse",
+      "concise",
+      "brief"
+    ],
+    "exampleSentence": "His laconic reply ended the speculation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-laud",
+    "word": "laud",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "赞扬",
+    "synonyms": [
+      "praise",
+      "extol",
+      "commend"
+    ],
+    "exampleSentence": "Reviewers lauded the book for making complex ideas accessible.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-lethargic",
+    "word": "lethargic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无精打采的",
+    "synonyms": [
+      "sluggish",
+      "listless",
+      "torpid"
+    ],
+    "exampleSentence": "The market remained lethargic throughout the winter.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-loquacious",
+    "word": "loquacious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "健谈的",
+    "synonyms": [
+      "talkative",
+      "garrulous",
+      "verbose"
+    ],
+    "exampleSentence": "The loquacious professor often continued well past the scheduled hour.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-lucid",
+    "word": "lucid",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "清晰易懂的",
+    "synonyms": [
+      "clear",
+      "coherent",
+      "intelligible"
+    ],
+    "exampleSentence": "The essay offers a lucid account of a difficult theory.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-magnanimous",
+    "word": "magnanimous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "宽宏大量的",
+    "synonyms": [
+      "generous",
+      "noble",
+      "forgiving"
+    ],
+    "exampleSentence": "The winner was magnanimous and praised her rival's campaign.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-malleable",
+    "word": "malleable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "可塑的；易受影响的",
+    "synonyms": [
+      "pliable",
+      "flexible",
+      "adaptable"
+    ],
+    "exampleSentence": "The alloy is malleable enough to form without cracking.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-mendacious",
+    "word": "mendacious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "虚假的；撒谎的",
+    "synonyms": [
+      "dishonest",
+      "deceitful",
+      "untruthful"
+    ],
+    "exampleSentence": "The investigation exposed a mendacious account of the transaction.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-mercurial",
+    "word": "mercurial",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "多变的",
+    "synonyms": [
+      "volatile",
+      "changeable",
+      "capricious"
+    ],
+    "exampleSentence": "The mercurial artist abandoned projects as quickly as she began them.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-meticulous",
+    "word": "meticulous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "一丝不苟的",
+    "synonyms": [
+      "careful",
+      "precise",
+      "fastidious"
+    ],
+    "exampleSentence": "Meticulous records made the later audit straightforward.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-mitigate",
+    "word": "mitigate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "缓解",
+    "synonyms": [
+      "alleviate",
+      "lessen",
+      "ease"
+    ],
+    "exampleSentence": "Shade trees can mitigate extreme heat in dense neighborhoods.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-mollify",
+    "word": "mollify",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "安抚",
+    "synonyms": [
+      "appease",
+      "pacify",
+      "soothe"
+    ],
+    "exampleSentence": "A sincere apology helped mollify the offended guests.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-morose",
+    "word": "morose",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "阴郁的",
+    "synonyms": [
+      "gloomy",
+      "sullen",
+      "glum"
+    ],
+    "exampleSentence": "He became morose after the expedition was canceled.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-mundane",
+    "word": "mundane",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "平凡的",
+    "synonyms": [
+      "ordinary",
+      "routine",
+      "prosaic"
+    ],
+    "exampleSentence": "The diary turns mundane errands into sharp observations about city life.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-munificent",
+    "word": "munificent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "慷慨的",
+    "synonyms": [
+      "generous",
+      "bountiful",
+      "lavish"
+    ],
+    "exampleSentence": "A munificent donation secured the archive's future.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-myopic",
+    "word": "myopic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "目光短浅的",
+    "synonyms": [
+      "shortsighted",
+      "narrow",
+      "unforesighted"
+    ],
+    "exampleSentence": "The myopic policy reduced immediate costs while increasing future risk.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-nascent",
+    "word": "nascent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "初现的",
+    "synonyms": [
+      "emerging",
+      "incipient",
+      "budding"
+    ],
+    "exampleSentence": "The city invested early in its nascent technology sector.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-nebulous",
+    "word": "nebulous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "模糊不清的",
+    "synonyms": [
+      "vague",
+      "hazy",
+      "indefinite"
+    ],
+    "exampleSentence": "The proposal's goals remained nebulous even after several revisions.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-neophyte",
+    "word": "neophyte",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "新手",
+    "synonyms": [
+      "novice",
+      "beginner",
+      "apprentice"
+    ],
+    "exampleSentence": "Even a neophyte could follow the guide's clear instructions.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-nuanced",
+    "word": "nuanced",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "细致入微的",
+    "synonyms": [
+      "subtle",
+      "refined",
+      "sophisticated"
+    ],
+    "exampleSentence": "The biography presents a nuanced portrait rather than a simple tribute.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-obdurate",
+    "word": "obdurate",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "顽固的",
+    "synonyms": [
+      "stubborn",
+      "unyielding",
+      "inflexible"
+    ],
+    "exampleSentence": "The board remained obdurate despite overwhelming public opposition.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-obfuscate",
+    "word": "obfuscate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "使模糊；混淆",
+    "synonyms": [
+      "confuse",
+      "obscure",
+      "muddle"
+    ],
+    "exampleSentence": "Technical jargon should not obfuscate a straightforward finding.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-obsequious",
+    "word": "obsequious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "谄媚的",
+    "synonyms": [
+      "servile",
+      "sycophantic",
+      "fawning"
+    ],
+    "exampleSentence": "The manager distrusted the assistant's obsequious praise.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-obsolete",
+    "word": "obsolete",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "过时的",
+    "synonyms": [
+      "outdated",
+      "antiquated",
+      "defunct"
+    ],
+    "exampleSentence": "Digital records made the old indexing system obsolete.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-obstinate",
+    "word": "obstinate",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "固执的",
+    "synonyms": [
+      "stubborn",
+      "inflexible",
+      "headstrong"
+    ],
+    "exampleSentence": "An obstinate refusal to revise the plan caused avoidable delays.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-orthodox",
+    "word": "orthodox",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "正统传统的",
+    "synonyms": [
+      "conventional",
+      "traditional",
+      "accepted"
+    ],
+    "exampleSentence": "Her interpretation challenges the orthodox account of the uprising.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ostentatious",
+    "word": "ostentatious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "炫耀的",
+    "synonyms": [
+      "showy",
+      "pretentious",
+      "gaudy"
+    ],
+    "exampleSentence": "The building's ostentatious lobby contrasted with its cramped offices.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-paradox",
+    "word": "paradox",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "悖论",
+    "synonyms": [
+      "contradiction",
+      "enigma",
+      "inconsistency"
+    ],
+    "exampleSentence": "The policy created a paradox: greater access produced longer waits.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-paragon",
+    "word": "paragon",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "典范",
+    "synonyms": [
+      "model",
+      "exemplar",
+      "ideal"
+    ],
+    "exampleSentence": "The article treats the cooperative as a paragon of transparent governance.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-parsimonious",
+    "word": "parsimonious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "吝啬的；过度节省的",
+    "synonyms": [
+      "miserly",
+      "stingy",
+      "frugal"
+    ],
+    "exampleSentence": "A parsimonious budget left no room for essential maintenance.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-partisan",
+    "word": "partisan",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "党派性的；偏袒的",
+    "synonyms": [
+      "biased",
+      "factional",
+      "one-sided"
+    ],
+    "exampleSentence": "The commission sought evidence beyond partisan talking points.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-paucity",
+    "word": "paucity",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "缺乏；少量",
+    "synonyms": [
+      "scarcity",
+      "dearth",
+      "shortage"
+    ],
+    "exampleSentence": "A paucity of long-term data limits the study's conclusions.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-pedantic",
+    "word": "pedantic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "卖弄学问的；拘泥细节的",
+    "synonyms": [
+      "doctrinaire",
+      "bookish",
+      "overprecise"
+    ],
+    "exampleSentence": "The guide is precise without becoming pedantic.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-penchant",
+    "word": "penchant",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "偏爱",
+    "synonyms": [
+      "inclination",
+      "liking",
+      "predilection"
+    ],
+    "exampleSentence": "She has a penchant for finding elegant solutions to mundane problems.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-perfidy",
+    "word": "perfidy",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "背信弃义",
+    "synonyms": [
+      "treachery",
+      "betrayal",
+      "duplicity"
+    ],
+    "exampleSentence": "The drama centers on political perfidy and its personal cost.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-perfunctory",
+    "word": "perfunctory",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "敷衍的",
+    "synonyms": [
+      "cursory",
+      "superficial",
+      "routine"
+    ],
+    "exampleSentence": "A perfunctory apology did little to restore trust.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-pernicious",
+    "word": "pernicious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "有害的",
+    "synonyms": [
+      "harmful",
+      "destructive",
+      "malignant"
+    ],
+    "exampleSentence": "The report documents the pernicious effects of persistent misinformation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-perspicacious",
+    "word": "perspicacious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "洞察力强的",
+    "synonyms": [
+      "perceptive",
+      "astute",
+      "discerning"
+    ],
+    "exampleSentence": "A perspicacious reviewer noticed the hidden assumption immediately.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-pervasive",
+    "word": "pervasive",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "普遍深入的",
+    "synonyms": [
+      "widespread",
+      "ubiquitous",
+      "prevalent"
+    ],
+    "exampleSentence": "A pervasive sense of uncertainty shaped the election.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-phlegmatic",
+    "word": "phlegmatic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "冷静不动感情的",
+    "synonyms": [
+      "calm",
+      "stoic",
+      "unflappable"
+    ],
+    "exampleSentence": "The phlegmatic captain remained composed during the emergency.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-pithy",
+    "word": "pithy",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "简洁有力的",
+    "synonyms": [
+      "concise",
+      "terse",
+      "succinct"
+    ],
+    "exampleSentence": "Her pithy summary captured the argument better than the long report.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-placate",
+    "word": "placate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "安抚",
+    "synonyms": [
+      "appease",
+      "pacify",
+      "mollify"
+    ],
+    "exampleSentence": "Officials offered refunds to placate frustrated passengers.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-plausible",
+    "word": "plausible",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "貌似合理的",
+    "synonyms": [
+      "credible",
+      "believable",
+      "reasonable"
+    ],
+    "exampleSentence": "The hypothesis is plausible but still lacks direct evidence.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-polemical",
+    "word": "polemical",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "争辩性的",
+    "synonyms": [
+      "controversial",
+      "argumentative",
+      "contentious"
+    ],
+    "exampleSentence": "The book is openly polemical yet carefully documented.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-pragmatic",
+    "word": "pragmatic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "务实的",
+    "synonyms": [
+      "practical",
+      "realistic",
+      "expedient"
+    ],
+    "exampleSentence": "They chose a pragmatic solution that could be implemented quickly.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-precarious",
+    "word": "precarious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "不稳定危险的",
+    "synonyms": [
+      "unstable",
+      "insecure",
+      "perilous"
+    ],
+    "exampleSentence": "The climbers crossed the river on a precarious wooden bridge.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-precipitate",
+    "word": "precipitate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "促使；使突然发生",
+    "synonyms": [
+      "trigger",
+      "hasten",
+      "provoke"
+    ],
+    "exampleSentence": "A sudden rate increase could precipitate a wider downturn.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-preclude",
+    "word": "preclude",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "排除；阻止",
+    "synonyms": [
+      "prevent",
+      "bar",
+      "forestall"
+    ],
+    "exampleSentence": "Limited evidence does not preclude further investigation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-prescient",
+    "word": "prescient",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "有先见之明的",
+    "synonyms": [
+      "foresighted",
+      "prophetic",
+      "farseeing"
+    ],
+    "exampleSentence": "Her prescient warning anticipated the supply crisis by several years.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-pretentious",
+    "word": "pretentious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "自命不凡的",
+    "synonyms": [
+      "pompous",
+      "affected",
+      "ostentatious"
+    ],
+    "exampleSentence": "The restaurant's pretentious menu described simple dishes in grand terms.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-prodigal",
+    "word": "prodigal",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "挥霍的",
+    "synonyms": [
+      "wasteful",
+      "lavish",
+      "extravagant"
+    ],
+    "exampleSentence": "Prodigal spending exhausted the grant before the project was complete.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-proliferate",
+    "word": "proliferate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "迅速增多",
+    "synonyms": [
+      "multiply",
+      "spread",
+      "burgeon"
+    ],
+    "exampleSentence": "Unverified copies of the document began to proliferate online.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-prolific",
+    "word": "prolific",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "多产的",
+    "synonyms": [
+      "productive",
+      "fertile",
+      "abundant"
+    ],
+    "exampleSentence": "The prolific historian published more than thirty carefully researched books.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-propensity",
+    "word": "propensity",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "倾向",
+    "synonyms": [
+      "inclination",
+      "tendency",
+      "predisposition"
+    ],
+    "exampleSentence": "The material has a propensity to crack under sudden pressure.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-prosaic",
+    "word": "prosaic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "平淡乏味的",
+    "synonyms": [
+      "mundane",
+      "ordinary",
+      "unimaginative"
+    ],
+    "exampleSentence": "The explanation is prosaic, but it fits the evidence.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-prudent",
+    "word": "prudent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "谨慎明智的",
+    "synonyms": [
+      "wise",
+      "cautious",
+      "judicious"
+    ],
+    "exampleSentence": "It would be prudent to preserve a copy of the raw data.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-querulous",
+    "word": "querulous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "爱抱怨的",
+    "synonyms": [
+      "complaining",
+      "petulant",
+      "whiny"
+    ],
+    "exampleSentence": "The querulous customer rejected every proposed solution.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-quiescent",
+    "word": "quiescent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "静止休眠的",
+    "synonyms": [
+      "dormant",
+      "inactive",
+      "still"
+    ],
+    "exampleSentence": "The volcano has remained quiescent for more than a century.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-quixotic",
+    "word": "quixotic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "不切实际的理想主义的",
+    "synonyms": [
+      "idealistic",
+      "impractical",
+      "romantic"
+    ],
+    "exampleSentence": "The plan was generous in spirit but quixotic in scale.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-rancor",
+    "word": "rancor",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "怨恨",
+    "synonyms": [
+      "bitterness",
+      "resentment",
+      "animosity"
+    ],
+    "exampleSentence": "Years of rancor made even routine negotiations difficult.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-recalcitrant",
+    "word": "recalcitrant",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "桀骜不驯的",
+    "synonyms": [
+      "defiant",
+      "obstinate",
+      "uncooperative"
+    ],
+    "exampleSentence": "The recalcitrant agency ignored repeated orders to release the records.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-refute",
+    "word": "refute",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "反驳；证明错误",
+    "synonyms": [
+      "disprove",
+      "rebut",
+      "debunk"
+    ],
+    "exampleSentence": "The new evidence refutes the claim that the decline was inevitable.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-relegate",
+    "word": "relegate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "降级；置于次要地位",
+    "synonyms": [
+      "demote",
+      "consign",
+      "downgrade"
+    ],
+    "exampleSentence": "The redesign should not relegate accessibility to an afterthought.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-resilient",
+    "word": "resilient",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "有韧性的",
+    "synonyms": [
+      "robust",
+      "adaptable",
+      "buoyant"
+    ],
+    "exampleSentence": "The resilient community rebuilt its market after the flood.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-reticent",
+    "word": "reticent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "沉默寡言的",
+    "synonyms": [
+      "reserved",
+      "taciturn",
+      "restrained"
+    ],
+    "exampleSentence": "Normally reticent, she spoke at length about the failed policy.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-reverent",
+    "word": "reverent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "恭敬的",
+    "synonyms": [
+      "respectful",
+      "devout",
+      "solemn"
+    ],
+    "exampleSentence": "The documentary is reverent without becoming uncritical.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-rudimentary",
+    "word": "rudimentary",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "初步的；基础的",
+    "synonyms": [
+      "basic",
+      "elementary",
+      "primitive"
+    ],
+    "exampleSentence": "The shelter provided only rudimentary protection from the cold.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-sagacious",
+    "word": "sagacious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "睿智的",
+    "synonyms": [
+      "wise",
+      "shrewd",
+      "perspicacious"
+    ],
+    "exampleSentence": "A sagacious mentor urged the team to test its assumptions first.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-salubrious",
+    "word": "salubrious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "有益健康的",
+    "synonyms": [
+      "healthful",
+      "wholesome",
+      "beneficial"
+    ],
+    "exampleSentence": "They moved to a quieter district with a more salubrious climate.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-sanction",
+    "word": "sanction",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "批准；制裁",
+    "synonyms": [
+      "authorize",
+      "approve",
+      "penalize"
+    ],
+    "exampleSentence": "The board must sanction any change to the research protocol.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-sanguine",
+    "word": "sanguine",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "乐观自信的",
+    "synonyms": [
+      "optimistic",
+      "hopeful",
+      "buoyant"
+    ],
+    "exampleSentence": "Analysts remained sanguine despite a weak first quarter.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-scant",
+    "word": "scant",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "不足的",
+    "synonyms": [
+      "meager",
+      "scarce",
+      "insufficient"
+    ],
+    "exampleSentence": "The conclusion rests on scant evidence from a narrow sample.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-scrupulous",
+    "word": "scrupulous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "严谨正直的",
+    "synonyms": [
+      "meticulous",
+      "conscientious",
+      "principled"
+    ],
+    "exampleSentence": "She was scrupulous about separating fact from speculation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-seminal",
+    "word": "seminal",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "开创性的",
+    "synonyms": [
+      "influential",
+      "pioneering",
+      "formative"
+    ],
+    "exampleSentence": "The scientist's seminal paper reshaped the field.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-skeptical",
+    "word": "skeptical",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "怀疑的",
+    "synonyms": [
+      "doubtful",
+      "questioning",
+      "dubious"
+    ],
+    "exampleSentence": "Reviewers were skeptical of results that could not be replicated.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-solicitous",
+    "word": "solicitous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "关切周到的",
+    "synonyms": [
+      "attentive",
+      "concerned",
+      "considerate"
+    ],
+    "exampleSentence": "The nurse was solicitous without being intrusive.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-sporadic",
+    "word": "sporadic",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "零星发生的",
+    "synonyms": [
+      "intermittent",
+      "occasional",
+      "irregular"
+    ],
+    "exampleSentence": "Sporadic outages continued after the main repair.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-spurious",
+    "word": "spurious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "虚假的",
+    "synonyms": [
+      "false",
+      "bogus",
+      "counterfeit"
+    ],
+    "exampleSentence": "The article drew a spurious connection between unrelated trends.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-steadfast",
+    "word": "steadfast",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "坚定的",
+    "synonyms": [
+      "resolute",
+      "unwavering",
+      "constant"
+    ],
+    "exampleSentence": "She remained steadfast in her support for independent review.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-stolid",
+    "word": "stolid",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "不动感情的",
+    "synonyms": [
+      "impassive",
+      "stoic",
+      "unemotional"
+    ],
+    "exampleSentence": "The stolid guard showed no reaction to the commotion.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-stringent",
+    "word": "stringent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "严格的",
+    "synonyms": [
+      "rigorous",
+      "strict",
+      "exacting"
+    ],
+    "exampleSentence": "The laboratory adopted stringent rules for handling samples.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-substantiate",
+    "word": "substantiate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "证实",
+    "synonyms": [
+      "verify",
+      "corroborate",
+      "confirm"
+    ],
+    "exampleSentence": "The author provides no records to substantiate the allegation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-subtle",
+    "word": "subtle",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "微妙的",
+    "synonyms": [
+      "nuanced",
+      "delicate",
+      "understated"
+    ],
+    "exampleSentence": "A subtle shift in tone changes the final scene's meaning.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-succinct",
+    "word": "succinct",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "简明的",
+    "synonyms": [
+      "concise",
+      "terse",
+      "pithy"
+    ],
+    "exampleSentence": "Her succinct summary gave the board enough context to decide.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-superfluous",
+    "word": "superfluous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "多余的",
+    "synonyms": [
+      "unnecessary",
+      "extraneous",
+      "redundant"
+    ],
+    "exampleSentence": "The editor removed three superfluous paragraphs.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-surreptitious",
+    "word": "surreptitious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "偷偷摸摸的",
+    "synonyms": [
+      "secret",
+      "clandestine",
+      "covert"
+    ],
+    "exampleSentence": "A surreptitious recording revealed the private agreement.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-taciturn",
+    "word": "taciturn",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "沉默寡言的",
+    "synonyms": [
+      "reticent",
+      "reserved",
+      "uncommunicative"
+    ],
+    "exampleSentence": "The taciturn mechanic answered every question in a few words.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-temerity",
+    "word": "temerity",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "鲁莽大胆",
+    "synonyms": [
+      "audacity",
+      "boldness",
+      "nerve"
+    ],
+    "exampleSentence": "She had the temerity to challenge a rule everyone else accepted.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-tenacious",
+    "word": "tenacious",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "坚持不懈的",
+    "synonyms": [
+      "persistent",
+      "determined",
+      "dogged"
+    ],
+    "exampleSentence": "Tenacious reporting eventually uncovered the missing contracts.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-tenuous",
+    "word": "tenuous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "薄弱的",
+    "synonyms": [
+      "weak",
+      "slender",
+      "fragile"
+    ],
+    "exampleSentence": "The evidence offers only a tenuous link between the two events.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-tirade",
+    "word": "tirade",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "长篇怒斥",
+    "synonyms": [
+      "diatribe",
+      "harangue",
+      "rant"
+    ],
+    "exampleSentence": "The meeting ended with a tirade against minor procedural changes.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-torpor",
+    "word": "torpor",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "迟钝；无精打采",
+    "synonyms": [
+      "lethargy",
+      "inertia",
+      "dormancy"
+    ],
+    "exampleSentence": "The organization emerged from years of torpor under new leadership.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-tractable",
+    "word": "tractable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "易处理的；温顺的",
+    "synonyms": [
+      "manageable",
+      "amenable",
+      "docile"
+    ],
+    "exampleSentence": "Dividing the problem into smaller parts made it tractable.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-transient",
+    "word": "transient",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "短暂的",
+    "synonyms": [
+      "temporary",
+      "ephemeral",
+      "fleeting"
+    ],
+    "exampleSentence": "The apparent improvement proved transient.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-trenchant",
+    "word": "trenchant",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "尖锐有力的",
+    "synonyms": [
+      "incisive",
+      "penetrating",
+      "forceful"
+    ],
+    "exampleSentence": "Her trenchant critique exposed the model's weakest assumption.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-ubiquitous",
+    "word": "ubiquitous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无处不在的",
+    "synonyms": [
+      "omnipresent",
+      "pervasive",
+      "widespread"
+    ],
+    "exampleSentence": "Smart sensors have become ubiquitous in modern factories.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-unassailable",
+    "word": "unassailable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "无可反驳的",
+    "synonyms": [
+      "indisputable",
+      "impregnable",
+      "incontrovertible"
+    ],
+    "exampleSentence": "The timestamp provided an unassailable alibi.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-undermine",
+    "word": "undermine",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "削弱",
+    "synonyms": [
+      "weaken",
+      "erode",
+      "sabotage"
+    ],
+    "exampleSentence": "Secret exceptions undermine confidence in otherwise fair rules.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-underscore",
+    "word": "underscore",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "强调",
+    "synonyms": [
+      "emphasize",
+      "highlight",
+      "stress"
+    ],
+    "exampleSentence": "The failure underscores the need for independent backups.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-unequivocal",
+    "word": "unequivocal",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "明确无疑的",
+    "synonyms": [
+      "unambiguous",
+      "definite",
+      "explicit"
+    ],
+    "exampleSentence": "The panel issued an unequivocal rejection of the proposal.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-urbane",
+    "word": "urbane",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "温文尔雅的",
+    "synonyms": [
+      "sophisticated",
+      "courteous",
+      "polished"
+    ],
+    "exampleSentence": "The urbane host moved easily among guests with opposing views.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-vacillate",
+    "word": "vacillate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "犹豫不定",
+    "synonyms": [
+      "waver",
+      "hesitate",
+      "fluctuate"
+    ],
+    "exampleSentence": "Leaders cannot vacillate indefinitely when safety is at risk.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-venerable",
+    "word": "venerable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "德高望重的；古老的",
+    "synonyms": [
+      "respected",
+      "august",
+      "esteemed"
+    ],
+    "exampleSentence": "The venerable institution opened its archives to the public.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-venerate",
+    "word": "venerate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "尊敬崇拜",
+    "synonyms": [
+      "revere",
+      "honor",
+      "esteem"
+    ],
+    "exampleSentence": "Students venerate the poet but still debate her politics.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-veracity",
+    "word": "veracity",
+    "partOfSpeech": "n.",
+    "chineseMeaning": "真实性；诚实",
+    "synonyms": [
+      "truthfulness",
+      "accuracy",
+      "candor"
+    ],
+    "exampleSentence": "Investigators questioned the veracity of the anonymous account.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-verbose",
+    "word": "verbose",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "冗长的",
+    "synonyms": [
+      "wordy",
+      "prolix",
+      "loquacious"
+    ],
+    "exampleSentence": "The verbose report hides a simple recommendation.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-viable",
+    "word": "viable",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "可行的",
+    "synonyms": [
+      "feasible",
+      "workable",
+      "practical"
+    ],
+    "exampleSentence": "The pilot suggests that the approach is commercially viable.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-vigilant",
+    "word": "vigilant",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "警觉的",
+    "synonyms": [
+      "watchful",
+      "alert",
+      "attentive"
+    ],
+    "exampleSentence": "Operators must remain vigilant during the entire test.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-vindicate",
+    "word": "vindicate",
+    "partOfSpeech": "v.",
+    "chineseMeaning": "证明正确；洗清",
+    "synonyms": [
+      "justify",
+      "exonerate",
+      "validate"
+    ],
+    "exampleSentence": "Later evidence vindicated her decision to delay the launch.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-virulent",
+    "word": "virulent",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "剧毒的；恶意的",
+    "synonyms": [
+      "toxic",
+      "malignant",
+      "vicious"
+    ],
+    "exampleSentence": "The campaign faced a virulent stream of false accusations.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-visceral",
+    "word": "visceral",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "本能强烈的",
+    "synonyms": [
+      "instinctive",
+      "deep-seated",
+      "gut"
+    ],
+    "exampleSentence": "The photographs provoked a visceral response from viewers.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-volatile",
+    "word": "volatile",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "易变的；不稳定的",
+    "synonyms": [
+      "unstable",
+      "explosive",
+      "changeable"
+    ],
+    "exampleSentence": "Prices remained volatile after the unexpected announcement.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-waning",
+    "word": "waning",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "逐渐减弱的",
+    "synonyms": [
+      "diminishing",
+      "declining",
+      "fading"
+    ],
+    "exampleSentence": "Waning public interest threatened the long-term project.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-wary",
+    "word": "wary",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "谨慎警惕的",
+    "synonyms": [
+      "cautious",
+      "circumspect",
+      "guarded"
+    ],
+    "exampleSentence": "Residents were wary of promises unsupported by a budget.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-whimsical",
+    "word": "whimsical",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "异想天开的",
+    "synonyms": [
+      "fanciful",
+      "playful",
+      "quirky"
+    ],
+    "exampleSentence": "Whimsical illustrations soften the book's serious theme.",
+    "source": "GRE Glance original development dataset"
+  },
+  {
+    "id": "gre-zealous",
+    "word": "zealous",
+    "partOfSpeech": "adj.",
+    "chineseMeaning": "热心积极的",
+    "synonyms": [
+      "fervent",
+      "ardent",
+      "enthusiastic"
+    ],
+    "exampleSentence": "Zealous volunteers cataloged every item before the museum reopened.",
+    "source": "GRE Glance original development dataset"
+  }
+]

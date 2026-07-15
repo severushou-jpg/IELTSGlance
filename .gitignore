@@ -1,0 +1,29 @@
+# Xcode user state
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Build products
+DerivedData/
+.build/
+build/
+*.dSYM
+*.dSYM.zip
+*.app
+*.appex
+
+# Swift Package Manager (not currently used)
+.swiftpm/
+Packages/
+.package.resolved
+
+# macOS and editors
+.DS_Store
+*.swp
+*.tmp
+
+# Python development tools
+__pycache__/
+*.py[cod]
+.venv/

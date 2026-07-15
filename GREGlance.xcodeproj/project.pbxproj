@@ -6,14 +6,70 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CDD01BF330084A3800850940 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD01BF230084A3700850940 /* WidgetKit.framework */; };
+		CDD01BF530084A3800850940 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD01BF430084A3800850940 /* SwiftUI.framework */; };
+		CDD01C0430084A3900850940 /* GREGlanceWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CDD01BF030084A3700850940 /* GREGlanceWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CDD01C0230084A3900850940 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDD01BD63008495400850940 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDD01BEF30084A3700850940;
+			remoteInfo = GREGlanceWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CDD01C0930084A3900850940 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CDD01C0430084A3900850940 /* GREGlanceWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CDD01BDE3008495400850940 /* GREGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GREGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDD01BF030084A3700850940 /* GREGlanceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GREGlanceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDD01BF230084A3700850940 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CDD01BF430084A3800850940 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CDD01C0530084A3900850940 /* Exceptions for "GREGlanceWidget" folder in "GREGlanceWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CDD01BEF30084A3700850940 /* GREGlanceWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CDD01BE03008495400850940 /* GREGlance */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = GREGlance;
+			sourceTree = "<group>";
+		};
+		CDD01BF630084A3800850940 /* GREGlanceWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CDD01C0530084A3900850940 /* Exceptions for "GREGlanceWidget" folder in "GREGlanceWidgetExtension" target */,
+			);
+			path = GREGlanceWidget;
+			sourceTree = "<group>";
+		};
+		CDA100013008700000850940 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +82,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CDD01BED30084A3700850940 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD01BF530084A3800850940 /* SwiftUI.framework in Frameworks */,
+				CDD01BF330084A3800850940 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				CDD01BE03008495400850940 /* GREGlance */,
+				CDD01BF630084A3800850940 /* GREGlanceWidget */,
+				CDA100013008700000850940 /* Shared */,
+				CDD01BF130084A3700850940 /* Frameworks */,
 				CDD01BDF3008495400850940 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +109,18 @@
 			isa = PBXGroup;
 			children = (
 				CDD01BDE3008495400850940 /* GREGlance.app */,
+				CDD01BF030084A3700850940 /* GREGlanceWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CDD01BF130084A3700850940 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDD01BF230084A3700850940 /* WidgetKit.framework */,
+				CDD01BF430084A3800850940 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,13 +133,16 @@
 				CDD01BDA3008495400850940 /* Sources */,
 				CDD01BDB3008495400850940 /* Frameworks */,
 				CDD01BDC3008495400850940 /* Resources */,
+				CDD01C0930084A3900850940 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CDD01C0330084A3900850940 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				CDD01BE03008495400850940 /* GREGlance */,
+				CDA100013008700000850940 /* Shared */,
 			);
 			name = GREGlance;
 			packageProductDependencies = (
@@ -69,6 +150,29 @@
 			productName = GREGlance;
 			productReference = CDD01BDE3008495400850940 /* GREGlance.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CDD01BEF30084A3700850940 /* GREGlanceWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDD01C0630084A3900850940 /* Build configuration list for PBXNativeTarget "GREGlanceWidgetExtension" */;
+			buildPhases = (
+				CDD01BEC30084A3700850940 /* Sources */,
+				CDD01BED30084A3700850940 /* Frameworks */,
+				CDD01BEE30084A3700850940 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CDD01BF630084A3800850940 /* GREGlanceWidget */,
+				CDA100013008700000850940 /* Shared */,
+			);
+			name = GREGlanceWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = GREGlanceWidgetExtension;
+			productReference = CDD01BF030084A3700850940 /* GREGlanceWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +185,9 @@
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					CDD01BDD3008495400850940 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					CDD01BEF30084A3700850940 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
@@ -100,12 +207,20 @@
 			projectRoot = "";
 			targets = (
 				CDD01BDD3008495400850940 /* GREGlance */,
+				CDD01BEF30084A3700850940 /* GREGlanceWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CDD01BDC3008495400850940 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD01BEE30084A3700850940 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +237,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CDD01BEC30084A3700850940 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CDD01C0330084A3900850940 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDD01BEF30084A3700850940 /* GREGlanceWidgetExtension */;
+			targetProxy = CDD01C0230084A3900850940 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CDD01BE73008495600850940 /* Debug */ = {
@@ -250,6 +380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GREGlance/GREGlance.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -259,6 +390,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "GRE Glance";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -282,6 +414,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GREGlance/GREGlance.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -291,6 +424,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "GRE Glance";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,6 +437,72 @@
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CDD01C0730084A3900850940 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = GREGlanceWidget/GREGlanceWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4K2JSG2D39;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GREGlanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GRE Glance";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bingxuhou.GREGlance.GREGlanceWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CDD01C0830084A3900850940 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = GREGlanceWidget/GREGlanceWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4K2JSG2D39;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GREGlanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "GRE Glance";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bingxuhou.GREGlance.GREGlanceWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
@@ -326,6 +526,15 @@
 			buildConfigurations = (
 				CDD01BEA3008495600850940 /* Debug */,
 				CDD01BEB3008495600850940 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDD01C0630084A3900850940 /* Build configuration list for PBXNativeTarget "GREGlanceWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDD01C0730084A3900850940 /* Debug */,
+				CDD01C0830084A3900850940 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

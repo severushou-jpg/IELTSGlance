@@ -1,0 +1,52 @@
+//
+//  AppIntent.swift
+//  GREGlanceWidget
+//
+//  Created by severushou on 2026/7/16.
+//
+
+import AppIntents
+import WidgetKit
+
+struct ReplaceWordIntent: AppIntent {
+    static let title: LocalizedStringResource = "Replace GRE word"
+    static let description = IntentDescription("Replace one visible word without recording learning history.")
+    static let openAppWhenRun = false
+
+    @Parameter(title: "Position")
+    var position: Int
+
+    @Parameter(title: "Expected word ID")
+    var expectedWordID: String
+
+    init() {}
+
+    init(position: Int, expectedWordID: String) {
+        self.position = position
+        self.expectedWordID = expectedWordID
+    }
+
+    func perform() async throws -> some IntentResult {
+        let repository = WordRepository().load()
+        _ = WordStateStore().replaceWord(
+            at: position,
+            expectedWordID: expectedWordID,
+            words: repository.words
+        )
+        WidgetCenter.shared.reloadTimelines(ofKind: SharedConstants.widgetKind)
+        return .result()
+    }
+}
+
+struct ShuffleAllWordsIntent: AppIntent {
+    static let title: LocalizedStringResource = "Shuffle all GRE words"
+    static let description = IntentDescription("Replace all five visible words without recording learning history.")
+    static let openAppWhenRun = false
+
+    func perform() async throws -> some IntentResult {
+        let repository = WordRepository().load()
+        _ = WordStateStore().shuffleAll(words: repository.words)
+        WidgetCenter.shared.reloadTimelines(ofKind: SharedConstants.widgetKind)
+        return .result()
+    }
+}

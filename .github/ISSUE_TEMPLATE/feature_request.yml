@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a focused improvement that respects the offline, glance-first product scope.
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What user need would this address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Explain the smallest useful version.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Product boundaries
+      options:
+        - label: This proposal can remain fully offline and account-free.
+          required: true
+        - label: This proposal does not require learning history, mastery tracking, or spaced repetition.
+          required: true
