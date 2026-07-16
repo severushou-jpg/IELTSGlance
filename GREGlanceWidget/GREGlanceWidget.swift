@@ -64,11 +64,11 @@ struct GREGlanceWidgetView: View {
             VStack(spacing: 0) {
                 HStack {
                     Label("GRE Glance", systemImage: "rectangle.stack.fill")
-                        .font(.caption.weight(.semibold))
+                        .font(.system(size: 12, weight: .semibold))
                         .foregroundStyle(.secondary)
                     Spacer()
                     Text("看见 · 熟悉")
-                        .font(.caption2)
+                        .font(.system(size: 10.5, weight: .medium))
                         .foregroundStyle(.tertiary)
                 }
                 .padding(.bottom, 4)
@@ -86,12 +86,12 @@ struct GREGlanceWidgetView: View {
                 HStack {
                     if let issue = entry.issue {
                         Label(issue, systemImage: "exclamationmark.triangle")
-                            .font(.caption2)
+                            .font(.system(size: 10.5))
                             .foregroundStyle(.secondary)
                             .lineLimit(1)
                     } else {
                         Text("完全离线 · 不记录学习历史")
-                            .font(.caption2)
+                            .font(.system(size: 10.5))
                             .foregroundStyle(.tertiary)
                     }
 
@@ -99,7 +99,7 @@ struct GREGlanceWidgetView: View {
 
                     Button(intent: ShuffleAllWordsIntent()) {
                         Label("Shuffle All", systemImage: "arrow.triangle.2.circlepath")
-                            .font(.caption.weight(.medium))
+                            .font(.system(size: 11.5, weight: .medium))
                             .padding(.horizontal, 5)
                             .frame(minHeight: 24)
                     }
@@ -116,31 +116,31 @@ struct GREGlanceWidgetView: View {
         VStack(alignment: .leading, spacing: 3) {
             HStack(alignment: .firstTextBaseline, spacing: 5) {
                 Text(word.word)
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.system(size: 20, weight: .semibold))
                     .lineLimit(1)
-                    .minimumScaleFactor(0.72)
+                    .minimumScaleFactor(0.78)
 
                 Text(word.partOfSpeech)
-                    .font(.system(size: 9, weight: .medium))
+                    .font(.system(size: 10.5, weight: .medium))
                     .foregroundStyle(.tertiary)
 
                 Text(word.chineseMeaning)
-                    .font(.system(size: 11, weight: .medium))
+                    .font(.system(size: 15.5, weight: .medium))
                     .lineLimit(1)
-                    .minimumScaleFactor(0.72)
+                    .minimumScaleFactor(0.76)
 
                 Spacer(minLength: 4)
 
                 Text(word.synonyms.prefix(3).joined(separator: " · "))
-                    .font(.system(size: 9.5))
+                    .font(.system(size: 10.75))
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.68)
+                    .minimumScaleFactor(0.72)
 
                 Button(intent: ReplaceWordIntent(position: position, expectedWordID: word.id)) {
                     Image(systemName: "checkmark.circle")
-                        .font(.system(size: 15, weight: .medium))
-                        .frame(width: 24, height: 22)
+                        .font(.system(size: 17, weight: .medium))
+                        .frame(width: 26, height: 24)
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
@@ -149,7 +149,7 @@ struct GREGlanceWidgetView: View {
             }
 
             Text(word.exampleSentence)
-                .font(.system(size: 10.5))
+                .font(.system(size: 12))
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
                 .truncationMode(.tail)
