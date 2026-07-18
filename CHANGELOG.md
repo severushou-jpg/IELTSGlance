@@ -2,6 +2,12 @@
 
 All notable changes to GRE Glance are documented here.
 
+## 1.1.5 — 2026-07-18
+
+- Remove stale Widget registrations left by Xcode and validation builds before launching the current app.
+- Verify that only the newly built Widget extension is registered in `--verify` mode.
+- Request a Widget timeline reload whenever the newly built main app starts.
+
 ## 1.1.4 — 2026-07-18
 
 - Disable implicit glyph scaling and tightening for Widget words, meanings, parts of speech, and examples.

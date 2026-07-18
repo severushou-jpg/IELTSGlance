@@ -66,6 +66,48 @@ EXECUTABLE_NAME="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$INFO
 BUNDLE_ID="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$INFO_PLIST")"
 APP_BINARY="$APP_BUNDLE/Contents/MacOS/$EXECUTABLE_NAME"
 
+register_current_widget_extension() {
+  local widget_bundle widget_info widget_id widget_executable registered_plugin registered_app
+  local registered_paths registration_count lsregister
+
+  widget_bundle="$(find "$APP_BUNDLE/Contents/PlugIns" -maxdepth 1 -type d -name '*.appex' -print -quit 2>/dev/null || true)"
+  [[ -n "$widget_bundle" ]] || return 0
+
+  widget_info="$widget_bundle/Contents/Info.plist"
+  widget_id="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$widget_info")"
+  widget_executable="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$widget_info")"
+  lsregister="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister"
+
+  # Xcode and ad-hoc validation builds can leave several extensions with the
+  # same bundle identifier registered. WidgetKit may otherwise keep launching
+  # an older binary even after a successful build.
+  while IFS= read -r registered_plugin; do
+    [[ "$registered_plugin" == /* ]] || continue
+    [[ "$registered_plugin" == "$widget_bundle" ]] && continue
+    /usr/bin/pluginkit -r "$registered_plugin" >/dev/null 2>&1 || true
+    registered_app="${registered_plugin%%/Contents/PlugIns/*}"
+    "$lsregister" -u "$registered_app" >/dev/null 2>&1 || true
+  done < <(/usr/bin/pluginkit -m -A -D -v -i "$widget_id" 2>/dev/null | /usr/bin/awk -F '\t' 'NF > 1 { print $NF }')
+
+  /usr/bin/pkill -f "/Contents/PlugIns/.*/Contents/MacOS/$widget_executable" >/dev/null 2>&1 || true
+  "$lsregister" -f -R -trusted "$APP_BUNDLE" >/dev/null
+  /usr/bin/pluginkit -a "$widget_bundle"
+  /usr/bin/pluginkit -e use -i "$widget_id"
+
+  if [[ "$MODE" == "--verify" || "$MODE" == "verify" ]]; then
+    registered_paths="$(/usr/bin/pluginkit -m -A -D -v -i "$widget_id" 2>/dev/null | /usr/bin/awk -F '\t' 'NF > 1 { print $NF }')"
+    registration_count="$(printf '%s\n' "$registered_paths" | /usr/bin/grep -c '^/' || true)"
+    if [[ "$registration_count" -ne 1 || "$registered_paths" != "$widget_bundle" ]]; then
+      echo "error: expected only the current Widget extension to be registered" >&2
+      printf '%s\n' "$registered_paths" >&2
+      exit 1
+    fi
+    echo "Verified Widget registration: $widget_id -> $widget_bundle"
+  fi
+}
+
+register_current_widget_extension
+
 open_app() {
   /usr/bin/open -n "$APP_BUNDLE"
 }
