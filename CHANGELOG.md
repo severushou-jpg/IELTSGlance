@@ -2,6 +2,11 @@
 
 All notable changes to GRE Glance are documented here.
 
+## 1.1.2 — 2026-07-18
+
+- Render the word, part of speech, and Chinese meaning as one styled text run so every Widget row uses identical font metrics.
+- Keep the part of speech on the same line instead of allowing narrow fallback rows to compress it vertically.
+
 ## 1.1.1 — 2026-07-18
 
 - Keep every Widget word and Chinese meaning at a consistent visual size.

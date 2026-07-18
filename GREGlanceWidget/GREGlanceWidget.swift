@@ -184,23 +184,11 @@ private struct WidgetWordRow: View {
 
     private func firstLine(synonymCount: Int?, preservesPrimaryWidth: Bool) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 5) {
-            Text(word.word)
-                .font(.system(size: textSize.wordFontSize, weight: .semibold))
-                .lineLimit(1)
-                .fixedSize(horizontal: preservesPrimaryWidth, vertical: false)
-                .layoutPriority(3)
-
-            Text(word.partOfSpeech)
-                .font(.system(size: 10.5, weight: .medium))
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: true, vertical: false)
-
-            Text(word.chineseMeaning)
-                .font(.system(size: textSize.meaningFontSize, weight: .medium))
+            primaryText
                 .lineLimit(1)
                 .truncationMode(.tail)
                 .fixedSize(horizontal: preservesPrimaryWidth, vertical: false)
-                .layoutPriority(2)
+                .layoutPriority(3)
 
             Spacer(minLength: 3)
 
@@ -210,6 +198,19 @@ private struct WidgetWordRow: View {
 
             replaceButton
         }
+    }
+
+    /// A single text run prevents SwiftUI from compressing the word, part of
+    /// speech, and meaning as independent HStack children. Every row therefore
+    /// uses identical font metrics, even when it falls back to truncation.
+    private var primaryText: Text {
+        Text(word.word)
+            .font(.system(size: textSize.wordFontSize, weight: .semibold))
+        + Text(" \(word.partOfSpeech) ")
+            .font(.system(size: 10.5, weight: .medium))
+            .foregroundColor(.secondary)
+        + Text(word.chineseMeaning)
+            .font(.system(size: textSize.meaningFontSize, weight: .medium))
     }
 
     private var replaceButton: some View {
@@ -258,7 +259,7 @@ struct GREGlanceWidget: Widget {
         date: Date(),
         words: GREWord.fallbackWords,
         issue: nil,
-        textSize: .extraLarge,
+        textSize: .comfortable,
         synonymLimit: 3
     )
 }
