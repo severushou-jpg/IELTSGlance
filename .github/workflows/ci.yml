@@ -27,18 +27,16 @@ jobs:
       - name: Validate vocabulary data
         run: python3 scripts/validate_words.py
 
-      - name: Verify word-state behavior
+      - name: Run unit tests
         run: |
-          swiftc -parse-as-library \
-            Shared/Models/GREWord.swift \
-            Shared/Models/WidgetDisplayState.swift \
-            Shared/Support/SharedConstants.swift \
-            Shared/Services/RandomWordPicker.swift \
-            Shared/Stores/WordStateStore.swift \
-            scripts/verify_state_logic.swift \
-            -framework Security \
-            -o "$RUNNER_TEMP/verify-gre-glance-state"
-          "$RUNNER_TEMP/verify-gre-glance-state"
+          xcodebuild \
+            -project GREGlance.xcodeproj \
+            -scheme GREGlance \
+            -configuration Debug \
+            -destination "platform=macOS" \
+            -derivedDataPath "$RUNNER_TEMP/DerivedData" \
+            CODE_SIGNING_ALLOWED=NO \
+            test
 
       - name: Build app and embedded Widget
         run: |

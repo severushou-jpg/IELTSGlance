@@ -3,13 +3,15 @@ import SwiftUI
 struct WordRowView: View {
     let word: GREWord
     let position: Int
+    let textSize: WidgetTextSize
+    let synonymLimit: Int
     let onReplace: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 7) {
             HStack(alignment: .firstTextBaseline, spacing: 9) {
                 Text(word.word)
-                    .font(.title3.weight(.semibold))
+                    .font(.system(size: textSize.wordFontSize + 2, weight: .semibold))
                     .lineLimit(1)
                     .minimumScaleFactor(0.78)
 
@@ -18,13 +20,13 @@ struct WordRowView: View {
                     .foregroundStyle(.secondary)
 
                 Text(word.chineseMeaning)
-                    .font(.body.weight(.medium))
+                    .font(.system(size: textSize.meaningFontSize + 1, weight: .medium))
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
 
                 Spacer(minLength: 8)
 
-                Text(word.synonyms.prefix(3).joined(separator: "  ·  "))
+                Text(word.synonyms.prefix(synonymLimit).joined(separator: "  ·  "))
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
@@ -42,7 +44,7 @@ struct WordRowView: View {
             }
 
             Text(word.exampleSentence)
-                .font(.callout)
+                .font(.system(size: textSize.exampleFontSize + 1))
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
                 .truncationMode(.tail)

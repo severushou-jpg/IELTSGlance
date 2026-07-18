@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var store = AppWordStore()
+    let store: AppWordStore
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
@@ -25,11 +25,15 @@ struct ContentView: View {
                         .background(.quaternary, in: RoundedRectangle(cornerRadius: 9))
                 }
 
+                PackSelectionView(store: store)
+
                 if store.displayedWords.isEmpty {
                     EmptyStateView(message: store.issue ?? "本地词库中没有可用词条。")
                 } else {
                     WordBoardView(
                         words: store.displayedWords,
+                        textSize: store.defaultTextSize,
+                        synonymLimit: store.synonymLimit,
                         onReplace: store.replaceWord,
                         onShuffle: store.shuffleAll
                     )
@@ -85,6 +89,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(store: AppWordStore())
         .frame(width: 900, height: 820)
 }

@@ -1,45 +1,69 @@
-//
-//  GREGlanceWidget.swift
-//  GREGlanceWidget
-//
-//  Created by severushou on 2026/7/16.
-//
-
-import WidgetKit
-import SwiftUI
 import AppIntents
+import SwiftUI
+import WidgetKit
+
+struct GREGlanceWidgetConfigurationIntent: WidgetConfigurationIntent {
+    static let title: LocalizedStringResource = "GRE Glance Display"
+    static let description = IntentDescription("Choose the text size for this Widget.")
+
+    @Parameter(title: "Text Size", default: .followApp)
+    var textSize: WidgetTextSize
+}
 
 struct GREGlanceWidgetEntry: TimelineEntry {
     let date: Date
     let words: [GREWord]
     let issue: String?
+    let textSize: WidgetTextSize
+    let synonymLimit: Int
 }
 
-struct GREGlanceTimelineProvider: TimelineProvider {
+struct GREGlanceTimelineProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> GREGlanceWidgetEntry {
-        GREGlanceWidgetEntry(date: Date(), words: GREWord.fallbackWords, issue: nil)
+        GREGlanceWidgetEntry(
+            date: Date(),
+            words: GREWord.fallbackWords,
+            issue: nil,
+            textSize: .extraLarge,
+            synonymLimit: 3
+        )
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (GREGlanceWidgetEntry) -> Void) {
-        completion(makeEntry(usePreviewData: context.isPreview))
+    func snapshot(for configuration: GREGlanceWidgetConfigurationIntent, in context: Context) async -> GREGlanceWidgetEntry {
+        makeEntry(configuration: configuration, usePreviewData: context.isPreview)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<GREGlanceWidgetEntry>) -> Void) {
-        completion(Timeline(entries: [makeEntry(usePreviewData: false)], policy: .never))
+    func timeline(for configuration: GREGlanceWidgetConfigurationIntent, in context: Context) async -> Timeline<GREGlanceWidgetEntry> {
+        Timeline(entries: [makeEntry(configuration: configuration, usePreviewData: false)], policy: .never)
     }
 
-    private func makeEntry(usePreviewData: Bool) -> GREGlanceWidgetEntry {
+    private func makeEntry(
+        configuration: GREGlanceWidgetConfigurationIntent,
+        usePreviewData: Bool
+    ) -> GREGlanceWidgetEntry {
+        let snapshot = WordRepository().load()
+        let preferences = SharedPreferencesStore().load(availablePackIDs: snapshot.packIDs)
+        let resolvedSize = configuration.textSize.resolved(defaultSize: preferences.defaultTextSize)
+
         if usePreviewData {
-            return GREGlanceWidgetEntry(date: Date(), words: GREWord.fallbackWords, issue: nil)
+            return GREGlanceWidgetEntry(
+                date: Date(),
+                words: Array(snapshot.words.prefix(SharedConstants.displayedWordCount)),
+                issue: nil,
+                textSize: resolvedSize,
+                synonymLimit: preferences.synonymLimit
+            )
         }
 
-        let snapshot = WordRepository().load()
+        let words = snapshot.words(selectedPackIDs: preferences.selectedPackIDs)
         let stateStore = WordStateStore()
-        let state = stateStore.currentState(words: snapshot.words)
+        let state = stateStore.currentState(words: words)
         return GREGlanceWidgetEntry(
             date: Date(),
-            words: stateStore.words(for: state, in: snapshot.words),
-            issue: snapshot.issue
+            words: stateStore.words(for: state, in: words),
+            issue: snapshot.issue,
+            textSize: resolvedSize,
+            synonymLimit: preferences.synonymLimit
         )
     }
 }
@@ -49,98 +73,125 @@ struct GREGlanceWidgetView: View {
 
     var body: some View {
         if entry.words.isEmpty {
-            VStack(spacing: 8) {
-                Image(systemName: "text.book.closed")
-                    .font(.title2)
-                Text("无法加载本地词库")
-                    .font(.headline)
-                Text(entry.issue ?? "请打开 GRE Glance 检查数据文件。")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            emptyState
         } else {
             VStack(spacing: 0) {
-                HStack {
-                    Label("GRE Glance", systemImage: "rectangle.stack.fill")
-                        .font(.system(size: 12, weight: .semibold))
-                        .foregroundStyle(.secondary)
-                    Spacer()
-                    Text("看见 · 熟悉")
-                        .font(.system(size: 10.5, weight: .medium))
-                        .foregroundStyle(.tertiary)
-                }
-                .padding(.bottom, 4)
+                header
 
                 ForEach(Array(entry.words.enumerated()), id: \.element.id) { index, word in
-                    widgetWordRow(word, position: index)
+                    WidgetWordRow(
+                        word: word,
+                        position: index,
+                        textSize: entry.textSize,
+                        synonymLimit: entry.synonymLimit
+                    )
                     if index < entry.words.count - 1 {
-                        Divider().opacity(0.55)
+                        Divider().opacity(0.5)
                     }
                 }
 
-                Spacer(minLength: 3)
-                Divider().opacity(0.55)
-
-                HStack {
-                    if let issue = entry.issue {
-                        Label(issue, systemImage: "exclamationmark.triangle")
-                            .font(.system(size: 10.5))
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                    } else {
-                        Text("完全离线 · 不记录学习历史")
-                            .font(.system(size: 10.5))
-                            .foregroundStyle(.tertiary)
-                    }
-
-                    Spacer()
-
-                    Button(intent: ShuffleAllWordsIntent()) {
-                        Label("Shuffle All", systemImage: "arrow.triangle.2.circlepath")
-                            .font(.system(size: 11.5, weight: .medium))
-                            .padding(.horizontal, 5)
-                            .frame(minHeight: 24)
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("Shuffle all GRE words")
-                }
-                .padding(.top, 4)
+                Spacer(minLength: 2)
+                Divider().opacity(0.5)
+                footer
             }
             .padding(12)
         }
     }
 
-    private func widgetWordRow(_ word: GREWord, position: Int) -> some View {
+    private var header: some View {
+        HStack {
+            Label("GRE Glance", systemImage: "rectangle.stack.fill")
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundStyle(.secondary)
+            Spacer()
+            Text("\(entry.words.count) words · local only")
+                .font(.system(size: 10.5, weight: .medium))
+                .foregroundStyle(.secondary)
+        }
+        .padding(.bottom, 4)
+    }
+
+    private var footer: some View {
+        HStack {
+            if let issue = entry.issue {
+                Label(issue, systemImage: "exclamationmark.triangle")
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+            } else {
+                Text("完全离线 · 不记录学习历史")
+                    .font(.system(size: 10.5))
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            Button(intent: ShuffleAllWordsIntent()) {
+                Label("Shuffle All", systemImage: "arrow.triangle.2.circlepath")
+                    .font(.system(size: 11.5, weight: .medium))
+                    .padding(.horizontal, 5)
+                    .frame(minHeight: 24)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Shuffle all GRE words")
+        }
+        .padding(.top, 4)
+    }
+
+    private var emptyState: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "text.book.closed")
+                .font(.title2)
+            Text("无法加载本地词库")
+                .font(.headline)
+            Text(entry.issue ?? "请打开 GRE Glance 检查数据文件。")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+private struct WidgetWordRow: View {
+    let word: GREWord
+    let position: Int
+    let textSize: WidgetTextSize
+    let synonymLimit: Int
+
+    var body: some View {
         VStack(alignment: .leading, spacing: 3) {
             HStack(alignment: .firstTextBaseline, spacing: 5) {
                 Text(word.word)
-                    .font(.system(size: 20, weight: .semibold))
+                    .font(.system(size: textSize.wordFontSize, weight: .semibold))
                     .lineLimit(1)
-                    .minimumScaleFactor(0.78)
+                    .minimumScaleFactor(0.74)
+                    .layoutPriority(3)
 
                 Text(word.partOfSpeech)
                     .font(.system(size: 10.5, weight: .medium))
-                    .foregroundStyle(.tertiary)
+                    .foregroundStyle(.secondary)
 
                 Text(word.chineseMeaning)
-                    .font(.system(size: 15.5, weight: .medium))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.76)
-
-                Spacer(minLength: 4)
-
-                Text(word.synonyms.prefix(3).joined(separator: " · "))
-                    .font(.system(size: 10.75))
-                    .foregroundStyle(.secondary)
+                    .font(.system(size: textSize.meaningFontSize, weight: .medium))
                     .lineLimit(1)
                     .minimumScaleFactor(0.72)
+                    .layoutPriority(2)
+
+                Spacer(minLength: 3)
+
+                ViewThatFits(in: .horizontal) {
+                    synonymText(count: min(synonymLimit, 3))
+                    if synonymLimit > 1 { synonymText(count: min(synonymLimit, 2)) }
+                    synonymText(count: 1)
+                    Color.clear.frame(width: 0, height: 1)
+                }
 
                 Button(intent: ReplaceWordIntent(position: position, expectedWordID: word.id)) {
                     Image(systemName: "checkmark.circle")
                         .font(.system(size: 17, weight: .medium))
-                        .frame(width: 26, height: 24)
+                        .frame(width: 28, height: 26)
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
@@ -149,7 +200,7 @@ struct GREGlanceWidgetView: View {
             }
 
             Text(word.exampleSentence)
-                .font(.system(size: 12))
+                .font(.system(size: textSize.exampleFontSize))
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
                 .truncationMode(.tail)
@@ -157,18 +208,30 @@ struct GREGlanceWidgetView: View {
         .padding(.vertical, 5)
         .accessibilityElement(children: .contain)
     }
+
+    private func synonymText(count: Int) -> some View {
+        Text(word.synonyms.prefix(count).joined(separator: " · "))
+            .font(.system(size: 10.75))
+            .foregroundStyle(.secondary)
+            .lineLimit(1)
+            .fixedSize(horizontal: true, vertical: false)
+    }
 }
 
 struct GREGlanceWidget: Widget {
     let kind = SharedConstants.widgetKind
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: GREGlanceTimelineProvider()) { entry in
+        AppIntentConfiguration(
+            kind: kind,
+            intent: GREGlanceWidgetConfigurationIntent.self,
+            provider: GREGlanceTimelineProvider()
+        ) { entry in
             GREGlanceWidgetView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("GRE Glance")
-        .description("Five quiet GRE words for your desktop.")
+        .description("Five quiet GRE words from your selected packs.")
         .supportedFamilies([.systemLarge])
     }
 }
@@ -176,5 +239,11 @@ struct GREGlanceWidget: Widget {
 #Preview(as: .systemLarge) {
     GREGlanceWidget()
 } timeline: {
-    GREGlanceWidgetEntry(date: Date(), words: GREWord.fallbackWords, issue: nil)
+    GREGlanceWidgetEntry(
+        date: Date(),
+        words: GREWord.fallbackWords,
+        issue: nil,
+        textSize: .extraLarge,
+        synonymLimit: 3
+    )
 }

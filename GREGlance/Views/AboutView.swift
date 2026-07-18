@@ -7,7 +7,7 @@ struct AboutView: View {
     let usesFallbackData: Bool
 
     private var version: String {
-        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.1.0"
     }
 
     var body: some View {
@@ -22,8 +22,10 @@ struct AboutView: View {
                     Text("GRE Glance \(version)")
                         .font(.callout.weight(.semibold))
                     Text("代码：MIT License")
-                    Text("开发词库：项目原创，CC0-1.0")
-                    Text("GitHub：发布仓库后补充链接")
+                    Text("词库：ECDICT MIT + Open English WordNet CC BY 4.0")
+                    if let repositoryURL = URL(string: "https://github.com/severushou-jpg/GRE-Glance") {
+                        Link("GitHub：severushou-jpg/GRE-Glance", destination: repositoryURL)
+                    }
                     Text("独立学习工具，与 ETS 无隶属或背书关系。")
                         .foregroundStyle(.secondary)
                 }

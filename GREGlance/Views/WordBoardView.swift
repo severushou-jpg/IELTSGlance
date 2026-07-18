@@ -2,13 +2,20 @@ import SwiftUI
 
 struct WordBoardView: View {
     let words: [GREWord]
+    let textSize: WidgetTextSize
+    let synonymLimit: Int
     let onReplace: (Int) -> Void
     let onShuffle: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
             ForEach(Array(words.enumerated()), id: \.element.id) { index, word in
-                WordRowView(word: word, position: index) {
+                WordRowView(
+                    word: word,
+                    position: index,
+                    textSize: textSize,
+                    synonymLimit: synonymLimit
+                ) {
                     onReplace(index)
                 }
 

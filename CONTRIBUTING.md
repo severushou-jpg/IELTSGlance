@@ -17,22 +17,12 @@ Run these checks before submitting a pull request:
 ```bash
 python3 scripts/validate_words.py
 
-swiftc -parse-as-library \
-  Shared/Models/GREWord.swift \
-  Shared/Models/WidgetDisplayState.swift \
-  Shared/Support/SharedConstants.swift \
-  Shared/Services/RandomWordPicker.swift \
-  Shared/Stores/WordStateStore.swift \
-  scripts/verify_state_logic.swift \
-  -framework Security \
-  -o /tmp/verify_gre_glance_state
-/tmp/verify_gre_glance_state
-
 xcodebuild -project GREGlance.xcodeproj \
   -scheme GREGlance \
   -configuration Debug \
   -destination "platform=macOS" \
-  build
+  CODE_SIGNING_ALLOWED=NO \
+  test
 ```
 
 If your Personal Team cannot provision App Groups, follow the documented fallback in `README.md` rather than committing personal signing changes.

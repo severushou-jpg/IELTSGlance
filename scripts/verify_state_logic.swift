@@ -43,7 +43,7 @@ enum VerifyStateLogic {
         try require(shuffled.wordIDs.count == 5, "shuffle must select five words")
         try require(Set(shuffled.wordIDs).count == 5, "shuffle must contain unique words")
 
-        defaults.set(Data("damaged".utf8), forKey: SharedConstants.stateDefaultsKey)
+        defaults.set(Data("damaged".utf8), forKey: SharedConstants.stateFileDefaultsKey)
         let repaired = store.currentState(words: words)
         try require(repaired.wordIDs.count == 5, "damaged defaults must recover safely")
         try require(Set(repaired.wordIDs).count == 5, "recovered state must contain unique words")

@@ -9,11 +9,17 @@ import SwiftUI
 
 @main
 struct GREGlanceApp: App {
+    @State private var store = AppWordStore()
+
     var body: some Scene {
         WindowGroup("GRE Glance", id: "main") {
-            ContentView()
+            ContentView(store: store)
         }
         .defaultSize(width: 900, height: 820)
         .windowResizability(.contentMinSize)
+
+        Settings {
+            SettingsView(store: store)
+        }
     }
 }

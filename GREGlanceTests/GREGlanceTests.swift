@@ -1,0 +1,77 @@
+import XCTest
+@testable import GREGlance
+
+final class GREGlanceTests: XCTestCase {
+    func testBundledVocabularyHasFifteenUniquePacksOfOneHundred() throws {
+        let snapshot = WordRepository().load()
+        XCTAssertFalse(snapshot.isUsingFallback, snapshot.issue ?? "Unexpected fallback")
+        XCTAssertEqual(snapshot.packs.count, 15)
+        XCTAssertTrue(snapshot.packs.allSatisfy { $0.words.count == 100 })
+        XCTAssertEqual(snapshot.words.count, 1500)
+        XCTAssertEqual(Set(snapshot.words.map(\.id)).count, 1500)
+        XCTAssertEqual(Set(snapshot.words.map { $0.word.lowercased() }).count, 1500)
+    }
+
+    func testSelectedPacksDefineTheRandomPool() {
+        let snapshot = WordRepository().load()
+        let selected = Array(snapshot.packs.prefix(2).map(\.id))
+        let words = snapshot.words(selectedPackIDs: selected)
+        XCTAssertEqual(words.count, 200)
+        XCTAssertEqual(Set(words.map(\.id)).count, 200)
+    }
+
+    func testPreferencesAlwaysKeepAtLeastOneAvailablePack() {
+        let repaired = GREGlancePreferences(
+            selectedPackIDs: ["missing"],
+            defaultTextSize: .followApp,
+            synonymLimit: 99
+        ).repaired(availablePackIDs: ["pack-1", "pack-2"])
+        XCTAssertEqual(repaired.selectedPackIDs, ["pack-1"])
+        XCTAssertEqual(repaired.defaultTextSize, .extraLarge)
+        XCTAssertEqual(repaired.synonymLimit, 3)
+    }
+
+    func testSingleReplacementPreservesOtherFourPositions() throws {
+        let (store, defaults) = try makeStore()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        let words = Array(WordRepository().load().words.prefix(25))
+        let before = store.currentState(words: words)
+        XCTAssertEqual(before.wordIDs.count, 5)
+        let after = store.replaceWord(at: 2, expectedWordID: before.wordIDs[2], words: words)
+        XCTAssertEqual(Array(before.wordIDs.prefix(2)), Array(after.wordIDs.prefix(2)))
+        XCTAssertEqual(Array(before.wordIDs.suffix(2)), Array(after.wordIDs.suffix(2)))
+        XCTAssertNotEqual(before.wordIDs[2], after.wordIDs[2])
+        XCTAssertEqual(Set(after.wordIDs).count, 5)
+    }
+
+    func testCorruptStateRepairsWithoutCrashing() throws {
+        let (store, defaults) = try makeStore()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        defaults.set(Data("not-json".utf8), forKey: SharedConstants.stateFileDefaultsKey)
+        let words = Array(WordRepository().load().words.prefix(10))
+        let repaired = store.currentState(words: words)
+        XCTAssertEqual(repaired.wordIDs.count, 5)
+        XCTAssertEqual(Set(repaired.wordIDs).count, 5)
+    }
+
+    func testShuffleProducesFiveUniqueWords() throws {
+        let (store, defaults) = try makeStore()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        let state = store.shuffleAll(words: Array(WordRepository().load().words.prefix(100)))
+        XCTAssertEqual(state.wordIDs.count, 5)
+        XCTAssertEqual(Set(state.wordIDs).count, 5)
+    }
+
+    private func makeStore() throws -> (WordStateStore, UserDefaults) {
+        let suite = "GREGlanceTests.\(UUID().uuidString)"
+        guard let defaults = UserDefaults(suiteName: suite) else {
+            throw XCTSkip("Unable to create isolated UserDefaults suite")
+        }
+        defaults.set(suite, forKey: "GREGlanceTestsSuiteName")
+        return (WordStateStore(defaults: defaults), defaults)
+    }
+
+    private func defaultsSuiteName(_ defaults: UserDefaults) -> String {
+        defaults.string(forKey: "GREGlanceTestsSuiteName") ?? "GREGlanceTests"
+    }
+}

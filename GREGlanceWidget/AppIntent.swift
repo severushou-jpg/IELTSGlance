@@ -28,10 +28,12 @@ struct ReplaceWordIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         let repository = WordRepository().load()
+        let preferences = SharedPreferencesStore().load(availablePackIDs: repository.packIDs)
+        let words = repository.words(selectedPackIDs: preferences.selectedPackIDs)
         _ = WordStateStore().replaceWord(
             at: position,
             expectedWordID: expectedWordID,
-            words: repository.words
+            words: words
         )
         WidgetCenter.shared.reloadTimelines(ofKind: SharedConstants.widgetKind)
         return .result()
@@ -45,7 +47,9 @@ struct ShuffleAllWordsIntent: AppIntent {
 
     func perform() async throws -> some IntentResult {
         let repository = WordRepository().load()
-        _ = WordStateStore().shuffleAll(words: repository.words)
+        let preferences = SharedPreferencesStore().load(availablePackIDs: repository.packIDs)
+        let words = repository.words(selectedPackIDs: preferences.selectedPackIDs)
+        _ = WordStateStore().shuffleAll(words: words)
         WidgetCenter.shared.reloadTimelines(ofKind: SharedConstants.widgetKind)
         return .result()
     }
