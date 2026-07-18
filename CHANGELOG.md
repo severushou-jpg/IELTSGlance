@@ -2,6 +2,13 @@
 
 All notable changes to GRE Glance are documented here.
 
+## 1.1.4 — 2026-07-18
+
+- Disable implicit glyph scaling and tightening for Widget words, meanings, parts of speech, and examples.
+- Give every word row the same fixed height and clip overflow instead of allowing vertical layout compression.
+- Migrate the legacy per-Widget Extra Large value to Comfortable while preserving a distinct new Extra Large option.
+- Add regression coverage for old and new Widget text-size persistence values.
+
 ## 1.1.3 — 2026-07-18
 
 - Use one invariant primary-text layout for every Widget row, regardless of content length.

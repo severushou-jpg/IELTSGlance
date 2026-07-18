@@ -1,7 +1,7 @@
 import Foundation
 
 struct GREGlancePreferences: Codable, Equatable, Sendable {
-    var schemaVersion: Int? = 2
+    var schemaVersion: Int? = 3
     var selectedPackIDs: [String]
     var defaultTextSize: WidgetTextSize
     var synonymLimit: Int
@@ -25,12 +25,12 @@ struct GREGlancePreferences: Codable, Equatable, Sendable {
         }
 
         var repairedTextSize = defaultTextSize == .followApp ? .comfortable : defaultTextSize
-        if (schemaVersion ?? 1) < 2, repairedTextSize == .extraLarge {
+        if repairedTextSize == .legacyExtraLarge {
             repairedTextSize = .comfortable
         }
 
         return GREGlancePreferences(
-            schemaVersion: 2,
+            schemaVersion: 3,
             selectedPackIDs: selected,
             defaultTextSize: repairedTextSize,
             synonymLimit: min(max(synonymLimit, 1), 3)

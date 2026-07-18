@@ -29,18 +29,41 @@ final class GREGlanceTests: XCTestCase {
         XCTAssertEqual(repaired.selectedPackIDs, ["pack-1"])
         XCTAssertEqual(repaired.defaultTextSize, .comfortable)
         XCTAssertEqual(repaired.synonymLimit, 3)
-        XCTAssertEqual(repaired.schemaVersion, 2)
+        XCTAssertEqual(repaired.schemaVersion, 3)
     }
 
     func testLegacyExtraLargeDefaultMigratesToComfortable() {
         let repaired = GREGlancePreferences(
             schemaVersion: nil,
             selectedPackIDs: ["pack-1"],
-            defaultTextSize: .extraLarge,
+            defaultTextSize: .legacyExtraLarge,
             synonymLimit: 3
         ).repaired(availablePackIDs: ["pack-1"])
         XCTAssertEqual(repaired.defaultTextSize, .comfortable)
-        XCTAssertEqual(repaired.schemaVersion, 2)
+        XCTAssertEqual(repaired.schemaVersion, 3)
+    }
+
+    func testNewExtraLargePreferenceRemainsAvailable() {
+        let repaired = GREGlancePreferences(
+            schemaVersion: 3,
+            selectedPackIDs: ["pack-1"],
+            defaultTextSize: .extraLarge,
+            synonymLimit: 3
+        ).repaired(availablePackIDs: ["pack-1"])
+        XCTAssertEqual(repaired.defaultTextSize, .extraLarge)
+        XCTAssertEqual(repaired.schemaVersion, 3)
+    }
+
+    func testLegacyWidgetExtraLargeRawValueMigratesWithoutAffectingNewChoice() throws {
+        let legacy = try JSONDecoder().decode(
+            WidgetTextSize.self,
+            from: Data("\"extraLarge\"".utf8)
+        )
+        XCTAssertEqual(legacy, .legacyExtraLarge)
+        XCTAssertEqual(legacy.resolved(defaultSize: .comfortable), .comfortable)
+
+        let encodedNewChoice = try JSONEncoder().encode(WidgetTextSize.extraLarge)
+        XCTAssertEqual(String(decoding: encodedNewChoice, as: UTF8.self), "\"extraLargeV2\"")
     }
 
     func testSingleReplacementPreservesOtherFourPositions() throws {

@@ -24,7 +24,7 @@ struct GREGlanceTimelineProvider: AppIntentTimelineProvider {
             date: Date(),
             words: GREWord.fallbackWords,
             issue: nil,
-            textSize: .extraLarge,
+            textSize: .comfortable,
             synonymLimit: 3
         )
     }
@@ -163,10 +163,28 @@ private struct WidgetWordRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
             HStack(alignment: .firstTextBaseline, spacing: 5) {
-                primaryText
+                Text(word.word)
+                    .font(.system(size: textSize.wordFontSize, weight: .semibold))
                     .lineLimit(1)
+                    .minimumScaleFactor(1)
+                    .allowsTightening(false)
+                    .fixedSize(horizontal: true, vertical: true)
+
+                Text(word.partOfSpeech)
+                    .font(.system(size: 10.5, weight: .medium))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(1)
+                    .allowsTightening(false)
+                    .fixedSize(horizontal: true, vertical: true)
+
+                Text(word.chineseMeaning)
+                    .font(.system(size: textSize.meaningFontSize, weight: .medium))
+                    .lineLimit(1)
+                    .minimumScaleFactor(1)
+                    .allowsTightening(false)
                     .truncationMode(.tail)
-                    .layoutPriority(2)
+                    .layoutPriority(3)
 
                 Spacer(minLength: 3)
 
@@ -181,21 +199,21 @@ private struct WidgetWordRow: View {
 
                 replaceButton
             }
+            .frame(height: 26)
+            .clipped()
 
             Text(word.exampleSentence)
                 .font(.system(size: textSize.exampleFontSize))
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
+                .minimumScaleFactor(1)
+                .allowsTightening(false)
                 .truncationMode(.tail)
         }
-        .padding(.vertical, 5)
+        .padding(.vertical, 2)
+        .frame(height: 48)
+        .clipped()
         .accessibilityElement(children: .contain)
-    }
-
-    /// The primary content is rendered exactly once. Adaptive layout is limited
-    /// to the synonym view, so long words cannot select a different font branch.
-    private var primaryText: Text {
-        Text("\(Text(word.word).font(.system(size: textSize.wordFontSize, weight: .semibold))) \(Text(word.partOfSpeech).font(.system(size: 10.5, weight: .medium)).foregroundColor(.secondary)) \(Text(word.chineseMeaning).font(.system(size: textSize.meaningFontSize, weight: .medium)))")
     }
 
     private var replaceButton: some View {
