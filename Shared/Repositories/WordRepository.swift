@@ -5,11 +5,11 @@ struct WordRepositorySnapshot: Sendable {
     let issue: String?
     let isUsingFallback: Bool
 
-    var words: [GREWord] { packs.flatMap(\.words) }
+    var words: [IELTSWord] { packs.flatMap(\.words) }
 
     var packIDs: [String] { packs.map(\.id) }
 
-    func words(selectedPackIDs: [String]) -> [GREWord] {
+    func words(selectedPackIDs: [String]) -> [IELTSWord] {
         let selected = Set(selectedPackIDs)
         let candidates = packs
             .filter { selected.contains($0.id) }
@@ -26,7 +26,7 @@ struct WordRepositorySnapshot: Sendable {
 struct WordRepository: Sendable {
     func load(bundle: Bundle = .main) -> WordRepositorySnapshot {
         do {
-            let data = try BundleResourceLoader.data(named: "gre_word_packs", extension: "json", in: bundle)
+            let data = try BundleResourceLoader.data(named: "ielts_word_packs", extension: "json", in: bundle)
             let decodedPacks = try JSONDecoder().decode([VocabularyPack].self, from: data)
             let normalizedPacks = decodedPacks
                 .sorted { $0.order < $1.order }
@@ -55,7 +55,7 @@ struct WordRepository: Sendable {
         var seenIDs = Set<String>()
         var seenWords = Set<String>()
 
-        let words: [GREWord] = pack.words.compactMap { item -> GREWord? in
+        let words: [IELTSWord] = pack.words.compactMap { item -> IELTSWord? in
             let id = item.id.trimmingCharacters(in: .whitespacesAndNewlines)
             let word = item.word.trimmingCharacters(in: .whitespacesAndNewlines)
             let normalizedWord = word.lowercased()

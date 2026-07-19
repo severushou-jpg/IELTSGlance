@@ -1,14 +1,14 @@
 import Foundation
 
 struct RandomWordPicker: Sendable {
-    func pickUniqueIDs(count: Int, from words: [GREWord], excluding: Set<String> = []) -> [String] {
+    func pickUniqueIDs(count: Int, from words: [IELTSWord], excluding: Set<String> = []) -> [String] {
         guard count > 0 else { return [] }
         let candidates = words.filter { !excluding.contains($0.id) }
         return Array(candidates.shuffled().prefix(count)).map(\.id)
     }
 
     func replacementID(
-        from words: [GREWord],
+        from words: [IELTSWord],
         excluding currentOtherIDs: Set<String>,
         avoiding replacedID: String
     ) -> String? {

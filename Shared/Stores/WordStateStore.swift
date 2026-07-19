@@ -25,14 +25,14 @@ final class WordStateStore: @unchecked Sendable {
         self.picker = picker
     }
 
-    func currentState(words: [GREWord]) -> WidgetDisplayState {
+    func currentState(words: [IELTSWord]) -> WidgetDisplayState {
         storage.update { decoded in
             repair(decoded, words: words)
         }
     }
 
     @discardableResult
-    func replaceWord(at position: Int, expectedWordID: String? = nil, words: [GREWord]) -> WidgetDisplayState {
+    func replaceWord(at position: Int, expectedWordID: String? = nil, words: [IELTSWord]) -> WidgetDisplayState {
         storage.update { decoded in
             var state = repair(decoded, words: words)
             guard state.wordIDs.indices.contains(position) else { return state }
@@ -61,7 +61,7 @@ final class WordStateStore: @unchecked Sendable {
     }
 
     @discardableResult
-    func shuffleAll(words: [GREWord]) -> WidgetDisplayState {
+    func shuffleAll(words: [IELTSWord]) -> WidgetDisplayState {
         storage.update { decoded in
             let count = min(SharedConstants.displayedWordCount, words.count)
             let ids = picker.pickUniqueIDs(count: count, from: words)
@@ -72,12 +72,12 @@ final class WordStateStore: @unchecked Sendable {
         }
     }
 
-    func words(for state: WidgetDisplayState, in allWords: [GREWord]) -> [GREWord] {
+    func words(for state: WidgetDisplayState, in allWords: [IELTSWord]) -> [IELTSWord] {
         let wordsByID = Dictionary(uniqueKeysWithValues: allWords.map { ($0.id, $0) })
         return state.wordIDs.compactMap { wordsByID[$0] }
     }
 
-    private func repair(_ state: WidgetDisplayState?, words: [GREWord]) -> WidgetDisplayState {
+    private func repair(_ state: WidgetDisplayState?, words: [IELTSWord]) -> WidgetDisplayState {
         let validIDs = Set(words.map(\.id))
         var seen = Set<String>()
         var repairedIDs = (state?.wordIDs ?? []).filter { id in

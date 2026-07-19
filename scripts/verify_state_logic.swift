@@ -3,14 +3,14 @@ import Foundation
 @main
 enum VerifyStateLogic {
     static func main() throws {
-        let suiteName = "GREGlance.StateLogicVerification.\(UUID().uuidString)"
+        let suiteName = "IELTSGlance.StateLogicVerification.\(UUID().uuidString)"
         guard let defaults = UserDefaults(suiteName: suiteName) else {
             throw VerificationError("Could not create isolated UserDefaults suite")
         }
         defer { defaults.removePersistentDomain(forName: suiteName) }
 
         let words = (0..<12).map { index in
-            GREWord(
+            IELTSWord(
                 id: "word-\(index)",
                 word: "word\(index)",
                 partOfSpeech: "n.",

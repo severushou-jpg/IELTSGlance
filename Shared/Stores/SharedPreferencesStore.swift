@@ -1,7 +1,7 @@
 import Foundation
 
 final class SharedPreferencesStore: @unchecked Sendable {
-    private let storage: SharedJSONFileStorage<GREGlancePreferences>
+    private let storage: SharedJSONFileStorage<IELTSGlancePreferences>
 
     init(defaults: UserDefaults? = nil) {
         storage = SharedJSONFileStorage(
@@ -11,7 +11,7 @@ final class SharedPreferencesStore: @unchecked Sendable {
         )
     }
 
-    func load(availablePackIDs: [String]) -> GREGlancePreferences {
+    func load(availablePackIDs: [String]) -> IELTSGlancePreferences {
         storage.update { stored in
             (stored ?? .initial(availablePackIDs: availablePackIDs))
                 .repaired(availablePackIDs: availablePackIDs)
@@ -21,8 +21,8 @@ final class SharedPreferencesStore: @unchecked Sendable {
     @discardableResult
     func update(
         availablePackIDs: [String],
-        _ transform: (inout GREGlancePreferences) -> Void
-    ) -> GREGlancePreferences {
+        _ transform: (inout IELTSGlancePreferences) -> Void
+    ) -> IELTSGlancePreferences {
         storage.update { stored in
             var preferences = (stored ?? .initial(availablePackIDs: availablePackIDs))
                 .repaired(availablePackIDs: availablePackIDs)

@@ -1,6 +1,13 @@
 # Changelog
 
-All notable changes to GRE Glance are documented here.
+All notable changes to IELTS Glance are documented here.
+
+## 2.0.0 — 2026-07-19
+
+- Rename the app, Xcode project, schemes, targets, Widget, and repository identity to IELTSGlance.
+- Replace the previous vocabulary with 1,500 IELTS-tagged high-frequency, high-difficulty words in 15 selectable packs of 100.
+- Rebuild the licensed offline curation pipeline, validation documentation, and attribution records for IELTS vocabulary.
+- Preserve the existing Bundle Identifier and App Group so Personal Team signing and installed Widgets continue working after the rename.
 
 ## 1.1.5 — 2026-07-18
 

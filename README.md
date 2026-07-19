@@ -1,13 +1,11 @@
-# GRE Glance
+# IELTS Glance
 
-[![CI](https://github.com/severushou-jpg/GRE-Glance/actions/workflows/ci.yml/badge.svg)](https://github.com/severushou-jpg/GRE-Glance/actions/workflows/ci.yml)
+[![CI](https://github.com/severushou-jpg/IELTSGlance/actions/workflows/ci.yml/badge.svg)](https://github.com/severushou-jpg/IELTSGlance/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/platform-macOS%2026.2%2B-000000?logo=apple)
 ![Swift](https://img.shields.io/badge/Swift-5-F05138?logo=swift&logoColor=white)
 [![License: MIT](https://img.shields.io/badge/code%20license-MIT-blue.svg)](LICENSE)
 
-GRE Glance is a quiet, completely offline macOS app and desktop Widget for repeated exposure to challenging GRE vocabulary. It is not a flashcard scheduler, test, streak tracker, or spaced-repetition system. A checkmark simply means “show another word”; no mastery status or learning history is created.
-
-![GRE Glance large Widget](docs/gre-glance-widget.png)
+IELTS Glance is a quiet, completely offline macOS app and desktop Widget for repeated exposure to high-frequency, challenging IELTS vocabulary. It is not a flashcard scheduler, test, streak tracker, or spaced-repetition system. A checkmark simply means “show another word”; no mastery status or learning history is created.
 
 ## What is included
 
@@ -32,14 +30,14 @@ The implementation uses APIs available from macOS 14 onward, but the repository 
 
 ## Build, test, and run
 
-Open `GREGlance.xcodeproj`, select the `GREGlance` scheme, and run on **My Mac**, or use:
+Open `IELTSGlance.xcodeproj`, select the `IELTSGlance` scheme, and run on **My Mac**, or use:
 
 ```bash
 python3 scripts/validate_words.py
 
 xcodebuild \
-  -project GREGlance.xcodeproj \
-  -scheme GREGlance \
+  -project IELTSGlance.xcodeproj \
+  -scheme IELTSGlance \
   -configuration Debug \
   -destination "platform=macOS" \
   CODE_SIGNING_ALLOWED=NO \
@@ -54,41 +52,41 @@ xcodebuild \
 
 1. Right-click an empty area of the desktop / 在桌面空白处右键。
 2. Choose **Edit Widgets** / 选择“编辑小组件”。
-3. Search for **GRE Glance** / 搜索“GRE Glance”。
+3. Search for **IELTS Glance** / 搜索“IELTS Glance”。
 4. Select the large size and add it / 选择大号尺寸并添加。
 
-Right-click the Widget and choose **Edit “GRE Glance”** to select Comfortable, Large, Extra Large, or Follow App Setting. Pack selection is global and lives in the main app so every Widget uses the same intended study pool.
+Right-click the Widget and choose **Edit “IELTS Glance”** to select Comfortable, Large, Extra Large, or Follow App Setting. Pack selection is global and lives in the main app so every Widget uses the same intended study pool.
 
 ## Vocabulary curation
 
-The shipped dataset has **1,500 entries in 15 packs of 100**. It is a transparent editorial approximation of “GRE-frequent and harder than IELTS,” not an official ETS frequency list:
+The shipped dataset has **1,500 entries in 15 packs of 100**. It is a transparent editorial approximation of frequently useful, upper-intermediate-to-advanced IELTS vocabulary—not an official IELTS frequency list:
 
-1. Start with ECDICT headwords tagged `gre` and exclude every headword tagged `ielts`.
-2. Exclude the very common corpus band by requiring a published ECDICT BNC/frequency rank of at least 12,000.
-3. Require usable lexical data from Open English WordNet.
-4. Prioritize the project's manually authored seed and headwords independently present in the MIT-licensed Last Minute Flashcards GRE list.
-5. Rank the remaining eligible candidates by corpus frequency, freeze the exact 1,500-word selection in `data/curated_words.txt`, and distribute the ranking bands round-robin so all 15 packs are balanced.
+1. Start with single English ECDICT headwords explicitly tagged `ielts`.
+2. Exclude entries carrying the `zk` or `gk` school-level tags.
+3. Keep a practical BNC/contemporary-corpus rank band of 3,000–40,000, excluding both very basic core words and extremely rare words.
+4. Require usable Open English WordNet lexical data, including a valid part of speech and at least two synonyms.
+5. Prefer words outside the CET-4 core, rank eligible words by corpus frequency, freeze the exact 1,500 headwords in `data/ielts_curated_words.txt`, and distribute ranking bands round-robin so every pack remains balanced.
 
-This method intentionally avoids Oxford, Cambridge, Longman, Merriam-Webster, ETS, and commercial preparation-company datasets. See [ATTRIBUTIONS.md](ATTRIBUTIONS.md) for exact versions, fields, modifications, and licenses.
+This method intentionally avoids IELTS test materials, Oxford, Cambridge Dictionary, Longman, Merriam-Webster, and commercial preparation-company datasets. See [ATTRIBUTIONS.md](ATTRIBUTIONS.md) for exact versions, fields, modifications, and licenses.
 
-The primary resource is `Shared/Resources/gre_word_packs.json`:
+The primary resource is `Shared/Resources/ielts_word_packs.json`:
 
 ```json
 [
   {
-    "id": "gre-pack-01",
-    "name": "GRE 进阶 01",
+    "id": "ielts-pack-01",
+    "name": "IELTS 进阶 01",
     "subtitle": "Words 1–100",
     "order": 1,
     "words": [
       {
-        "id": "gre-proliferate",
-        "word": "proliferate",
-        "partOfSpeech": "v.",
-        "chineseMeaning": "迅速增多",
-        "synonyms": ["multiply", "spread", "burgeon"],
-        "exampleSentence": "Unverified copies of the document began to proliferate online.",
-        "source": "ECDICT + Open English WordNet 2025; GRE Glance normalized"
+        "id": "ielts-volatile",
+        "word": "volatile",
+        "partOfSpeech": "adj.",
+        "chineseMeaning": "易变的；不稳定的",
+        "synonyms": ["unstable", "explosive", "changeable"],
+        "exampleSentence": "Prices remained volatile after the unexpected announcement.",
+        "source": "ECDICT + Open English WordNet 2025; IELTS Glance normalized"
       }
     ]
   }
@@ -98,7 +96,7 @@ The primary resource is `Shared/Resources/gre_word_packs.json`:
 The runtime accepts any valid pack resource without code changes. To rebuild from the same upstream formats, download ECDICT's `ecdict.csv` and the Open English WordNet 2025 JSON release, then run:
 
 ```bash
-python3 scripts/build_curated_packs.py \
+python3 scripts/build_ielts_packs.py \
   --ecdict /path/to/ecdict.csv \
   --oewn /path/to/english-wordnet-2025-json.zip
 
@@ -112,8 +110,7 @@ The committed selection manifest makes subsequent builds use the same 1,500 head
 - Swift code and development scripts: MIT License; see [LICENSE](LICENSE).
 - ECDICT-derived selection, corpus ranks, and concise Chinese glosses: ECDICT repository MIT license.
 - Open English WordNet synonyms, parts of speech, and examples: WordNet License plus CC BY 4.0.
-- Last Minute Flashcards headword-only curation signal: MIT License.
-- GRE Glance original seed fields and icon: CC0-1.0.
+- IELTS Glance original seed fields and icon: CC0-1.0.
 
 These data terms are separate from the code license. Do not assume that replacing the JSON automatically makes the replacement data MIT-licensed.
 
@@ -133,12 +130,12 @@ This checkout currently provisions both targets with the existing identifier:
 group.com.bingxuhou.GREGlance.shared
 ```
 
-It is held in one `APP_GROUP_IDENTIFIER` build setting and expanded into both entitlements. The first command-line provisioning build can require:
+The technical identifier is intentionally retained from the original local signing setup so existing Personal Team provisioning and installed Widgets continue working across the product rename. It is held in one `APP_GROUP_IDENTIFIER` build setting and expanded into both entitlements. The first command-line provisioning build can require:
 
 ```bash
 xcodebuild -allowProvisioningUpdates \
-  -project GREGlance.xcodeproj \
-  -scheme GREGlance \
+  -project IELTSGlance.xcodeproj \
+  -scheme IELTSGlance \
   -destination "platform=macOS" \
   build
 ```
@@ -165,7 +162,7 @@ No. Both targets run normally from the built app and all vocabulary is bundled l
 
 ## Trademark notice
 
-GRE is a registered trademark of ETS. This project is an independent study tool and is not affiliated with or endorsed by ETS.
+IELTS and its logos are trade marks of the IELTS Partners. IELTS Glance is an independent study tool and is not affiliated with, approved by, or endorsed by the British Council, IDP IELTS, or Cambridge University Press & Assessment. No official IELTS test content or branding is included. See the [official IELTS trade mark statement](https://ielts.org/legal/ielts-copyright-and-trade-mark-statement).
 
 ## Contributing and security
 

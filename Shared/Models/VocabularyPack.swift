@@ -5,7 +5,7 @@ struct VocabularyPack: Codable, Identifiable, Hashable, Sendable {
     let name: String
     let subtitle: String
     let order: Int
-    let words: [GREWord]
+    let words: [IELTSWord]
 
     var wordRangeDescription: String {
         let start = (order - 1) * 100 + 1
@@ -18,6 +18,6 @@ struct VocabularyPack: Codable, Identifiable, Hashable, Sendable {
         name: "安全示例",
         subtitle: "词库加载失败时使用",
         order: 1,
-        words: GREWord.fallbackWords
+        words: IELTSWord.fallbackWords
     )
 }

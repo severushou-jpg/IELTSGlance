@@ -30,8 +30,8 @@ jobs:
       - name: Run unit tests
         run: |
           xcodebuild \
-            -project GREGlance.xcodeproj \
-            -scheme GREGlance \
+            -project IELTSGlance.xcodeproj \
+            -scheme IELTSGlance \
             -configuration Debug \
             -destination "platform=macOS" \
             -derivedDataPath "$RUNNER_TEMP/DerivedData" \
@@ -41,8 +41,8 @@ jobs:
       - name: Build app and embedded Widget
         run: |
           xcodebuild \
-            -project GREGlance.xcodeproj \
-            -scheme GREGlance \
+            -project IELTSGlance.xcodeproj \
+            -scheme IELTSGlance \
             -configuration Debug \
             -destination "platform=macOS" \
             -derivedDataPath "$RUNNER_TEMP/DerivedData" \

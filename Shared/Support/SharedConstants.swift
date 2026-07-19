@@ -4,9 +4,9 @@ import Security
 enum SharedConstants {
     static let widgetKind = "GREGlanceWidget"
     static let displayedWordCount = 5
-    static let stateDefaultsKey = "greGlance.currentWidgetDisplayState.v1"
-    static let stateFileDefaultsKey = "greGlance.currentWidgetDisplayState.v2"
-    static let preferencesDefaultsKey = "greGlance.preferences.v1"
+    static let stateDefaultsKey = "ieltsGlance.currentWidgetDisplayState.v1"
+    static let stateFileDefaultsKey = "ieltsGlance.currentWidgetDisplayState.v2"
+    static let preferencesDefaultsKey = "ieltsGlance.preferences.v1"
 
     static var appGroupIdentifier: String? {
         if let configured = Bundle.main.object(
@@ -20,6 +20,9 @@ enum SharedConstants {
             return nil
         }
 
+        // The bundle identifier is intentionally retained from the original
+        // signing configuration so existing Personal Team provisioning and
+        // installed desktop Widgets continue to work after the product rename.
         if bundleIdentifier.hasSuffix(".GREGlanceWidget") {
             bundleIdentifier.removeLast(".GREGlanceWidget".count)
         }
@@ -68,7 +71,7 @@ enum SharedConstants {
         }
 
         guard let directory = baseURL?.appendingPathComponent(
-            "GREGlance",
+            "IELTSGlance",
             isDirectory: true
         ) else {
             return nil

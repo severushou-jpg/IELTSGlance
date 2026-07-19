@@ -34,6 +34,8 @@ print(preferred[0])
 
 APP_NAME="$SCHEME"
 pkill -x "$APP_NAME" >/dev/null 2>&1 || true
+# One-time migration cleanup for builds produced before the IELTSGlance rename.
+pkill -x "GREGlance" >/dev/null 2>&1 || true
 
 set +e
 set -o pipefail
@@ -90,6 +92,7 @@ register_current_widget_extension() {
   done < <(/usr/bin/pluginkit -m -A -D -v -i "$widget_id" 2>/dev/null | /usr/bin/awk -F '\t' 'NF > 1 { print $NF }')
 
   /usr/bin/pkill -f "/Contents/PlugIns/.*/Contents/MacOS/$widget_executable" >/dev/null 2>&1 || true
+  /usr/bin/pkill -f "/Contents/PlugIns/.*/Contents/MacOS/GREGlanceWidgetExtension" >/dev/null 2>&1 || true
   "$lsregister" -f -R -trusted "$APP_BUNDLE" >/dev/null
   /usr/bin/pluginkit -a "$widget_bundle"
   /usr/bin/pluginkit -e use -i "$widget_id"

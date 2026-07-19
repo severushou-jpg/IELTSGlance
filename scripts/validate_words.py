@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the bundled 15×100 GRE pack resource."""
+"""Validate the bundled 15×100 IELTS pack resource."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_PATH = ROOT / "Shared" / "Resources" / "gre_word_packs.json"
+DEFAULT_PATH = ROOT / "Shared" / "Resources" / "ielts_word_packs.json"
 VALID_PARTS_OF_SPEECH = {"adj.", "adv.", "n.", "v."}
 WORD_PATTERN = re.compile(r"^[a-z][a-z-]*$")
 REQUIRED_TEXT_FIELDS = ("id", "word", "partOfSpeech", "chineseMeaning", "exampleSentence")
@@ -42,6 +42,10 @@ def validate(packs: list[dict[str, Any]]) -> tuple[list[str], list[str], int]:
         elif count > 1:
             errors.append(f"Duplicate pack id: {value}")
 
+    expected_pack_ids = [f"ielts-pack-{index:02d}" for index in range(1, 16)]
+    if pack_ids != expected_pack_ids:
+        errors.append("Pack ids must be ielts-pack-01 through ielts-pack-15 in order")
+
     words: list[dict[str, Any]] = []
     for expected_order, pack in enumerate(packs, start=1):
         pack_words = pack.get("words")
@@ -61,6 +65,8 @@ def validate(packs: list[dict[str, Any]]) -> tuple[list[str], list[str], int]:
     for value, count in Counter(ids).items():
         if value and count > 1:
             errors.append(f"Duplicate id: {value} ({count} entries)")
+        elif value and not value.startswith("ielts-"):
+            errors.append(f"Non-IELTS word id: {value}")
     for value, count in Counter(normalized_words).items():
         if value and count > 1:
             errors.append(f"Duplicate word: {value} ({count} entries)")

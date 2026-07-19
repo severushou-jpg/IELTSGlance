@@ -5,7 +5,7 @@ labels: [bug]
 body:
   - type: markdown
     attributes:
-      value: Thanks for helping improve GRE Glance. Please avoid including personal or signing information.
+      value: Thanks for helping improve IELTS Glance. Please avoid including personal or signing information.
   - type: input
     id: macos-version
     attributes:

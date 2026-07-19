@@ -10,7 +10,7 @@
 
 - [ ] `python3 scripts/validate_words.py`
 - [ ] Word-state logic verifier passes
-- [ ] `GREGlance` scheme builds
+- [ ] `IELTSGlance` scheme builds
 - [ ] Widget behavior or UI was checked when relevant
 - [ ] No signing credentials, build products, or personal Xcode data are included
 
