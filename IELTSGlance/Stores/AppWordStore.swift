@@ -21,7 +21,6 @@ final class AppWordStore {
         preferences = preferencesStore.load(availablePackIDs: snapshot.packIDs)
         issue = snapshot.issue
         reloadFromPersistence()
-        reloadWidgetIfNeeded()
     }
 
     var totalWordCount: Int { snapshot.words.count }

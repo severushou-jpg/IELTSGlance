@@ -2,6 +2,21 @@
 
 All notable changes to IELTS Glance are documented here.
 
+## 2.0.2 — 2026-07-19
+
+- Remove the unusable mixed-case App Group entitlement after confirming the macOS sandbox denied the Widget access under a Personal Team profile.
+- Keep Widget Timeline generation and button App Intents in the Widget extension's own local `UserDefaults` domain, eliminating divergent state backends.
+- Add independent multi-pack selection to Edit Widget so the Personal Team fallback retains full random-pool control.
+- Keep transaction locking and revision guards so rapid duplicate interactions execute once.
+
+## 2.0.1 — 2026-07-19
+
+- Make per-word Widget replacement preserve the other four visible positions.
+- Make replacement and Shuffle All interactions idempotent so rapid duplicate taps execute only once.
+- Let WidgetKit perform its guaranteed post-interaction timeline reload and remove another duplicate reload during app startup.
+- Stop ordinary timeline reads from rewriting unchanged display state.
+- Resolve the App Group container directly so the app, Widget provider, and App Intents consistently use the same state file.
+
 ## 2.0.0 — 2026-07-19
 
 - Rename the app, Xcode project, schemes, targets, Widget, and repository identity to IELTSGlance.

@@ -6,8 +6,11 @@ struct IELTSGlanceWidgetConfigurationIntent: WidgetConfigurationIntent {
     static let title: LocalizedStringResource = "IELTS Glance Display"
     static let description = IntentDescription("Choose the text size for this Widget.")
 
-    @Parameter(title: "Text Size", default: .followApp)
+    @Parameter(title: "Text Size", default: .comfortable)
     var textSize: WidgetTextSize
+
+    @Parameter(title: "Word Packs", default: [.pack01])
+    var wordPacks: [WidgetVocabularyPack]
 }
 
 struct IELTSGlanceWidgetEntry: TimelineEntry {
@@ -16,6 +19,8 @@ struct IELTSGlanceWidgetEntry: TimelineEntry {
     let issue: String?
     let textSize: WidgetTextSize
     let synonymLimit: Int
+    let revision: Int
+    let selectedPackIDs: [String]
 }
 
 struct IELTSGlanceTimelineProvider: AppIntentTimelineProvider {
@@ -25,7 +30,9 @@ struct IELTSGlanceTimelineProvider: AppIntentTimelineProvider {
             words: IELTSWord.fallbackWords,
             issue: nil,
             textSize: .comfortable,
-            synonymLimit: 3
+            synonymLimit: 3,
+            revision: 0,
+            selectedPackIDs: [WidgetVocabularyPack.pack01.rawValue]
         )
     }
 
@@ -42,8 +49,10 @@ struct IELTSGlanceTimelineProvider: AppIntentTimelineProvider {
         usePreviewData: Bool
     ) -> IELTSGlanceWidgetEntry {
         let snapshot = WordRepository().load()
-        let preferences = SharedPreferencesStore().load(availablePackIDs: snapshot.packIDs)
-        let resolvedSize = configuration.textSize.resolved(defaultSize: preferences.defaultTextSize)
+        let selectedPackIDs = configuration.wordPacks.isEmpty
+            ? Array(snapshot.packIDs.prefix(1))
+            : configuration.wordPacks.map(\.rawValue)
+        let resolvedSize = configuration.textSize.resolved(defaultSize: .comfortable)
 
         if usePreviewData {
             return IELTSGlanceWidgetEntry(
@@ -51,11 +60,13 @@ struct IELTSGlanceTimelineProvider: AppIntentTimelineProvider {
                 words: Array(snapshot.words.prefix(SharedConstants.displayedWordCount)),
                 issue: nil,
                 textSize: resolvedSize,
-                synonymLimit: preferences.synonymLimit
+                synonymLimit: 3,
+                revision: 0,
+                selectedPackIDs: selectedPackIDs
             )
         }
 
-        let words = snapshot.words(selectedPackIDs: preferences.selectedPackIDs)
+        let words = snapshot.words(selectedPackIDs: selectedPackIDs)
         let stateStore = WordStateStore()
         let state = stateStore.currentState(words: words)
         return IELTSGlanceWidgetEntry(
@@ -63,7 +74,9 @@ struct IELTSGlanceTimelineProvider: AppIntentTimelineProvider {
             words: stateStore.words(for: state, in: words),
             issue: snapshot.issue,
             textSize: resolvedSize,
-            synonymLimit: preferences.synonymLimit
+            synonymLimit: 3,
+            revision: state.revision,
+            selectedPackIDs: selectedPackIDs
         )
     }
 }
@@ -82,6 +95,9 @@ struct IELTSGlanceWidgetView: View {
                     WidgetWordRow(
                         word: word,
                         position: index,
+                        visibleWordIDs: entry.words.map(\.id),
+                        revision: entry.revision,
+                        selectedPackIDs: entry.selectedPackIDs,
                         textSize: entry.textSize,
                         synonymLimit: entry.synonymLimit
                     )
@@ -126,7 +142,10 @@ struct IELTSGlanceWidgetView: View {
 
             Spacer()
 
-            Button(intent: ShuffleAllWordsIntent()) {
+            Button(intent: ShuffleAllWordsIntent(
+                expectedRevision: entry.revision,
+                selectedPackIDs: entry.selectedPackIDs
+            )) {
                 Label("Shuffle All", systemImage: "arrow.triangle.2.circlepath")
                     .font(.system(size: 11.5, weight: .medium))
                     .padding(.horizontal, 5)
@@ -157,6 +176,9 @@ struct IELTSGlanceWidgetView: View {
 private struct WidgetWordRow: View {
     let word: IELTSWord
     let position: Int
+    let visibleWordIDs: [String]
+    let revision: Int
+    let selectedPackIDs: [String]
     let textSize: WidgetTextSize
     let synonymLimit: Int
 
@@ -217,7 +239,13 @@ private struct WidgetWordRow: View {
     }
 
     private var replaceButton: some View {
-        Button(intent: ReplaceWordIntent(position: position, expectedWordID: word.id)) {
+        Button(intent: ReplaceWordIntent(
+            position: position,
+            expectedWordID: word.id,
+            expectedRevision: revision,
+            visibleWordIDs: visibleWordIDs,
+            selectedPackIDs: selectedPackIDs
+        )) {
             Image(systemName: "checkmark.circle")
                 .font(.system(size: 17, weight: .medium))
                 .frame(width: 28, height: 26)
@@ -263,6 +291,8 @@ struct IELTSGlanceWidget: Widget {
         words: IELTSWord.fallbackWords,
         issue: nil,
         textSize: .comfortable,
-        synonymLimit: 3
+        synonymLimit: 3,
+        revision: 0,
+        selectedPackIDs: [WidgetVocabularyPack.pack01.rawValue]
     )
 }

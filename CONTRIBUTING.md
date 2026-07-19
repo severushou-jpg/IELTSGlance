@@ -25,7 +25,7 @@ xcodebuild -project IELTSGlance.xcodeproj \
   test
 ```
 
-If your Personal Team cannot provision App Groups, follow the documented fallback in `README.md` rather than committing personal signing changes.
+The project intentionally uses the Personal Team local-storage mode documented in `README.md`; do not add personal signing identifiers or App Group entitlements to a contribution.
 
 ## Pull requests
 

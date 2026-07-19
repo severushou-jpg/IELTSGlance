@@ -15,7 +15,7 @@ enum WidgetTextSize: String, Codable, CaseIterable, AppEnum, Sendable {
     static let typeDisplayRepresentation: TypeDisplayRepresentation = "Text Size"
 
     static let caseDisplayRepresentations: [Self: DisplayRepresentation] = [
-        .followApp: "Follow App Setting",
+        .followApp: "Comfortable (Legacy)",
         .comfortable: "Comfortable",
         .large: "Large",
         .legacyExtraLarge: "Comfortable (Migrated)",
@@ -26,7 +26,7 @@ enum WidgetTextSize: String, Codable, CaseIterable, AppEnum, Sendable {
 
     var displayName: String {
         switch self {
-        case .followApp: "跟随 App 设置"
+        case .followApp: "舒适（旧版跟随设置）"
         case .comfortable: "舒适"
         case .large: "大"
         case .legacyExtraLarge: "舒适（已迁移）"

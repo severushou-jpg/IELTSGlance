@@ -5,10 +5,18 @@ final class WordStateStore: @unchecked Sendable {
     private let picker: RandomWordPicker
 
     init(picker: RandomWordPicker = RandomWordPicker()) {
+        let defaults = SharedConstants.stateDefaults()
+        SharedConstants.migrateJSONFileToDefaultsIfNeeded(
+            fileName: "display-state-v2.json",
+            defaultsKey: SharedConstants.stateFileDefaultsKey,
+            defaults: defaults
+        )
         storage = SharedJSONFileStorage(
             fileName: "display-state-v2.json",
             defaultsKey: SharedConstants.stateFileDefaultsKey,
-            legacyDefaults: SharedConstants.stateDefaults(),
+            defaults: defaults,
+            lockURL: SharedConstants.defaultsStorageLockURL(),
+            legacyDefaults: defaults,
             legacyKey: SharedConstants.stateDefaultsKey
         )
         self.picker = picker
@@ -26,18 +34,47 @@ final class WordStateStore: @unchecked Sendable {
     }
 
     func currentState(words: [IELTSWord]) -> WidgetDisplayState {
-        storage.update { decoded in
-            repair(decoded, words: words)
+        storage.updateIfNeeded { decoded in
+            let repaired = repair(decoded, words: words)
+            return (repaired, decoded != repaired)
         }
     }
 
     @discardableResult
-    func replaceWord(at position: Int, expectedWordID: String? = nil, words: [IELTSWord]) -> WidgetDisplayState {
-        storage.update { decoded in
+    func replaceWord(
+        at position: Int,
+        expectedWordID: String? = nil,
+        expectedRevision: Int? = nil,
+        displayedWordIDs: [String]? = nil,
+        words: [IELTSWord]
+    ) -> WidgetDisplayState {
+        storage.updateIfNeeded { decoded in
             var state = repair(decoded, words: words)
-            guard state.wordIDs.indices.contains(position) else { return state }
+
+            if let expectedRevision {
+                if state.revision > expectedRevision {
+                    return (state, decoded != state)
+                }
+
+                if let displayedWordIDs,
+                   isValidDisplay(displayedWordIDs, words: words) {
+                    state = WidgetDisplayState(
+                        wordIDs: displayedWordIDs,
+                        revision: expectedRevision,
+                        updatedAt: decoded?.updatedAt ?? Date()
+                    )
+                }
+
+                guard state.revision == expectedRevision else {
+                    return (state, decoded != state)
+                }
+            }
+
+            guard state.wordIDs.indices.contains(position) else {
+                return (state, decoded != state)
+            }
             if let expectedWordID, state.wordIDs[position] != expectedWordID {
-                return state
+                return (state, decoded != state)
             }
 
             let replacedID = state.wordIDs[position]
@@ -50,30 +87,41 @@ final class WordStateStore: @unchecked Sendable {
                 excluding: otherIDs,
                 avoiding: replacedID
             ) else {
-                return state
+                return (state, decoded != state)
             }
 
             state.wordIDs[position] = replacementID
             state.revision += 1
             state.updatedAt = Date()
-            return state
+            return (state, true)
         }
     }
 
     @discardableResult
-    func shuffleAll(words: [IELTSWord]) -> WidgetDisplayState {
-        storage.update { decoded in
+    func shuffleAll(
+        expectedRevision: Int? = nil,
+        words: [IELTSWord]
+    ) -> WidgetDisplayState {
+        storage.updateIfNeeded { decoded in
+            let current = repair(decoded, words: words)
+            if let expectedRevision, current.revision != expectedRevision {
+                return (current, decoded != current)
+            }
+
             let count = min(SharedConstants.displayedWordCount, words.count)
             let ids = picker.pickUniqueIDs(count: count, from: words)
-            return WidgetDisplayState(
+            return (WidgetDisplayState(
                 wordIDs: ids,
-                revision: (decoded?.revision ?? 0) + 1
-            )
+                revision: current.revision + 1
+            ), true)
         }
     }
 
     func words(for state: WidgetDisplayState, in allWords: [IELTSWord]) -> [IELTSWord] {
-        let wordsByID = Dictionary(uniqueKeysWithValues: allWords.map { ($0.id, $0) })
+        let wordsByID = Dictionary(
+            allWords.map { ($0.id, $0) },
+            uniquingKeysWith: { existing, _ in existing }
+        )
         return state.wordIDs.compactMap { wordsByID[$0] }
     }
 
@@ -99,5 +147,14 @@ final class WordStateStore: @unchecked Sendable {
             revision: state?.revision ?? 0,
             updatedAt: state?.updatedAt ?? Date()
         )
+    }
+
+    private func isValidDisplay(_ wordIDs: [String], words: [IELTSWord]) -> Bool {
+        guard wordIDs.count == min(SharedConstants.displayedWordCount, words.count),
+              Set(wordIDs).count == wordIDs.count else {
+            return false
+        }
+        let validIDs = Set(words.map(\.id))
+        return wordIDs.allSatisfy(validIDs.contains)
     }
 }

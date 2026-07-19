@@ -13,10 +13,10 @@ IELTS Glance is a quiet, completely offline macOS app and desktop Widget for rep
 - Any one pack or any combination of packs can define the random pool
 - Five distinct words in a native `.systemLarge` macOS Widget
 - Per-word replacement and `Shuffle All` using App Intents
-- Per-Widget text-size choice plus an App-wide default
+- Independent text-size and pack selection for the Widget and app preview
 - Responsive synonym layout that yields space before shrinking the word or Chinese meaning
 - Stable `.never` timelines; ordinary redraws do not change the five words
-- Atomic, cross-process locked technical state shared by the App and Widget
+- Stable revision-guarded local technical state for the App and Widget
 - Native Settings window, `⌘R`, semantic Light/Dark Mode colors, and VoiceOver labels
 - No login, server, analytics, ads, API key, AI service, or network request
 
@@ -118,29 +118,13 @@ These data terms are separate from the code license. Do not assume that replacin
 
 The app persists only the current five word IDs, a technical revision/timestamp, selected pack IDs, and display preferences. These values exist solely to keep redraws stable and honor the user's chosen random pool. They are not learning records.
 
-State is stored as atomically replaced JSON in the shared App Group container and guarded with a `flock` lock so rapid App/Widget actions cannot overwrite each other. Corrupt or obsolete values are repaired from the active word pool without crashing.
+State is stored in each target's local `UserDefaults` domain and guarded by a revision check plus a local transaction lock. Corrupt or obsolete values are repaired from the active word pool without crashing. The Widget's pack selection is part of its own Widget configuration, so it does not depend on the main app being open.
 
 The app does not save answers, mastered words, streaks, review history, behavioral analytics, or personal information. All data remains on the Mac.
 
-## App Group and Personal Team fallback
+## Personal Team storage mode
 
-This checkout currently provisions both targets with the existing identifier:
-
-```text
-group.com.bingxuhou.GREGlance.shared
-```
-
-The technical identifier is intentionally retained from the original local signing setup so existing Personal Team provisioning and installed Widgets continue working across the product rename. It is held in one `APP_GROUP_IDENTIFIER` build setting and expanded into both entitlements. The first command-line provisioning build can require:
-
-```bash
-xcodebuild -allowProvisioningUpdates \
-  -project IELTSGlance.xcodeproj \
-  -scheme IELTSGlance \
-  -destination "platform=macOS" \
-  build
-```
-
-If another free Personal Team cannot provision App Groups, remove the App Groups capability/entitlement from both targets. The code detects the signed entitlement and falls back to each target's local storage. The Widget remains fully functional; only immediate App/Widget state and preference synchronization is unavailable, and the App reports the independent mode. A paid membership is not required for the fallback MVP.
+This checkout uses the reliable Personal Team fallback: the app preview and Widget keep independent local technical state, with no App Group entitlement required. This avoids provisioning and sandbox failures on free developer profiles. The Widget remains fully functional and lets users select one or several packs through **Edit Widget**. No paid membership is required.
 
 ## FAQ
 

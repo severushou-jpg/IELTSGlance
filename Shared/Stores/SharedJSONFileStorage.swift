@@ -4,7 +4,7 @@ import Foundation
 final class SharedJSONFileStorage<Value: Codable>: @unchecked Sendable {
     private enum Backend {
         case file(dataURL: URL, lockURL: URL)
-        case defaults(UserDefaults, key: String)
+        case defaults(UserDefaults, key: String, lockURL: URL?)
     }
 
     private let backend: Backend
@@ -16,6 +16,7 @@ final class SharedJSONFileStorage<Value: Codable>: @unchecked Sendable {
         fileName: String,
         defaultsKey: String,
         defaults: UserDefaults? = nil,
+        lockURL: URL? = nil,
         legacyDefaults: UserDefaults? = nil,
         legacyKey: String? = nil
     ) {
@@ -23,14 +24,18 @@ final class SharedJSONFileStorage<Value: Codable>: @unchecked Sendable {
         self.legacyKey = legacyKey
 
         if let defaults {
-            backend = .defaults(defaults, key: defaultsKey)
+            backend = .defaults(defaults, key: defaultsKey, lockURL: lockURL)
         } else if let directory = SharedConstants.applicationSupportDirectoryURL() {
             backend = .file(
                 dataURL: directory.appendingPathComponent(fileName, isDirectory: false),
                 lockURL: directory.appendingPathComponent("\(fileName).lock", isDirectory: false)
             )
         } else {
-            backend = .defaults(SharedConstants.stateDefaults(), key: defaultsKey)
+            backend = .defaults(
+                SharedConstants.stateDefaults(),
+                key: defaultsKey,
+                lockURL: SharedConstants.defaultsStorageLockURL()
+            )
         }
     }
 
@@ -47,11 +52,32 @@ final class SharedJSONFileStorage<Value: Codable>: @unchecked Sendable {
         }
     }
 
+    @discardableResult
+    func updateIfNeeded(
+        _ transform: (Value?) -> (value: Value, shouldSave: Bool)
+    ) -> Value {
+        withExclusiveAccess {
+            let result = transform(readUnlocked())
+            if result.shouldSave {
+                saveUnlocked(result.value)
+            }
+            return result.value
+        }
+    }
+
     private func withExclusiveAccess<Result>(_ operation: () -> Result) -> Result {
         processLock.lock()
         defer { processLock.unlock() }
 
-        guard case .file(_, let lockURL) = backend else {
+        let lockURL: URL?
+        switch backend {
+        case .file(_, let fileLockURL):
+            lockURL = fileLockURL
+        case .defaults(_, _, let defaultsLockURL):
+            lockURL = defaultsLockURL
+        }
+
+        guard let lockURL else {
             return operation()
         }
 
@@ -69,7 +95,8 @@ final class SharedJSONFileStorage<Value: Codable>: @unchecked Sendable {
         switch backend {
         case .file(let dataURL, _):
             data = try? Data(contentsOf: dataURL)
-        case .defaults(let defaults, let key):
+        case .defaults(let defaults, let key, _):
+            defaults.synchronize()
             data = defaults.data(forKey: key)
         }
 
@@ -90,8 +117,9 @@ final class SharedJSONFileStorage<Value: Codable>: @unchecked Sendable {
         switch backend {
         case .file(let dataURL, _):
             try? data.write(to: dataURL, options: .atomic)
-        case .defaults(let defaults, let key):
+        case .defaults(let defaults, let key, _):
             defaults.set(data, forKey: key)
+            defaults.synchronize()
         }
 
         if let legacyDefaults, let legacyKey {

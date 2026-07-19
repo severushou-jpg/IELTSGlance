@@ -87,6 +87,72 @@ final class IELTSGlanceTests: XCTestCase {
         XCTAssertEqual(Set(after.wordIDs).count, 5)
     }
 
+    func testWidgetReplacementUsesVisibleSnapshotAndIsIdempotent() throws {
+        let (store, defaults) = try makeStore()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        let words = Array(WordRepository().load().words.prefix(25))
+        let visibleIDs = Array(words.prefix(5).map(\.id))
+
+        defaults.set(Data("damaged".utf8), forKey: SharedConstants.stateFileDefaultsKey)
+        let firstResult = store.replaceWord(
+            at: 2,
+            expectedWordID: visibleIDs[2],
+            expectedRevision: 41,
+            displayedWordIDs: visibleIDs,
+            words: words
+        )
+
+        XCTAssertEqual(firstResult.revision, 42)
+        XCTAssertNotEqual(firstResult.wordIDs[2], visibleIDs[2])
+        for index in visibleIDs.indices where index != 2 {
+            XCTAssertEqual(firstResult.wordIDs[index], visibleIDs[index])
+        }
+
+        let duplicateResult = store.replaceWord(
+            at: 2,
+            expectedWordID: visibleIDs[2],
+            expectedRevision: 41,
+            displayedWordIDs: visibleIDs,
+            words: words
+        )
+        XCTAssertEqual(duplicateResult.wordIDs, firstResult.wordIDs)
+        XCTAssertEqual(duplicateResult.revision, firstResult.revision)
+        XCTAssertEqual(duplicateResult.updatedAt, firstResult.updatedAt)
+    }
+
+    func testWidgetShuffleIgnoresRepeatedStaleInteraction() throws {
+        let (store, defaults) = try makeStore()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        let words = Array(WordRepository().load().words.prefix(100))
+        let before = store.currentState(words: words)
+
+        let firstResult = store.shuffleAll(
+            expectedRevision: before.revision,
+            words: words
+        )
+        let duplicateResult = store.shuffleAll(
+            expectedRevision: before.revision,
+            words: words
+        )
+
+        XCTAssertEqual(firstResult.revision, before.revision + 1)
+        XCTAssertEqual(duplicateResult.wordIDs, firstResult.wordIDs)
+        XCTAssertEqual(duplicateResult.revision, firstResult.revision)
+        XCTAssertEqual(duplicateResult.updatedAt, firstResult.updatedAt)
+    }
+
+    func testOrdinaryReloadDoesNotRewriteValidState() throws {
+        let (store, defaults) = try makeStore()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        let words = Array(WordRepository().load().words.prefix(25))
+        _ = store.currentState(words: words)
+        let storedBefore = defaults.data(forKey: SharedConstants.stateFileDefaultsKey)
+
+        _ = store.currentState(words: words)
+
+        XCTAssertEqual(defaults.data(forKey: SharedConstants.stateFileDefaultsKey), storedBefore)
+    }
+
     func testCorruptStateRepairsWithoutCrashing() throws {
         let (store, defaults) = try makeStore()
         defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
@@ -103,6 +169,18 @@ final class IELTSGlanceTests: XCTestCase {
         let state = store.shuffleAll(words: Array(WordRepository().load().words.prefix(100)))
         XCTAssertEqual(state.wordIDs.count, 5)
         XCTAssertEqual(Set(state.wordIDs).count, 5)
+    }
+
+    func testDuplicateIDsInFutureDataDoNotCrashStateMapping() throws {
+        let (store, defaults) = try makeStore()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        let baseWords = Array(WordRepository().load().words.prefix(5))
+        let duplicatedWords = baseWords + [baseWords[0]]
+        let state = WidgetDisplayState(wordIDs: baseWords.map(\.id))
+
+        let resolved = store.words(for: state, in: duplicatedWords)
+
+        XCTAssertEqual(resolved.map(\.id), baseWords.map(\.id))
     }
 
     private func makeStore() throws -> (WordStateStore, UserDefaults) {

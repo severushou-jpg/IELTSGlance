@@ -26,7 +26,7 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.segmented)
 
-                Text("桌面上的每个 Widget 还可单独选择字号；“跟随 App 设置”会使用这里的默认值。")
+                Text("App 预览使用这里的设置；桌面 Widget 可在“编辑小组件”中独立选择字号和词包。")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -34,7 +34,7 @@ struct SettingsView: View {
             Section("当前范围") {
                 LabeledContent("已选词包", value: "\(store.selectedPackIDs.count) / \(store.packs.count)")
                 LabeledContent("随机池", value: "\(store.selectedWordCount) 个词")
-                Text("词包选择请在主窗口中调整，App 与 Widget 会共享同一范围。")
+                Text("这里显示 App 预览的范围。Widget 的随机范围请在桌面上右键小组件并选择“编辑小组件”。")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

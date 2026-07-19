@@ -1,5 +1,4 @@
 import Foundation
-import Security
 
 enum SharedConstants {
     static let widgetKind = "GREGlanceWidget"
@@ -8,67 +7,43 @@ enum SharedConstants {
     static let stateFileDefaultsKey = "ieltsGlance.currentWidgetDisplayState.v2"
     static let preferencesDefaultsKey = "ieltsGlance.preferences.v1"
 
-    static var appGroupIdentifier: String? {
-        if let configured = Bundle.main.object(
-            forInfoDictionaryKey: "GREGlanceAppGroupIdentifier"
-        ) as? String,
-           !configured.isEmpty {
-            return configured
-        }
-
-        guard var bundleIdentifier = Bundle.main.bundleIdentifier, !bundleIdentifier.isEmpty else {
-            return nil
-        }
-
-        // The bundle identifier is intentionally retained from the original
-        // signing configuration so existing Personal Team provisioning and
-        // installed desktop Widgets continue to work after the product rename.
-        if bundleIdentifier.hasSuffix(".GREGlanceWidget") {
-            bundleIdentifier.removeLast(".GREGlanceWidget".count)
-        }
-        return "group.\(bundleIdentifier).shared"
-    }
-
-    static var usesAppGroup: Bool {
-        guard let identifier = appGroupIdentifier,
-              let task = SecTaskCreateFromSelf(nil),
-              let groups = SecTaskCopyValueForEntitlement(
-                task,
-                "com.apple.security.application-groups" as CFString,
-                nil
-              ) as? [String] else {
-            return false
-        }
-        return groups.contains(identifier)
-    }
+    static let usesAppGroup = false
 
     static func stateDefaults() -> UserDefaults {
-        if usesAppGroup,
-           let identifier = appGroupIdentifier,
-           let sharedDefaults = UserDefaults(suiteName: identifier) {
-            return sharedDefaults
-        }
         return .standard
+    }
+
+    static func defaultsStorageLockURL() -> URL? {
+        let baseURL = FileManager.default.urls(
+            for: .applicationSupportDirectory,
+            in: .userDomainMask
+        ).first
+        return baseURL?.appendingPathComponent(
+            "IELTSGlance-local-defaults.lock",
+            isDirectory: false
+        )
+    }
+
+    static func migrateJSONFileToDefaultsIfNeeded(
+        fileName: String,
+        defaultsKey: String,
+        defaults: UserDefaults
+    ) {
+        guard defaults.data(forKey: defaultsKey) == nil,
+              let directory = applicationSupportDirectoryURL(),
+              let data = try? Data(contentsOf: directory.appendingPathComponent(fileName)) else {
+            return
+        }
+        defaults.set(data, forKey: defaultsKey)
+        defaults.synchronize()
     }
 
     static func applicationSupportDirectoryURL() -> URL? {
         let fileManager = FileManager.default
-        let baseURL: URL?
-
-        if usesAppGroup,
-           let identifier = appGroupIdentifier,
-           let groupURL = fileManager.containerURL(
-               forSecurityApplicationGroupIdentifier: identifier
-           ) {
-            baseURL = groupURL
-                .appendingPathComponent("Library", isDirectory: true)
-                .appendingPathComponent("Application Support", isDirectory: true)
-        } else {
-            baseURL = fileManager.urls(
-                for: .applicationSupportDirectory,
-                in: .userDomainMask
-            ).first
-        }
+        let baseURL = fileManager.urls(
+            for: .applicationSupportDirectory,
+            in: .userDomainMask
+        ).first
 
         guard let directory = baseURL?.appendingPathComponent(
             "IELTSGlance",

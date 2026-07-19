@@ -39,9 +39,40 @@ enum VerifyStateLogic {
         let staleTap = store.replaceWord(at: 2, expectedWordID: first.wordIDs[2], words: words)
         try require(staleTap.wordIDs == replaced.wordIDs, "a stale rapid tap must not replace the newer word")
 
-        let shuffled = store.shuffleAll(words: words)
+        let widgetReplacement = store.replaceWord(
+            at: 1,
+            expectedWordID: replaced.wordIDs[1],
+            expectedRevision: replaced.revision,
+            displayedWordIDs: replaced.wordIDs,
+            words: words
+        )
+        let duplicateWidgetTap = store.replaceWord(
+            at: 1,
+            expectedWordID: replaced.wordIDs[1],
+            expectedRevision: replaced.revision,
+            displayedWordIDs: replaced.wordIDs,
+            words: words
+        )
+        try require(
+            duplicateWidgetTap == widgetReplacement,
+            "a repeated Widget interaction must be idempotent"
+        )
+
+        let shuffled = store.shuffleAll(
+            expectedRevision: widgetReplacement.revision,
+            words: words
+        )
         try require(shuffled.wordIDs.count == 5, "shuffle must select five words")
         try require(Set(shuffled.wordIDs).count == 5, "shuffle must contain unique words")
+
+        let duplicateShuffle = store.shuffleAll(
+            expectedRevision: widgetReplacement.revision,
+            words: words
+        )
+        try require(
+            duplicateShuffle == shuffled,
+            "a repeated Shuffle interaction must not shuffle again"
+        )
 
         defaults.set(Data("damaged".utf8), forKey: SharedConstants.stateFileDefaultsKey)
         let repaired = store.currentState(words: words)
