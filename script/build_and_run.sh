@@ -85,6 +85,35 @@ register_current_widget_extension() {
   widget_debug_dylib="$widget_bundle/Contents/MacOS/${widget_executable}.debug.dylib"
   lsregister="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister"
 
+  verify_interaction_metadata() {
+    local bundle metadata
+    bundle="$1"
+    metadata="$bundle/Contents/Resources/Metadata.appintents/extract.actionsdata"
+
+    if [[ ! -f "$metadata" ]]; then
+      echo "error: App Intents metadata is missing from $bundle" >&2
+      exit 1
+    fi
+    if ! /usr/bin/grep -aq 'ReplaceWordIntent' "$metadata"; then
+      echo "error: ReplaceWordIntent is missing from App Intents metadata in $bundle" >&2
+      exit 1
+    fi
+    if ! /usr/bin/grep -aq 'ShuffleAllWordsIntent' "$metadata"; then
+      echo "error: ShuffleAllWordsIntent is missing from App Intents metadata in $bundle" >&2
+      exit 1
+    fi
+    if ! /usr/bin/grep -aq 'selectedPackIDsPayload' "$metadata"; then
+      echo "error: Widget interaction metadata still uses an unsafe collection payload in $bundle" >&2
+      exit 1
+    fi
+  }
+
+  # WidgetKit interactive actions must be discoverable from both the containing
+  # app and the extension. If either side is absent, macOS cannot archive the
+  # button LinkAction and replaces the entire Widget with a skeleton view.
+  verify_interaction_metadata "$APP_BUNDLE"
+  verify_interaction_metadata "$widget_bundle"
+
   if ! /usr/bin/codesign -d --entitlements - --xml "$widget_bundle" 2>&1 | \
       /usr/bin/grep -q '<key>com.apple.security.app-sandbox</key>'; then
     echo "error: Widget extension is missing the App Sandbox entitlement" >&2
