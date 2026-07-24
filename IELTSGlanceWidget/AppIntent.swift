@@ -7,6 +7,15 @@
 
 import AppIntents
 
+enum WidgetVocabularyExam: String, AppEnum, CaseIterable {
+    case ielts = "ielts"
+
+    static let typeDisplayRepresentation: TypeDisplayRepresentation = "English exam"
+    static let caseDisplayRepresentations: [WidgetVocabularyExam: DisplayRepresentation] = [
+        .ielts: "IELTS · 雅思"
+    ]
+}
+
 enum WidgetVocabularyPack: String, AppEnum, CaseIterable {
     case pack01 = "ielts-pack-01"
     case pack02 = "ielts-pack-02"

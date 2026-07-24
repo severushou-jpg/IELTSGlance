@@ -5,6 +5,9 @@ final class IELTSGlanceTests: XCTestCase {
     func testBundledVocabularyHasFifteenUniquePacksOfOneHundred() throws {
         let snapshot = WordRepository().load()
         XCTAssertFalse(snapshot.isUsingFallback, snapshot.issue ?? "Unexpected fallback")
+        XCTAssertEqual(snapshot.exams.count, 1)
+        XCTAssertEqual(snapshot.defaultExam?.id, SharedConstants.legacyIELTSExamID)
+        XCTAssertEqual(snapshot.defaultExam?.name, "IELTS")
         XCTAssertEqual(snapshot.packs.count, 15)
         XCTAssertTrue(snapshot.packs.allSatisfy { $0.words.count == 100 })
         XCTAssertEqual(snapshot.words.count, 1500)
@@ -45,6 +48,21 @@ final class IELTSGlanceTests: XCTestCase {
         let words = snapshot.words(selectedPackIDs: selected)
         XCTAssertEqual(words.count, 200)
         XCTAssertEqual(Set(words.map(\.id)).count, 200)
+    }
+
+    func testLegacyIELTSPacksAreExposedThroughGenericCatalog() {
+        let snapshot = WordRepository().load()
+
+        XCTAssertEqual(snapshot.catalog.schemaVersion, 1)
+        XCTAssertEqual(snapshot.examIDs, [SharedConstants.legacyIELTSExamID])
+        XCTAssertEqual(snapshot.defaultExam?.wordCount, 1500)
+        XCTAssertEqual(
+            snapshot.words(
+                selectedExamID: SharedConstants.legacyIELTSExamID,
+                selectedPackIDs: Array(snapshot.packIDs.prefix(1))
+            ).count,
+            100
+        )
     }
 
     func testPreferencesAlwaysKeepAtLeastOneAvailablePack() {
@@ -190,6 +208,80 @@ final class IELTSGlanceTests: XCTestCase {
         XCTAssertEqual(Set(state.wordIDs).count, 5)
     }
 
+    func testLearningProgressRecordsSeenCount() throws {
+        let defaults = try makeDefaults()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        let store = VocabularyLearningProgressStore(defaults: defaults)
+
+        _ = store.recordSeen(wordID: "ielts-test")
+        let second = store.recordSeen(wordID: "ielts-test")
+
+        XCTAssertEqual(second.wordID, "ielts-test")
+        XCTAssertEqual(second.status, .seen)
+        XCTAssertEqual(second.seenCount, 2)
+        XCTAssertEqual(store.record(for: "ielts-test")?.seenCount, 2)
+    }
+
+    func testLearningProgressDoesNotDowngradeMasteredWhenSeenAgain() throws {
+        let defaults = try makeDefaults()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        let store = VocabularyLearningProgressStore(defaults: defaults)
+
+        _ = store.setStatus(.mastered, wordID: "ielts-test")
+        let seenAgain = store.recordSeen(wordID: "ielts-test")
+
+        XCTAssertEqual(seenAgain.status, .mastered)
+        XCTAssertEqual(seenAgain.seenCount, 1)
+    }
+
+    func testLearningProgressCanClearReviewLaterStatus() throws {
+        let defaults = try makeDefaults()
+        defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
+        let store = VocabularyLearningProgressStore(defaults: defaults)
+
+        _ = store.recordSeen(wordID: "ielts-test")
+        _ = store.setStatus(.reviewLater, wordID: "ielts-test")
+        let cleared = store.clearStatus(.reviewLater, wordID: "ielts-test")
+
+        XCTAssertEqual(cleared?.status, .seen)
+        XCTAssertEqual(cleared?.seenCount, 1)
+        XCTAssertEqual(store.record(for: "ielts-test")?.status, .seen)
+    }
+
+    func testSprintPackStateDoesNotRepeatWithinRound() {
+        let ids = (1...12).map { "word-\($0)" }
+        var state = SprintPackState(packID: "pack", wordIDs: ids, targetRounds: 2)
+        var seen = Set<String>()
+
+        while state.completedRounds == 0 {
+            let batch = state.visibleWordIDs(count: 5)
+            XCTAssertEqual(Set(batch).count, batch.count)
+            batch.forEach { XCTAssertTrue(seen.insert($0).inserted) }
+            state.advance(count: batch.count, allWordIDs: ids)
+        }
+
+        XCTAssertEqual(seen.count, ids.count)
+        XCTAssertEqual(state.completedRounds, 1)
+    }
+
+    func testSprintPackStateAllowsReviewLaterOnlyOnFinalRound() {
+        let ids = (1...6).map { "word-\($0)" }
+        var state = SprintPackState(packID: "pack", wordIDs: ids, targetRounds: 2)
+
+        state.markReviewLater(wordID: ids[0])
+        XCTAssertTrue(state.reviewLaterWordIDs.isEmpty)
+
+        state.advance(count: ids.count, allWordIDs: ids)
+        XCTAssertTrue(state.isFinalRound)
+        state.markReviewLater(wordID: ids[0])
+        state.markReviewLater(wordID: ids[0])
+
+        XCTAssertEqual(state.reviewLaterWordIDs, [ids[0]])
+
+        state.unmarkReviewLater(wordID: ids[0])
+        XCTAssertTrue(state.reviewLaterWordIDs.isEmpty)
+    }
+
     func testDuplicateIDsInFutureDataDoNotCrashStateMapping() throws {
         let (store, defaults) = try makeStore()
         defer { defaults.removePersistentDomain(forName: defaultsSuiteName(defaults)) }
@@ -203,12 +295,17 @@ final class IELTSGlanceTests: XCTestCase {
     }
 
     private func makeStore() throws -> (WordStateStore, UserDefaults) {
+        let defaults = try makeDefaults()
+        return (WordStateStore(defaults: defaults), defaults)
+    }
+
+    private func makeDefaults() throws -> UserDefaults {
         let suite = "IELTSGlanceTests.\(UUID().uuidString)"
         guard let defaults = UserDefaults(suiteName: suite) else {
             throw XCTSkip("Unable to create isolated UserDefaults suite")
         }
         defaults.set(suite, forKey: "IELTSGlanceTestsSuiteName")
-        return (WordStateStore(defaults: defaults), defaults)
+        return defaults
     }
 
     private func defaultsSuiteName(_ defaults: UserDefaults) -> String {

@@ -1,17 +1,34 @@
 import Foundation
 
 struct WordRepositorySnapshot: Sendable {
-    let packs: [VocabularyPack]
+    let catalog: VocabularyCatalog
     let issue: String?
     let isUsingFallback: Bool
+
+    var exams: [VocabularyExam] { catalog.exams }
+
+    var examIDs: [String] { exams.map(\.id) }
+
+    var defaultExam: VocabularyExam? { catalog.defaultExam }
+
+    var packs: [VocabularyPack] { defaultExam?.packs ?? [] }
 
     var words: [IELTSWord] { packs.flatMap(\.words) }
 
     var packIDs: [String] { packs.map(\.id) }
 
     func words(selectedPackIDs: [String]) -> [IELTSWord] {
+        words(selectedExamID: defaultExam?.id, selectedPackIDs: selectedPackIDs)
+    }
+
+    func words(selectedExamID: String?, selectedPackIDs: [String]) -> [IELTSWord] {
+        let exam = selectedExamID
+            .flatMap { id in exams.first { $0.id == id } }
+            ?? defaultExam
+        guard let exam else { return [] }
+
         let selected = Set(selectedPackIDs)
-        let candidates = packs
+        let candidates = exam.packs
             .filter { selected.contains($0.id) }
             .flatMap(\.words)
 
@@ -25,8 +42,46 @@ struct WordRepositorySnapshot: Sendable {
 
 struct WordRepository: Sendable {
     func load(bundle: Bundle = .main) -> WordRepositorySnapshot {
+        if let catalogSnapshot = loadCatalog(bundle: bundle) {
+            return catalogSnapshot
+        }
+
+        return loadLegacyIELTSPacks(bundle: bundle)
+    }
+
+    private func loadCatalog(bundle: Bundle) -> WordRepositorySnapshot? {
         do {
-            let data = try BundleResourceLoader.data(named: "ielts_word_packs", extension: "json", in: bundle)
+            let data = try BundleResourceLoader.data(
+                named: SharedConstants.catalogResourceName,
+                extension: "json",
+                in: bundle
+            )
+            let decodedCatalog = try JSONDecoder().decode(VocabularyCatalog.self, from: data)
+            let normalizedCatalog = normalized(decodedCatalog)
+
+            guard let normalizedCatalog, !normalizedCatalog.exams.isEmpty else {
+                return fallbackSnapshot(issue: "本地考试词库为空，当前显示内置安全示例。")
+            }
+
+            return WordRepositorySnapshot(
+                catalog: normalizedCatalog,
+                issue: issue(for: normalizedCatalog),
+                isUsingFallback: false
+            )
+        } catch BundleResourceLoader.ResourceError.notFound {
+            return nil
+        } catch {
+            return fallbackSnapshot(issue: "考试词库加载失败：\(error.localizedDescription) 当前显示内置安全示例。")
+        }
+    }
+
+    private func loadLegacyIELTSPacks(bundle: Bundle) -> WordRepositorySnapshot {
+        do {
+            let data = try BundleResourceLoader.data(
+                named: SharedConstants.legacyIELTSPacksResourceName,
+                extension: "json",
+                in: bundle
+            )
             let decodedPacks = try JSONDecoder().decode([VocabularyPack].self, from: data)
             let normalizedPacks = decodedPacks
                 .sorted { $0.order < $1.order }
@@ -36,14 +91,47 @@ struct WordRepository: Sendable {
                 return fallbackSnapshot(issue: "本地词库为空，当前显示内置安全示例。")
             }
 
-            let wordCount = normalizedPacks.reduce(0) { $0 + $1.words.count }
-            let issue = wordCount < SharedConstants.displayedWordCount
-                ? "词库少于五个有效词条，当前只能显示可用内容。"
-                : nil
-            return WordRepositorySnapshot(packs: normalizedPacks, issue: issue, isUsingFallback: false)
+            let catalog = VocabularyCatalog.legacyIELTS(packs: normalizedPacks)
+            return WordRepositorySnapshot(
+                catalog: catalog,
+                issue: issue(for: catalog),
+                isUsingFallback: false
+            )
         } catch {
             return fallbackSnapshot(issue: "词库加载失败：\(error.localizedDescription) 当前显示内置安全示例。")
         }
+    }
+
+    private func normalized(_ catalog: VocabularyCatalog) -> VocabularyCatalog? {
+        let exams = catalog.exams
+            .sorted { $0.order < $1.order }
+            .compactMap { normalized($0) }
+
+        guard !exams.isEmpty else { return nil }
+        return VocabularyCatalog(
+            schemaVersion: max(catalog.schemaVersion, 1),
+            exams: exams
+        )
+    }
+
+    private func normalized(_ exam: VocabularyExam) -> VocabularyExam? {
+        let id = exam.id.trimmingCharacters(in: .whitespacesAndNewlines)
+        let name = exam.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !id.isEmpty, !name.isEmpty else { return nil }
+
+        let packs = exam.packs
+            .sorted { $0.order < $1.order }
+            .compactMap { normalized($0) }
+        guard !packs.isEmpty else { return nil }
+
+        return VocabularyExam(
+            id: id,
+            name: name,
+            subtitle: exam.subtitle,
+            systemImage: exam.systemImage,
+            order: exam.order,
+            packs: packs
+        )
     }
 
     private func normalized(_ pack: VocabularyPack) -> VocabularyPack? {
@@ -83,7 +171,14 @@ struct WordRepository: Sendable {
         )
     }
 
+    private func issue(for catalog: VocabularyCatalog) -> String? {
+        let wordCount = catalog.defaultExam?.wordCount ?? 0
+        return wordCount < SharedConstants.displayedWordCount
+            ? "词库少于五个有效词条，当前只能显示可用内容。"
+            : nil
+    }
+
     private func fallbackSnapshot(issue: String) -> WordRepositorySnapshot {
-        WordRepositorySnapshot(packs: [.fallback], issue: issue, isUsingFallback: true)
+        WordRepositorySnapshot(catalog: .fallback, issue: issue, isUsingFallback: true)
     }
 }

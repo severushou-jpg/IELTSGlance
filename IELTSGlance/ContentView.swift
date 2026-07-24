@@ -25,18 +25,26 @@ struct ContentView: View {
                         .background(.quaternary, in: RoundedRectangle(cornerRadius: 9))
                 }
 
-                PackSelectionView(store: store)
+                modePicker
 
-                if store.displayedWords.isEmpty {
-                    EmptyStateView(message: store.issue ?? "本地词库中没有可用词条。")
-                } else {
-                    WordBoardView(
-                        words: store.displayedWords,
-                        textSize: store.defaultTextSize,
-                        synonymLimit: store.synonymLimit,
-                        onReplace: store.replaceWord,
-                        onShuffle: store.shuffleAll
-                    )
+                switch store.studyMode {
+                case .glance:
+                    PackSelectionView(store: store)
+
+                    if store.displayedWords.isEmpty {
+                        EmptyStateView(message: store.issue ?? "本地词库中没有可用词条。")
+                    } else {
+                        WordBoardView(
+                            words: store.displayedWords,
+                            textSize: store.defaultTextSize,
+                            synonymLimit: store.synonymLimit,
+                            onReplace: store.replaceWord,
+                            onShuffle: store.shuffleAll
+                        )
+                    }
+                case .sprint:
+                    PackSelectionView(store: store)
+                    SprintStudyView(store: store)
                 }
 
                 InstructionsView()
@@ -66,6 +74,38 @@ struct ContentView: View {
             if newPhase == .active {
                 store.reloadFromPersistence()
             }
+        }
+    }
+
+    private var modePicker: some View {
+        HStack(spacing: 12) {
+            Picker("学习模式", selection: Binding(
+                get: { store.studyMode },
+                set: store.setStudyMode
+            )) {
+                ForEach(AppStudyMode.allCases) { mode in
+                    Text(mode.displayName).tag(mode)
+                }
+            }
+            .pickerStyle(.segmented)
+            .frame(width: 320)
+
+            Text(modeDescription)
+                .font(.callout)
+                .foregroundStyle(.secondary)
+
+            Spacer()
+        }
+        .padding(12)
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+    }
+
+    private var modeDescription: String {
+        switch store.studyMode {
+        case .glance:
+            "适合休闲用户：保持桌面小组件扫一眼的轻量节奏。"
+        case .sprint:
+            "适合考前冲刺：按词包乱序扫完多轮，每轮不重复。"
         }
     }
 

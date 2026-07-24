@@ -1,11 +1,15 @@
 import Foundation
 
 enum SharedConstants {
+    static let catalogResourceName = "exam_vocabulary_catalog"
+    static let legacyIELTSPacksResourceName = "ielts_word_packs"
+    static let legacyIELTSExamID = "ielts"
     static let widgetKind = "GREGlanceWidget"
     static let displayedWordCount = 5
     static let stateDefaultsKey = "ieltsGlance.currentWidgetDisplayState.v1"
     static let stateFileDefaultsKey = "ieltsGlance.currentWidgetDisplayState.v2"
     static let preferencesDefaultsKey = "ieltsGlance.preferences.v1"
+    static let learningProgressDefaultsKey = "ieltsGlance.learningProgress.v1"
 
     static let usesAppGroup = false
 

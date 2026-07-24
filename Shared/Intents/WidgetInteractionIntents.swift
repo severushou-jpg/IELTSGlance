@@ -21,6 +21,9 @@ struct ReplaceWordIntent: AppIntent {
     @Parameter(title: "Visible word IDs")
     var visibleWordIDsPayload: String
 
+    @Parameter(title: "Selected exam ID")
+    var selectedExamID: String
+
     @Parameter(title: "Selected pack IDs")
     var selectedPackIDsPayload: String
 
@@ -31,12 +34,14 @@ struct ReplaceWordIntent: AppIntent {
         expectedWordID: String,
         expectedRevision: Int,
         visibleWordIDs: [String],
+        selectedExamID: String,
         selectedPackIDs: [String]
     ) {
         self.position = position
         self.expectedWordID = expectedWordID
         self.expectedRevision = expectedRevision
         self.visibleWordIDsPayload = WidgetIntentPayload.encode(visibleWordIDs)
+        self.selectedExamID = selectedExamID
         self.selectedPackIDsPayload = WidgetIntentPayload.encode(selectedPackIDs)
     }
 
@@ -45,7 +50,8 @@ struct ReplaceWordIntent: AppIntent {
         let repository = WordRepository().load()
         let selectedPackIDs = WidgetIntentPayload.decode(selectedPackIDsPayload)
         let visibleWordIDs = WidgetIntentPayload.decode(visibleWordIDsPayload)
-        let words = repository.words(selectedPackIDs: selectedPackIDs)
+        let words = repository.words(selectedExamID: selectedExamID, selectedPackIDs: selectedPackIDs)
+        _ = VocabularyLearningProgressStore().recordSeen(wordID: expectedWordID)
         _ = WordStateStore().replaceWord(
             at: position,
             expectedWordID: expectedWordID,
@@ -66,13 +72,26 @@ struct ShuffleAllWordsIntent: AppIntent {
     @Parameter(title: "Expected revision")
     var expectedRevision: Int
 
+    @Parameter(title: "Visible word IDs")
+    var visibleWordIDsPayload: String
+
+    @Parameter(title: "Selected exam ID")
+    var selectedExamID: String
+
     @Parameter(title: "Selected pack IDs")
     var selectedPackIDsPayload: String
 
     init() {}
 
-    init(expectedRevision: Int, selectedPackIDs: [String]) {
+    init(
+        expectedRevision: Int,
+        visibleWordIDs: [String],
+        selectedExamID: String,
+        selectedPackIDs: [String]
+    ) {
         self.expectedRevision = expectedRevision
+        self.visibleWordIDsPayload = WidgetIntentPayload.encode(visibleWordIDs)
+        self.selectedExamID = selectedExamID
         self.selectedPackIDsPayload = WidgetIntentPayload.encode(selectedPackIDs)
     }
 
@@ -80,7 +99,10 @@ struct ShuffleAllWordsIntent: AppIntent {
     func perform() async throws -> some IntentResult {
         let repository = WordRepository().load()
         let selectedPackIDs = WidgetIntentPayload.decode(selectedPackIDsPayload)
-        let words = repository.words(selectedPackIDs: selectedPackIDs)
+        let visibleWordIDs = WidgetIntentPayload.decode(visibleWordIDsPayload)
+        let learningStore = VocabularyLearningProgressStore()
+        visibleWordIDs.forEach { _ = learningStore.recordSeen(wordID: $0) }
+        let words = repository.words(selectedExamID: selectedExamID, selectedPackIDs: selectedPackIDs)
         _ = WordStateStore().shuffleAll(
             expectedRevision: expectedRevision,
             words: words

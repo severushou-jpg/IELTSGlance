@@ -9,6 +9,9 @@ struct IELTSGlanceWidgetConfigurationIntent: WidgetConfigurationIntent {
     @Parameter(title: "Text Size", default: .comfortable)
     var textSize: WidgetTextSize
 
+    @Parameter(title: "Exam Type", default: .ielts)
+    var exam: WidgetVocabularyExam
+
     @Parameter(title: "Study Topics", default: [.pack01])
     var wordPacks: [WidgetVocabularyPack]
 }
@@ -20,6 +23,7 @@ struct IELTSGlanceWidgetEntry: TimelineEntry {
     let textSize: WidgetTextSize
     let synonymLimit: Int
     let revision: Int
+    let selectedExamID: String
     let selectedPackIDs: [String]
 }
 
@@ -32,6 +36,7 @@ struct IELTSGlanceTimelineProvider: AppIntentTimelineProvider {
             textSize: .comfortable,
             synonymLimit: 3,
             revision: 0,
+            selectedExamID: WidgetVocabularyExam.ielts.rawValue,
             selectedPackIDs: [WidgetVocabularyPack.pack01.rawValue]
         )
     }
@@ -52,6 +57,7 @@ struct IELTSGlanceTimelineProvider: AppIntentTimelineProvider {
         let selectedPackIDs = configuration.wordPacks.isEmpty
             ? Array(snapshot.packIDs.prefix(1))
             : configuration.wordPacks.map(\.rawValue)
+        let selectedExamID = configuration.exam.rawValue
         let resolvedSize = configuration.textSize.resolved(defaultSize: .comfortable)
 
         if usePreviewData {
@@ -62,11 +68,12 @@ struct IELTSGlanceTimelineProvider: AppIntentTimelineProvider {
                 textSize: resolvedSize,
                 synonymLimit: 3,
                 revision: 0,
+                selectedExamID: selectedExamID,
                 selectedPackIDs: selectedPackIDs
             )
         }
 
-        let words = snapshot.words(selectedPackIDs: selectedPackIDs)
+        let words = snapshot.words(selectedExamID: selectedExamID, selectedPackIDs: selectedPackIDs)
         let stateStore = WordStateStore()
         let state = stateStore.currentState(words: words)
         return IELTSGlanceWidgetEntry(
@@ -76,6 +83,7 @@ struct IELTSGlanceTimelineProvider: AppIntentTimelineProvider {
             textSize: resolvedSize,
             synonymLimit: 3,
             revision: state.revision,
+            selectedExamID: selectedExamID,
             selectedPackIDs: selectedPackIDs
         )
     }
@@ -110,6 +118,7 @@ struct IELTSGlanceWidgetView: View {
                     position: index,
                     visibleWordIDs: entry.words.map(\.id),
                     revision: entry.revision,
+                    selectedExamID: entry.selectedExamID,
                     selectedPackIDs: entry.selectedPackIDs,
                     textSize: entry.textSize,
                     synonymLimit: entry.synonymLimit
@@ -136,6 +145,7 @@ struct IELTSGlanceWidgetView: View {
                     position: index,
                     visibleWordIDs: entry.words.map(\.id),
                     revision: entry.revision,
+                    selectedExamID: entry.selectedExamID,
                     selectedPackIDs: entry.selectedPackIDs,
                     textSize: entry.textSize,
                     synonymLimit: entry.synonymLimit
@@ -262,6 +272,8 @@ struct IELTSGlanceWidgetView: View {
     private func shuffleButton(labelStyle: LabelStyleMode) -> some View {
         Button(intent: ShuffleAllWordsIntent(
             expectedRevision: entry.revision,
+            visibleWordIDs: entry.words.map(\.id),
+            selectedExamID: entry.selectedExamID,
             selectedPackIDs: entry.selectedPackIDs
         )) {
             Group {
@@ -287,6 +299,7 @@ struct IELTSGlanceWidgetView: View {
             expectedWordID: word.id,
             expectedRevision: entry.revision,
             visibleWordIDs: entry.words.map(\.id),
+            selectedExamID: entry.selectedExamID,
             selectedPackIDs: entry.selectedPackIDs
         )) {
             Group {
@@ -347,6 +360,7 @@ private struct MediumWidgetWordRow: View {
     let position: Int
     let visibleWordIDs: [String]
     let revision: Int
+    let selectedExamID: String
     let selectedPackIDs: [String]
     let textSize: WidgetTextSize
     let synonymLimit: Int
@@ -401,6 +415,7 @@ private struct MediumWidgetWordRow: View {
             expectedWordID: word.id,
             expectedRevision: revision,
             visibleWordIDs: visibleWordIDs,
+            selectedExamID: selectedExamID,
             selectedPackIDs: selectedPackIDs
         )) {
             Image(systemName: "checkmark.circle")
@@ -427,6 +442,7 @@ private struct WidgetWordRow: View {
     let position: Int
     let visibleWordIDs: [String]
     let revision: Int
+    let selectedExamID: String
     let selectedPackIDs: [String]
     let textSize: WidgetTextSize
     let synonymLimit: Int
@@ -493,6 +509,7 @@ private struct WidgetWordRow: View {
             expectedWordID: word.id,
             expectedRevision: revision,
             visibleWordIDs: visibleWordIDs,
+            selectedExamID: selectedExamID,
             selectedPackIDs: selectedPackIDs
         )) {
             Image(systemName: "checkmark.circle")
@@ -542,6 +559,7 @@ struct IELTSGlanceWidget: Widget {
         textSize: .comfortable,
         synonymLimit: 3,
         revision: 0,
+        selectedExamID: WidgetVocabularyExam.ielts.rawValue,
         selectedPackIDs: [WidgetVocabularyPack.pack01.rawValue]
     )
 }
@@ -556,6 +574,7 @@ struct IELTSGlanceWidget: Widget {
         textSize: .comfortable,
         synonymLimit: 3,
         revision: 0,
+        selectedExamID: WidgetVocabularyExam.ielts.rawValue,
         selectedPackIDs: [WidgetVocabularyPack.pack01.rawValue]
     )
 }
@@ -570,6 +589,7 @@ struct IELTSGlanceWidget: Widget {
         textSize: .comfortable,
         synonymLimit: 3,
         revision: 0,
+        selectedExamID: WidgetVocabularyExam.ielts.rawValue,
         selectedPackIDs: [WidgetVocabularyPack.pack01.rawValue]
     )
 }
