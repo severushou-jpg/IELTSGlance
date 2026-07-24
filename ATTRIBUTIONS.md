@@ -8,11 +8,22 @@ Vocabulary data is licensed separately from the MIT-licensed application code.
 - Version used for curation: commit `bc015ed2e24a7abef49fc6dbbb7fe32c1dadaf8b` (2025-03-28)
 - Retrieved: 2026-07-19
 - Repository license: MIT License
-- Fields used: `word`, `translation`, `tag`, `bnc`, and `frq`
-- Use: IELTS-tagged candidate headwords, public-corpus difficulty/frequency ranking, and concise Chinese gloss input
-- Modifications: excluded school-level tags and the corpus-frequency tails, preferred words outside the CET-4 core, normalized parts of speech and Chinese punctuation, selected one or two concise glosses, and generated stable IDs
+- Fields used: `word`, `definition`, `translation`, `tag`, `bnc`, and `frq`
+- Use: IELTS-tagged candidate headwords, GRE-tagged candidate headwords, public-corpus difficulty/frequency ranking, concise Chinese gloss input, and short English definition fragments for display hints
+- Modifications: excluded school-level tags and the corpus-frequency tails for IELTS, preferred words outside the CET-4 core for IELTS, selected 3000 GRE-tagged headwords after excluding school-level/CET overlap, grouped GRE into 30 topic packs of 100 words each, normalized parts of speech and Chinese punctuation, selected one or two concise glosses, and generated stable IDs
 
 The complete upstream CSV is not committed. The app ships only the selected normalized records.
+
+## KyleBing English Vocabulary
+
+- Project: [KyleBing/english-vocabulary](https://github.com/KyleBing/english-vocabulary)
+- Source files used: `json/3-CET4-顺序.json` and `json/4-CET6-顺序.json`
+- Retrieved: 2026-07-24
+- Fields used: `word`, `translations`, and `phrases`
+- Use: CET-4 and CET-6 vocabulary sources for the bundled 1500-word College English Test Band 4 and Band 6 packs
+- Modifications: selected the first 1500 unique CET-4 entries and first 1500 unique CET-6 entries, split each exam into 15 high/mid/low-frequency packs of 100 words each, normalized parts of speech and Chinese meanings, generated stable IDs, and added short original review-context example sentences
+
+The complete upstream JSON files are not committed. The app ships only the selected normalized CET-4 and CET-6 records.
 
 ## Open English WordNet 2025
 

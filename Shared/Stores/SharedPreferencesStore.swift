@@ -20,23 +20,41 @@ final class SharedPreferencesStore: @unchecked Sendable {
         )
     }
 
-    func load(availablePackIDs: [String]) -> IELTSGlancePreferences {
+    func load(
+        availableExamIDs: [String],
+        defaultExamID: String?,
+        availablePackIDs: [String]
+    ) -> IELTSGlancePreferences {
         storage.update { stored in
-            (stored ?? .initial(availablePackIDs: availablePackIDs))
-                .repaired(availablePackIDs: availablePackIDs)
+            (stored ?? .initial(defaultExamID: defaultExamID, availablePackIDs: availablePackIDs))
+                .repaired(
+                    availableExamIDs: availableExamIDs,
+                    defaultExamID: defaultExamID,
+                    availablePackIDs: availablePackIDs
+                )
         }
     }
 
     @discardableResult
     func update(
+        availableExamIDs: [String],
+        defaultExamID: String?,
         availablePackIDs: [String],
         _ transform: (inout IELTSGlancePreferences) -> Void
     ) -> IELTSGlancePreferences {
         storage.update { stored in
-            var preferences = (stored ?? .initial(availablePackIDs: availablePackIDs))
-                .repaired(availablePackIDs: availablePackIDs)
+            var preferences = (stored ?? .initial(defaultExamID: defaultExamID, availablePackIDs: availablePackIDs))
+                .repaired(
+                    availableExamIDs: availableExamIDs,
+                    defaultExamID: defaultExamID,
+                    availablePackIDs: availablePackIDs
+                )
             transform(&preferences)
-            return preferences.repaired(availablePackIDs: availablePackIDs)
+            return preferences.repaired(
+                availableExamIDs: availableExamIDs,
+                defaultExamID: defaultExamID,
+                availablePackIDs: availablePackIDs
+            )
         }
     }
 }

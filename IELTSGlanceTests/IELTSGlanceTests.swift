@@ -5,9 +5,10 @@ final class IELTSGlanceTests: XCTestCase {
     func testBundledVocabularyHasFifteenUniquePacksOfOneHundred() throws {
         let snapshot = WordRepository().load()
         XCTAssertFalse(snapshot.isUsingFallback, snapshot.issue ?? "Unexpected fallback")
-        XCTAssertEqual(snapshot.exams.count, 1)
+        XCTAssertEqual(snapshot.exams.count, 4)
+        XCTAssertEqual(snapshot.examIDs, [SharedConstants.legacyIELTSExamID, "cet4", "cet6", "gre"])
         XCTAssertEqual(snapshot.defaultExam?.id, SharedConstants.legacyIELTSExamID)
-        XCTAssertEqual(snapshot.defaultExam?.name, "IELTS")
+        XCTAssertEqual(snapshot.defaultExam?.name, "雅思")
         XCTAssertEqual(snapshot.packs.count, 15)
         XCTAssertTrue(snapshot.packs.allSatisfy { $0.words.count == 100 })
         XCTAssertEqual(snapshot.words.count, 1500)
@@ -42,6 +43,19 @@ final class IELTSGlanceTests: XCTestCase {
         })
     }
 
+    func testBundledCETVocabularyHasFifteenFrequencyPacksOfOneHundred() throws {
+        let snapshot = WordRepository().load()
+
+        assertCETExam(snapshot, examID: "cet4", namePrefix: "四级", sourceLabel: "CET4")
+        assertCETExam(snapshot, examID: "cet6", namePrefix: "六级", sourceLabel: "CET6")
+    }
+
+    func testBundledGREVocabularyHasThirtyTopicPacksOfOneHundred() throws {
+        let snapshot = WordRepository().load()
+
+        assertGREExam(snapshot)
+    }
+
     func testSelectedPacksDefineTheRandomPool() {
         let snapshot = WordRepository().load()
         let selected = Array(snapshot.packs.prefix(2).map(\.id))
@@ -53,9 +67,11 @@ final class IELTSGlanceTests: XCTestCase {
     func testLegacyIELTSPacksAreExposedThroughGenericCatalog() {
         let snapshot = WordRepository().load()
 
-        XCTAssertEqual(snapshot.catalog.schemaVersion, 1)
-        XCTAssertEqual(snapshot.examIDs, [SharedConstants.legacyIELTSExamID])
-        XCTAssertEqual(snapshot.defaultExam?.wordCount, 1500)
+        let legacyCatalog = VocabularyCatalog.legacyIELTS(packs: snapshot.packs)
+
+        XCTAssertEqual(legacyCatalog.schemaVersion, 1)
+        XCTAssertEqual(legacyCatalog.exams.map(\.id), [SharedConstants.legacyIELTSExamID])
+        XCTAssertEqual(legacyCatalog.defaultExam?.wordCount, 1500)
         XCTAssertEqual(
             snapshot.words(
                 selectedExamID: SharedConstants.legacyIELTSExamID,
@@ -70,11 +86,16 @@ final class IELTSGlanceTests: XCTestCase {
             selectedPackIDs: ["missing"],
             defaultTextSize: .followApp,
             synonymLimit: 99
-        ).repaired(availablePackIDs: ["pack-1", "pack-2"])
+        ).repaired(
+            availableExamIDs: ["ielts", "cet4"],
+            defaultExamID: "ielts",
+            availablePackIDs: ["pack-1", "pack-2"]
+        )
+        XCTAssertEqual(repaired.selectedExamID, "ielts")
         XCTAssertEqual(repaired.selectedPackIDs, ["pack-1"])
         XCTAssertEqual(repaired.defaultTextSize, .comfortable)
         XCTAssertEqual(repaired.synonymLimit, 3)
-        XCTAssertEqual(repaired.schemaVersion, 3)
+        XCTAssertEqual(repaired.schemaVersion, 4)
     }
 
     func testLegacyExtraLargeDefaultMigratesToComfortable() {
@@ -83,20 +104,30 @@ final class IELTSGlanceTests: XCTestCase {
             selectedPackIDs: ["pack-1"],
             defaultTextSize: .legacyExtraLarge,
             synonymLimit: 3
-        ).repaired(availablePackIDs: ["pack-1"])
+        ).repaired(
+            availableExamIDs: ["ielts"],
+            defaultExamID: "ielts",
+            availablePackIDs: ["pack-1"]
+        )
         XCTAssertEqual(repaired.defaultTextSize, .comfortable)
-        XCTAssertEqual(repaired.schemaVersion, 3)
+        XCTAssertEqual(repaired.schemaVersion, 4)
     }
 
     func testNewExtraLargePreferenceRemainsAvailable() {
         let repaired = IELTSGlancePreferences(
-            schemaVersion: 3,
+            schemaVersion: 4,
+            selectedExamID: "cet4",
             selectedPackIDs: ["pack-1"],
             defaultTextSize: .extraLarge,
             synonymLimit: 3
-        ).repaired(availablePackIDs: ["pack-1"])
+        ).repaired(
+            availableExamIDs: ["ielts", "cet4"],
+            defaultExamID: "ielts",
+            availablePackIDs: ["pack-1"]
+        )
+        XCTAssertEqual(repaired.selectedExamID, "cet4")
         XCTAssertEqual(repaired.defaultTextSize, .extraLarge)
-        XCTAssertEqual(repaired.schemaVersion, 3)
+        XCTAssertEqual(repaired.schemaVersion, 4)
     }
 
     func testLegacyWidgetExtraLargeRawValueMigratesWithoutAffectingNewChoice() throws {
@@ -292,6 +323,85 @@ final class IELTSGlanceTests: XCTestCase {
         let resolved = store.words(for: state, in: duplicatedWords)
 
         XCTAssertEqual(resolved.map(\.id), baseWords.map(\.id))
+    }
+
+    private func assertCETExam(
+        _ snapshot: WordRepositorySnapshot,
+        examID: String,
+        namePrefix: String,
+        sourceLabel: String
+    ) {
+        let packs = snapshot.packs(selectedExamID: examID)
+        let words = snapshot.words(
+            selectedExamID: examID,
+            selectedPackIDs: packs.map(\.id)
+        )
+
+        XCTAssertEqual(packs.count, 15)
+        XCTAssertEqual(packs.map { $0.words.count }, Array(repeating: 100, count: 15))
+        XCTAssertEqual(packs.prefix(5).map(\.name), (1...5).map { String(format: "\(namePrefix)高频 %02d", $0) })
+        XCTAssertEqual(packs.dropFirst(5).prefix(5).map(\.name), (1...5).map { String(format: "\(namePrefix)中频 %02d", $0) })
+        XCTAssertEqual(packs.dropFirst(10).prefix(5).map(\.name), (1...5).map { String(format: "\(namePrefix)低频 %02d", $0) })
+        XCTAssertEqual(words.count, 1500)
+        XCTAssertEqual(Set(words.map(\.id)).count, 1500)
+        XCTAssertEqual(Set(words.map { $0.word.lowercased() }).count, 1500)
+        XCTAssertTrue(words.allSatisfy { $0.id.hasPrefix("\(examID)-") })
+        XCTAssertTrue(words.allSatisfy {
+            $0.source?.contains("KyleBing/english-vocabulary \(sourceLabel) JSON") == true
+        })
+    }
+
+    private func assertGREExam(_ snapshot: WordRepositorySnapshot) {
+        let expectedNames = [
+            "性格与人格特质",
+            "情绪与心理状态",
+            "态度、立场与评价",
+            "争论、批判与反驳",
+            "赞同、支持与证明",
+            "欺骗、伪装与虚假",
+            "清晰、模糊与复杂",
+            "变化、发展与衰退",
+            "权力、统治与服从",
+            "社会制度与群体",
+            "道德、正义与责任",
+            "艺术、审美与风格",
+            "文学、语言与表达",
+            "科学研究与方法",
+            "逻辑、推理与因果",
+            "数量、程度与范围",
+            "时间、持续与短暂",
+            "空间、位置与移动",
+            "稀有、平凡与典型",
+            "重要、琐碎与无关",
+            "困难、障碍与解决",
+            "冲突、战争与破坏",
+            "和解、秩序与稳定",
+            "财富、贫困与资源",
+            "工作、效率与能力",
+            "教育、知识与学习",
+            "自然、环境与生物",
+            "宗教、传统与仪式",
+            "身体、疾病与医学",
+            "综合抽象高频词"
+        ]
+        let packs = snapshot.packs(selectedExamID: "gre")
+        let words = snapshot.words(
+            selectedExamID: "gre",
+            selectedPackIDs: packs.map(\.id)
+        )
+
+        XCTAssertEqual(packs.count, 30)
+        XCTAssertEqual(packs.map(\.name), expectedNames)
+        XCTAssertEqual(packs.map { $0.words.count }, Array(repeating: 100, count: 30))
+        XCTAssertTrue(packs.allSatisfy { !$0.name.hasPrefix("GRE") })
+        XCTAssertTrue(packs.allSatisfy { !($0.systemImage ?? "").isEmpty })
+        XCTAssertEqual(words.count, 3000)
+        XCTAssertEqual(Set(words.map(\.id)).count, 3000)
+        XCTAssertEqual(Set(words.map { $0.word.lowercased() }).count, 3000)
+        XCTAssertTrue(words.allSatisfy { $0.id.hasPrefix("gre-") })
+        XCTAssertTrue(words.allSatisfy {
+            $0.source?.contains("ECDICT gre-tagged headword") == true
+        })
     }
 
     private func makeStore() throws -> (WordStateStore, UserDefaults) {

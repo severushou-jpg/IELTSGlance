@@ -15,16 +15,28 @@ struct WordRepositorySnapshot: Sendable {
 
     var words: [IELTSWord] { packs.flatMap(\.words) }
 
+    var allWords: [IELTSWord] { exams.flatMap(\.packs).flatMap(\.words) }
+
     var packIDs: [String] { packs.map(\.id) }
+
+    func exam(id: String?) -> VocabularyExam? {
+        id.flatMap { selectedID in exams.first { $0.id == selectedID } } ?? defaultExam
+    }
+
+    func packs(selectedExamID: String?) -> [VocabularyPack] {
+        exam(id: selectedExamID)?.packs ?? []
+    }
+
+    func packIDs(selectedExamID: String?) -> [String] {
+        packs(selectedExamID: selectedExamID).map(\.id)
+    }
 
     func words(selectedPackIDs: [String]) -> [IELTSWord] {
         words(selectedExamID: defaultExam?.id, selectedPackIDs: selectedPackIDs)
     }
 
     func words(selectedExamID: String?, selectedPackIDs: [String]) -> [IELTSWord] {
-        let exam = selectedExamID
-            .flatMap { id in exams.first { $0.id == id } }
-            ?? defaultExam
+        let exam = exam(id: selectedExamID)
         guard let exam else { return [] }
 
         let selected = Set(selectedPackIDs)

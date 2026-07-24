@@ -2,6 +2,12 @@ import Foundation
 import Observation
 import WidgetKit
 
+struct ExamSelectionOption: Identifiable, Hashable, Sendable {
+    let id: String
+    let title: String
+    let isAvailable: Bool
+}
+
 @Observable
 @MainActor
 final class AppWordStore {
@@ -25,7 +31,11 @@ final class AppWordStore {
         stateStore = WordStateStore()
         preferencesStore = SharedPreferencesStore()
         learningProgressStore = VocabularyLearningProgressStore()
-        preferences = preferencesStore.load(availablePackIDs: snapshot.packIDs)
+        preferences = preferencesStore.load(
+            availableExamIDs: snapshot.examIDs,
+            defaultExamID: snapshot.defaultExam?.id,
+            availablePackIDs: snapshot.packIDs
+        )
         issue = snapshot.issue
         reloadFromPersistence()
         resetSprintSession()
@@ -33,8 +43,17 @@ final class AppWordStore {
 
     var totalWordCount: Int { snapshot.words.count }
     var exams: [VocabularyExam] { snapshot.exams }
-    var selectedExam: VocabularyExam? { snapshot.defaultExam }
-    var packs: [VocabularyPack] { snapshot.packs }
+    var selectedExam: VocabularyExam? { snapshot.exam(id: selectedExamID) }
+    var selectedExamID: String { preferences.selectedExamID ?? snapshot.defaultExam?.id ?? "" }
+    var examSelectionOptions: [ExamSelectionOption] {
+        [
+            ExamSelectionOption(id: "cet4", title: "四级", isAvailable: snapshot.examIDs.contains("cet4")),
+            ExamSelectionOption(id: "cet6", title: "六级", isAvailable: snapshot.examIDs.contains("cet6")),
+            ExamSelectionOption(id: SharedConstants.legacyIELTSExamID, title: "雅思", isAvailable: snapshot.examIDs.contains(SharedConstants.legacyIELTSExamID)),
+            ExamSelectionOption(id: "gre", title: "GRE", isAvailable: snapshot.examIDs.contains("gre"))
+        ]
+    }
+    var packs: [VocabularyPack] { snapshot.packs(selectedExamID: selectedExamID) }
     var selectedPackIDs: Set<String> { Set(preferences.selectedPackIDs) }
     var selectedWordCount: Int { selectedWords.count }
     var defaultTextSize: WidgetTextSize { preferences.defaultTextSize }
@@ -72,7 +91,7 @@ final class AppWordStore {
         sprintPackStates.values.forEach { state in
             reviewLaterIDs.formUnion(state.reviewLaterWordIDs)
         }
-        return snapshot.words.filter { reviewLaterIDs.contains($0.id) }
+        return snapshot.allWords.filter { reviewLaterIDs.contains($0.id) }
     }
 
     var reviewLaterCount: Int {
@@ -80,7 +99,11 @@ final class AppWordStore {
     }
 
     func reloadFromPersistence() {
-        preferences = preferencesStore.load(availablePackIDs: snapshot.packIDs)
+        preferences = preferencesStore.load(
+            availableExamIDs: snapshot.examIDs,
+            defaultExamID: snapshot.defaultExam?.id,
+            availablePackIDs: availablePackIDsForSelectedExam
+        )
         let words = selectedWords
         let state = stateStore.currentState(words: words)
         displayedWords = stateStore.words(for: state, in: words)
@@ -89,6 +112,20 @@ final class AppWordStore {
 
     func setStudyMode(_ mode: AppStudyMode) {
         studyMode = mode
+    }
+
+    func setSelectedExam(_ examID: String) {
+        guard snapshot.examIDs.contains(examID), examID != selectedExamID else { return }
+        let packIDs = snapshot.packIDs(selectedExamID: examID)
+        updatePreferences(
+            selectedExamID: examID,
+            availablePackIDs: packIDs
+        ) {
+            $0.selectedExamID = examID
+            $0.selectedPackIDs = Array(packIDs.prefix(1))
+        }
+        shuffleAll()
+        resetSprintSession()
     }
 
     func replaceWord(at position: Int) {
@@ -119,19 +156,19 @@ final class AppWordStore {
         } else {
             selected.insert(packID)
         }
-        updatePreferences { $0.selectedPackIDs = snapshot.packIDs.filter(selected.contains) }
+        updatePreferences { $0.selectedPackIDs = availablePackIDsForSelectedExam.filter(selected.contains) }
         shuffleAll()
         resetSprintSession()
     }
 
     func selectAllPacks() {
-        updatePreferences { $0.selectedPackIDs = snapshot.packIDs }
+        updatePreferences { $0.selectedPackIDs = availablePackIDsForSelectedExam }
         shuffleAll()
         resetSprintSession()
     }
 
     func selectOnlyPack(_ packID: String) {
-        guard snapshot.packIDs.contains(packID) else { return }
+        guard availablePackIDsForSelectedExam.contains(packID) else { return }
         updatePreferences { $0.selectedPackIDs = [packID] }
         shuffleAll()
         resetSprintSession()
@@ -210,7 +247,11 @@ final class AppWordStore {
     }
 
     private var selectedWords: [IELTSWord] {
-        snapshot.words(selectedPackIDs: preferences.selectedPackIDs)
+        snapshot.words(selectedExamID: selectedExamID, selectedPackIDs: preferences.selectedPackIDs)
+    }
+
+    private var availablePackIDsForSelectedExam: [String] {
+        snapshot.packIDs(selectedExamID: selectedExamID)
     }
 
     private func ensureSprintSelectionIsAvailable() {
@@ -223,8 +264,18 @@ final class AppWordStore {
         }
     }
 
-    private func updatePreferences(_ transform: (inout IELTSGlancePreferences) -> Void) {
-        preferences = preferencesStore.update(availablePackIDs: snapshot.packIDs, transform)
+    private func updatePreferences(
+        selectedExamID: String? = nil,
+        availablePackIDs: [String]? = nil,
+        _ transform: (inout IELTSGlancePreferences) -> Void
+    ) {
+        let examID = selectedExamID ?? self.selectedExamID
+        preferences = preferencesStore.update(
+            availableExamIDs: snapshot.examIDs,
+            defaultExamID: snapshot.defaultExam?.id,
+            availablePackIDs: availablePackIDs ?? snapshot.packIDs(selectedExamID: examID),
+            transform
+        )
     }
 
     private func reloadWidgetIfNeeded() {

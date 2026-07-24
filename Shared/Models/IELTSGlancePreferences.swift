@@ -1,20 +1,33 @@
 import Foundation
 
 struct IELTSGlancePreferences: Codable, Equatable, Sendable {
-    var schemaVersion: Int? = 3
+    var schemaVersion: Int? = 4
+    var selectedExamID: String?
     var selectedPackIDs: [String]
     var defaultTextSize: WidgetTextSize
     var synonymLimit: Int
 
-    static func initial(availablePackIDs: [String]) -> IELTSGlancePreferences {
+    static func initial(defaultExamID: String?, availablePackIDs: [String]) -> IELTSGlancePreferences {
         IELTSGlancePreferences(
+            selectedExamID: defaultExamID,
             selectedPackIDs: Array(availablePackIDs.prefix(1)),
             defaultTextSize: .comfortable,
             synonymLimit: 3
         )
     }
 
-    func repaired(availablePackIDs: [String]) -> IELTSGlancePreferences {
+    func repaired(
+        availableExamIDs: [String],
+        defaultExamID: String?,
+        availablePackIDs: [String]
+    ) -> IELTSGlancePreferences {
+        let repairedExamID: String?
+        if let selectedExamID, availableExamIDs.contains(selectedExamID) {
+            repairedExamID = selectedExamID
+        } else {
+            repairedExamID = defaultExamID ?? availableExamIDs.first
+        }
+
         let available = Set(availablePackIDs)
         var seen = Set<String>()
         var selected = selectedPackIDs.filter {
@@ -30,7 +43,8 @@ struct IELTSGlancePreferences: Codable, Equatable, Sendable {
         }
 
         return IELTSGlancePreferences(
-            schemaVersion: 3,
+            schemaVersion: 4,
+            selectedExamID: repairedExamID,
             selectedPackIDs: selected,
             defaultTextSize: repairedTextSize,
             synonymLimit: min(max(synonymLimit, 1), 3)
